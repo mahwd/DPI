@@ -64,7 +64,7 @@
             "text_empty": "The message text can&#039;t be empty",
             "text_long": "Too long message text"
         },
-        "alter_link_color": "#04caf7",
+        "alter_link_color": "var(--primary-color)",
         "button_hover": "slide_left"
     };
 })();

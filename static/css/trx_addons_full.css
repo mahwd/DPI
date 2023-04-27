@@ -5403,7 +5403,7 @@ widget_categories_list .categories_list_item {
 }
 .sc_accordion.sc_accordion_style_1 .sc_accordion_item .sc_accordion_title.ui-state-active,
 .sc_accordion.sc_accordion_style_1 .sc_accordion_item .sc_accordion_title:hover{
-    background-color: #47d6e8;
+    background-color: var(--primary-color);
 }
 .sc_accordion .sc_accordion_item .sc_accordion_title .sc_accordion_icon {
     position:absolute;
@@ -5521,7 +5521,7 @@ widget_categories_list .categories_list_item {
 }
 .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_title:hover,
 .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_title.ui-state-active{
-    color: #fcd63c;
+    color: var(--accent-color);
 }
 
 .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_content{
@@ -6932,8 +6932,8 @@ blockquote.sc_promo_text {
     z-index:2;
 }
 .sc_skills_bar.sc_skills_horizontal .skills_count_custom_style{
-    background-color:#47d6e8;
-    border-color:#47d6e8;
+    background-color:var(--primary-color);
+    border-color:var(--primary-color);
 }
 .sc_skills_bar.sc_skills_horizontal .sc_skills_columns .sc_skills_info {
     margin-top: 0;
