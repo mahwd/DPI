@@ -57,7 +57,7 @@
                         <div class="sc_content_container">
                             <div class="sc_layouts_item">
                                 <a href="index.html" class="sc_layouts_logo sc_layouts_logo_default">
-                                    <img class="logo_image" src="http://placehold.it/295x61.jpg" alt="">
+                                    <img class="logo_image" src="{% static "images/dpi_logo.png" %}" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -969,7 +969,7 @@
                             <div class="content_wrap sc_layouts_column_icons_position_left">
                                 <div class="empty_space height_6_3em"></div>
                                 <div class="trx_addons_columns_wrap">
-                                    <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                    <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
                                         <div class="empty_space height_3em"></div>
                                         <div class="sc_title sc_title_default">
                                             <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_default">
@@ -993,10 +993,10 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                    <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
                                         <div class="empty_space height_4em"></div>
                                         <figure>
-                                            <img src="http://placehold.it/768x535.jpg" alt=""/>
+                                            <img src="{% static "images/img_about1-1.jpg" %}" alt=""/>
                                         </figure>
                                     </div>
                                 </div>
@@ -2253,7 +2253,7 @@
 
 <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
 
-<script type='text/javascript' src='http://maps.googleapis.com/maps/api/js'></script>
+{#<script type='text/javascript' src='http://maps.googleapis.com/maps/api/js'></script>#}
 <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
 
 </body>
