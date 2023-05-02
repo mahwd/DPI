@@ -4321,3 +4321,22 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
 .color_white{
     color: #ffffff;
 }
+
+
+/* classes added by hasan */
+
+.primary-color {
+    background-color: var(--primary-color)!important;
+}
+.primary-color {
+    background-color: var(--primary-color)!important;
+}
+.primary-color {
+    background-color: var(--primary-color)!important;
+}
+.dark-color {
+    background-color: var(--dark-color)!important;
+}
+.light-color {
+    background-color: white!important;
+}

@@ -1,9 +1,11 @@
 $primary: #00AEEF;
 $secondary: #EC008C;
 $accent: #FFF200;
+$dark: #23242c;
 
 :root {
   --primary-color: #{$primary};
   --secondary-color: #{$secondary};
   --accent-color: #{$accent};
+  --dark-color: #{$dark};
 }

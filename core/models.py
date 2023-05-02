@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import mark_safe
 
 
 class MyModel(models.Model):
@@ -12,9 +13,6 @@ class MyModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-1
 
 
 class MenuBaseItems(MyModel):
@@ -99,3 +97,47 @@ class MenuSubItems(MyModel):
 
     def get_absolute_url(self):
         return reverse(self.url)
+
+
+class ContactInfo(MyModel):
+    email = models.EmailField(max_length=128, verbose_name="Email")
+    phone = models.CharField(max_length=255, verbose_name="Phone")
+
+    class Meta:
+        verbose_name = "Əlaqə vasitələri"
+        verbose_name_plural = "Əlaqə vasitələri informasiya"
+
+
+class SocialMediaIcon(MyModel):
+    color_choices = [
+        ("primary-color", "primary"),
+        ("secondary-color", "secondary"),
+        ("accent-color", "accent"),
+        ("dark-color", "dark")
+    ]
+
+    url = models.CharField(max_length=128, verbose_name="URL")
+    icon = models.CharField(max_length=128, verbose_name="Icon")
+    color = models.CharField(max_length=128, choices=color_choices, verbose_name="Color")
+
+    class Meta:
+        verbose_name = "Sosial media"
+        verbose_name_plural = "Sosiallar"
+
+    def __str__(self):
+        return self.icon
+
+    def get_icon(self):
+
+        if self.icon:
+            return mark_safe(
+                "<span class='trx_addons_icon-%s' style='width:75px;height:auto' />" % self.icon
+            )
+        else:
+            return mark_safe(
+                "<img src='https://crestaproject.com/demo/nucleare-pro/wp-content/themes/nucleare-pro/images/no-image"
+                "-box.png' alt='image' />"
+            )
+
+    icon.short_description = "Social Icon"
+    icon.allow_tags = True

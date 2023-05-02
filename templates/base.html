@@ -4,35 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gilan</title>
+    <title>DPI - {% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static "assets/images/favicon.png" %}">
     {% include "_partials/links.html" %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
 {#{% include "_partials/loader.html" %}#}
+<!-- Header -->
+{% include "_partials/header.html" %}
+<!-- /Header -->
 
-<div class="content" style="opacity: 0;">
-    <div class="header-menu" style="{% block header_color %}{% endblock %}">
-        {% block slider_section %}
-            {% block header %}{% endblock %}
-            {% block menu %}{% endblock %}
-        {% endblock %}
+<!-- Menu mobile -->
+{% include "_partials/mobile_menu.html" %}
+<!-- /Menu mobile -->
+
+<!-- Body wrap -->
+<div class="body_wrap">
+    <!-- Page wrap -->
+    <div class="page_wrap">
+
+        <!-- Page content wrap -->
+        <div class="page_content_wrap scheme_default">
+            <!-- Content -->
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- /Content -->
+        </div>
+        <!-- /Page content wrap -->
     </div>
-    <section class="home">
-
-        {% block main %}
-
-        {% endblock %}
-
-    </section>
-    {% block footer %}
-
-        {% include "_partials/footer.html" %}
-
-    {% endblock %}
-
-    {% include "_partials/scripts.html" %}
 </div>
+
+<!-- Footer -->
+{% include "_partials/footer.html" %}
+<!-- /Footer -->
+
+<!-- Scripts -->
+{% include "_partials/scripts.html" %}
+<!-- Scripts -->
+
+<a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
+
 </body>
 </html>
