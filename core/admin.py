@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import MenuSubItems, MenuBaseItems
 
-# Register your models here.
+admin.site.register(MenuBaseItems)
+admin.site.register(MenuSubItems)

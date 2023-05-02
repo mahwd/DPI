@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gilan</title>
+    <link rel="shortcut icon" href="{% static "assets/images/favicon.png" %}">
+    {% include "_partials/links.html" %}
+</head>
+<body>
+
+{#{% include "_partials/loader.html" %}#}
+<div class="content" style="opacity: 0;">
+    <div class="header-menu" style="{% block header_color %}{% endblock %}">
+        {% block slider_section %}
+            {% block header %}{% endblock %}
+            {% block menu %}{% endblock %}
+        {% endblock %}
+    </div>
+    <section class="home">
+
+        {% block main %}
+
+        {% endblock %}
+
+    </section>
+    {% block footer %}
+
+        {% include "_partials/footer.html" %}
+
+    {% endblock %}
+
+    {% include "_partials/scripts.html" %}
+</div>
+</body>
+</html>
