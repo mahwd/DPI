@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DPI - {% block title %}{% endblock %}</title>
-    <link rel="shortcut icon" href="{% static "assets/images/favicon.png" %}">
+    <link rel="shortcut icon" href="{% static "images/dpi_logo.png" %}">
     {% include "_partials/links.html" %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
 
 {#{% include "_partials/loader.html" %}#}
-<!-- Header -->
-{% include "_partials/header.html" %}
-<!-- /Header -->
-
-<!-- Menu mobile -->
-{% include "_partials/mobile_menu.html" %}
-<!-- /Menu mobile -->
 
 <!-- Body wrap -->
 <div class="body_wrap">
     <!-- Page wrap -->
     <div class="page_wrap">
 
+        <!-- Header -->
+        {% include "_partials/header.html" %}
+        <!-- /Header -->
+
+        <!-- Menu mobile -->
+        {% include "_partials/mobile_menu.html" %}
+        <!-- /Menu mobile -->
         <!-- Page content wrap -->
         <div class="page_content_wrap scheme_default">
             <!-- Content -->
