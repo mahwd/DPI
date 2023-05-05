@@ -28,7 +28,7 @@
                                     data-slotamount="default"
                                     data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default"
                                     data-easeout="default" data-masterspeed="default"
-                                    data-thumb="{{ carousel.image_thumbnail }}" data-rotate="0"
+                                    data-thumb="{{ carousel.image_thumbnail.url }}" data-rotate="0"
                                     data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
                                     data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                                     data-param8="" data-param9="" data-param10="" data-description="">
@@ -170,32 +170,21 @@
                     <div class="trx_addons_columns_wrap">
                         <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
                             <div class="empty_space height_3em"></div>
-                            <div class="sc_title sc_title_default">
-                                <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_default">
-                                    welcome to our</h6>
-                                <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_default">
-                                    Full-service copy<br/>
-                                    & printing center</h2>
+                            <div class="sc_title sc_title_default"><h6
+                                    class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_default">{{ welcome_section.pretitle }}</h6>
+                                <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_default">{{ welcome_section.title }}</h2>
                             </div>
                             <div class="empty_space height_2em"></div>
-                            <p>CopyPress has provided quality printing services to the NYC area and beyond
-                                since 1896! We specialize in commercial offset printing and digital printing
-                                services to cover all your needs. From brochures to banners, we are your
-                                one-stop print shop.</p>
+                            <p>{{ welcome_section.description }}</p>
                             <div class="empty_space height_2_9em"></div>
-                            <div class="sc_item_button sc_button_wrap">
-                                <a href="#"
-                                   class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
-                                                        <span class="sc_button_text">
-                                                            <span class="sc_button_title">discover more</span>
-                                                        </span>
-                                </a>
-                            </div>
+                            <div class="sc_item_button sc_button_wrap"><a href="{{ welcome_section.button_url }}"
+                                                                          class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left"><span
+                                    class="sc_button_text"><span
+                                    class="sc_button_title">{{ welcome_section.button_text }}</span></span></a></div>
                         </div>
                         <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
                             <div class="empty_space height_4em"></div>
-                            <figure>
-                                <img src="{% static "images/img_about1-1.jpg" %}" alt=""/>
+                            <figure><img src="{{ welcome_section.image.url }}" alt="{{ welcome_section.title }}"/>
                             </figure>
                         </div>
                     </div>
@@ -204,23 +193,18 @@
             </div>
             <!-- /Welcome section -->
             <!-- Video section -->
-            <div class="copypress-custom-bg-12 scheme_dark">
+            <div class="scheme_dark" style="background-image: url({{ video_section.image.url }})">
                 <div class="content_wrap sc_layouts_column_icons_position_left">
                     <div id="widget_video_1" class="widget_area sc_widget_video">
-                        <aside id="widget_video_1_widget" class="widget widget_video">
-                            <h5 class="widget_title">With Our Printing Solutions For Over 35 Years</h5>
+                        <aside id="widget_video_1_widget" class="widget widget_video"><h5
+                                class="widget_title">{{ video_section.title }}</h5>
                             <div class="trx_addons_video_player with_cover hover_play">
                                 <div class="sc_item_header">
-                                    <div class="sc_item_subtitle sc_video_subtitle sc_align_center sc_item_title_style_default">
-                                        Grow your business
-                                    </div>
-                                    <h1 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">
-                                        With Our Printing Solutions For Over 35 Years</h1>
-                                    <div class="video_hover"
-                                         data-video='{{  }}'></div>
+                                    <div class="sc_item_subtitle sc_video_subtitle sc_align_center sc_item_title_style_default">{{ video_section.pretitle }}</div>
+                                    <h1 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">{{ video_section.title }}</h1>
+                                    <div class="video_hover" data-video='{{ video_section.video_source }}'></div>
                                 </div>
-                                <img src="http://placehold.it/1170x620"
-                                     alt="With Our Printing Solutions For Over 35 Years">
+                                <img src="{{ video_section.image2.url }}" alt="{{ video_section.title }}">
                                 <div class="video_mask"></div>
                                 <div class="video_embed video_frame"></div>
                             </div>
@@ -230,7 +214,7 @@
             </div>
             <!-- /Video section -->
             <!-- Services section -->
-            <div class="copypress-custom-bg-2">
+            <div style="background-image: url(/static/images/full_services_copy.png)">
                 <div class="content_wrap sc_layouts_column_icons_position_left">
                     <div class="empty_space height_9_2em"></div>
                     <div class="trx_addons_columns_wrap">
@@ -239,66 +223,23 @@
                                 <div class="sc_services sc_services_list custom_services_1 copypress-services-custom-block-1"
                                      data-slides-per-view="2" data-slides-min-width="200">
                                     <div class="sc_services_columns sc_item_columns sc_item_columns_2 trx_addons_columns_wrap columns_padding_bottom">
-                                        <div class="trx_addons_column-1_2">
-                                            <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
-                                                <a href="#"
-                                                   class="sc_services_item_icon icon-technology-1"></a>
-                                                <div class="sc_services_item_info">
-                                                    <div class="sc_services_item_header">
-                                                        <h6 class="sc_services_item_title">
-                                                            <a href="#">Copying Services</a>
-                                                        </h6>
+                                        {% for service in services %}<div class="trx_addons_column-1_2">
+                                                <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                    <a href="{{ service.url }}"
+                                                       class="sc_services_item_icon {{ service.icon }}"></a>
+                                                    <div class="sc_services_item_info">
+                                                        <div class="sc_services_item_header">
+                                                            <h6 class="sc_services_item_title">
+                                                                <a href="{{ service.url }}">{{ service.title }}</a>
+                                                            </h6>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div><!--
-                                    --><div class="trx_addons_column-1_2">
-                                            <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
-                                                <a href="services-single.html"
-                                                   class="sc_services_item_icon icon-technology"></a>
-                                                <div class="sc_services_item_info">
-                                                    <div class="sc_services_item_header">
-                                                        <h6 class="sc_services_item_title">
-                                                            <a href="services-single.html">Design
-                                                                Services</a>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="trx_addons_column-1_2">
-                                            <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
-                                                <a href="services-single.html"
-                                                   class="sc_services_item_icon icon-technology-2"></a>
-                                                <div class="sc_services_item_info">
-                                                    <div class="sc_services_item_header">
-                                                        <h6 class="sc_services_item_title">
-                                                            <a href="services-single.html">Digital
-                                                                Scanning</a>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="trx_addons_column-1_2">
-                                            <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
-                                                <a href="services-single.html"
-                                                   class="sc_services_item_icon icon-technology-3"></a>
-                                                <div class="sc_services_item_info">
-                                                    <div class="sc_services_item_header">
-                                                        <h6 class="sc_services_item_title">
-                                                            <a href="services-single.html">Printing
-                                                                Services</a>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </div>{% endfor %}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                        </div><div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
                             <div class="copypress-services-custom-block-2">
                                 <div class="empty_space height_5_2em"></div>
                                 <div class="sc_action sc_action_simple custom_action_1"
@@ -306,24 +247,24 @@
                                     <div class="sc_action_content sc_item_content">
                                         <div class="sc_action_item sc_action_item_simple sc_action_item_mc">
                                             <h6 class="sc_item_subtitle sc_action_item_subtitle sc_align_center sc_item_title_style_default">
-                                                <span>Provide Quality</span>
+                                                <span>{{ service_section.pretitle }}</span>
                                             </h6>
                                             <h2 class="sc_item_title sc_action_item_title sc_align_default sc_item_title_style_default">
-                                                <span>Copy Services</span>
+                                                <span>{{ service_section.title }}</span>
                                             </h2>
                                             <div class="sc_action_item_description">
-                                                <span>Photocopying is widely used in the business, education, and government sectors. While there have been predictions that photocopiers will eventually become obsolete as information workers increase their use.</span>
+                                                <span>{{ service_section.description }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="empty_space height_2_5em"></div>
                                 <div class="sc_item_button sc_button_wrap sc_align_center">
-                                    <a href="#"
+                                    <a href="{{ service_section.button_url }}"
                                        class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
-                                                            <span class="sc_button_text">
-                                                                <span class="sc_button_title">More Info</span>
-                                                            </span>
+                                        <span class="sc_button_text">
+                                            <span class="sc_button_title">{{ service_section.button_text }}</span>
+                                        </span>
                                     </a>
                                 </div>
                                 <div class="empty_space height_7_3em"></div>
@@ -339,66 +280,24 @@
                 <div class="sc_services sc_services_hover" data-slides-per-view="3"
                      data-slides-min-width="200">
                     <div class="sc_services_columns sc_item_columns sc_item_columns_3 trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_3 ">
-                            <div class="sc_services_item with_content with_image">
-                                <div class="sc_services_item_content copypress-service-1">
-                                    <div class="sc_services_item_content_inner">
-                                        <h3 class="sc_services_item_title">
-                                            <a href="services-single.html">Digital Printing</a>
-                                        </h3>
-                                        <div class="sc_services_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                seddo eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                        </div>
-                                        <div class="sc_services_item_link sc_item_button">
-                                            <a class="sc_button_white sc_button_hover_slide_left"
-                                               href="services-single.html">More info</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="trx_addons_column-1_3 ">
-                            <div class="sc_services_item with_content with_image">
-                                <div class="sc_services_item_content copypress-service-2">
-                                    <div class="sc_services_item_content_inner">
-                                        <h3 class="sc_services_item_title">
-                                            <a href="services-single.html">Large Format</a>
-                                        </h3>
-                                        <div class="sc_services_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                seddo eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                        </div>
-                                        <div class="sc_services_item_link sc_item_button">
-                                            <a class="sc_button_white sc_button_hover_slide_left"
-                                               href="services-single.html">More info</a>
+                        {% for info_service in info_services %}<div class="trx_addons_column-1_3 ">
+                                <div class="sc_services_item with_content with_image">
+                                    <div class="sc_services_item_content" style="background-image: url({{ info_service.image.url }})">
+                                        <div class="sc_services_item_content_inner">
+                                            <h3 class="sc_services_item_title">
+                                                <a href="{{ info_service.url }}">{{ info_service.title }}</a>
+                                            </h3>
+                                            <div class="sc_services_item_text">
+                                                <p>{{ info_service.description }}</p>
+                                            </div>
+                                            <div class="sc_services_item_link sc_item_button">
+                                                <a class="sc_button_white sc_button_hover_slide_left"
+                                                   href="{{ info_service.url }}">Daha çox</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="trx_addons_column-1_3 ">
-                            <div class="sc_services_item with_content with_image">
-                                <div class="sc_services_item_content copypress-service-1">
-                                    <div class="sc_services_item_content_inner">
-                                        <h3 class="sc_services_item_title">
-                                            <a href="services-single.html">Offset Printing</a>
-                                        </h3>
-                                        <div class="sc_services_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                seddo eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud</p>
-                                        </div>
-                                        <div class="sc_services_item_link sc_item_button">
-                                            <a class="sc_button_white sc_button_hover_slide_left"
-                                               href="services-single.html">More info</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </div>{% endfor %}
                     </div>
                 </div>
             </div>

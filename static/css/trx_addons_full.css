@@ -4832,7 +4832,7 @@ widget_categories_list .categories_list_item {
 .trx_addons_video_player.with_cover img {
     position: relative;
     z-index: 2;
-    width: 100%;
+    width: 100vw;
     height: auto;
 }
 .trx_addons_video_player.with_cover .sc_item_title + img {
@@ -6297,7 +6297,7 @@ widget_categories_list .categories_list_item {
     display: block;
     /*height: 1.5em;
     */}
-.sc_input_hover_underline textarea.filled + .sc_form_field_hover>.sc_form_field_content, .sc_input_hover_underline textarea: focus + .sc_form_field_hover>.sc_form_field_content {
+.sc_input_hover_underline textarea.filled + .sc_form_field_hover>.sc_form_field_content, .sc_input_hover_underline textarea:focus + .sc_form_field_hover>.sc_form_field_content {
     height: 6.3em;
 }
 .sc_input_hover_underline .sc_form_field_hover {

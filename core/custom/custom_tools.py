@@ -21,6 +21,7 @@ def get_image_html(src, alt):
         )
     else:
         return mark_safe(
-            "<img src='https://crestaproject.com/demo/nucleare-pro/wp-content/themes/nucleare-pro/images/no-image"
+            "<img src='/static/images/no-image.png'"
+            "style='width:75px;height:auto'"
             "-box.png' alt='image' />"
         )

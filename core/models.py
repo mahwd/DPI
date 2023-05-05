@@ -232,57 +232,65 @@ class Brand(MyModel):
     image.allow_tags = True
 
 
-class VideoSection(MyModel):
-    pretitle = models.CharField(max_length=100, verbose_name='Ön başlıq')
-    title = models.CharField(max_length=200, verbose_name='Başlıq')
-    video_source = models.URLField(verbose_name='Video mənbə kodu')
-    image = models.ImageField(upload_to='video_section_image', verbose_name='Video cover')
-    image_thumbnail = ImageSpecField(source='image',
-                                     processors=[SmartResize(400, 400)],
-                                     format='JPEG',
-                                     options={'quality': 90})
+class SectionInfo(MyModel):
+    sections = [
+        ('welcome', "Welcome section"),
+        ('video', "Video section"),
+        ('service', "Services section"),
+        ('info', "Info section"),
+        ('testimonials', "Testimonials section"),
+        ('projects', "'OUR PROJECTS' section"),
+    ]
+
+    pretitle = models.CharField(null=True, blank=True, max_length=100, verbose_name='Ön başlıq')
+    title = models.CharField(null=True, blank=True, max_length=200, verbose_name='Başlıq')
+    description = models.TextField(null=True, blank=True, verbose_name='Açıqlama')
+    button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='Düymə mətni')
+    button_url = models.URLField(null=True, blank=True, verbose_name='Düymə url-i')
+    secondary_button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='Əlavə düymə mətni')
+    secondary_button_url = models.URLField(null=True, blank=True, verbose_name='Əlavə düymə url-i')
+    video_source = models.TextField(null=True, blank=True, verbose_name='Video mənbə kodu')
+    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Şəkil')
+    image2 = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Əlavə şəkil ')
+    section = models.CharField(choices=sections, max_length=255, verbose_name="Section seçin")
+
+    class Meta:
+        verbose_name = "Section Information"
+        verbose_name_plural = "Section Information"
 
     def __str__(self):
         return self.title
 
     def delete(self, *args, **kwargs):
         # Delete the image file from disk when the model is deleted
-        self.image.delete()
+        self.image.delete() if self.image else None
+        self.image2.delete() if self.image2 else None
         super().delete(*args, **kwargs)
 
     def get_image(self):
         return get_image_html(self.image.url if self.image else None, self.title)
 
-    def save(self, *args, **kwargs):
-        if not self.id and not self.image_thumbnail:
-            self.image = optimise_image(self.image)
-        super().save(*args, **kwargs)
 
+class ServiceIcon(MyModel):
+    service_types = [
+        ("mini", "Kiçik"),
+        ("middle", "Orta"),
+    ]
 
-class WelcomeSection(MyModel):
-    pretitle = models.CharField(max_length=100, verbose_name='Ön başlıq')
-    title = models.CharField(max_length=200, verbose_name='Başlıq')
-    description = models.TextField(verbose_name='Açıqlama')
-    button_text = models.CharField(max_length=100, verbose_name='Düymə mətni')
-    button_url = models.URLField(verbose_name='Düymə url-i')
-    image = models.ImageField(upload_to='welcome_section_images', verbose_name='Image')
-    image_thumbnail = ImageSpecField(source='image',
-                                     processors=[SmartResize(400, 400)],
-                                     format='JPEG',
-                                     options={'quality': 90})
+    title = models.CharField(max_length=128, verbose_name="Servis adı")
+    url = models.CharField(max_length=255, verbose_name="Servis URL-i")
+    type = models.CharField(max_length=64, choices=service_types, verbose_name="Servis tipi")
+    # optional fields
+    icon = models.CharField(null=True, blank=True, max_length=128, verbose_name="Servis ikon klası")
+    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Servis şəkli')
+    description = models.TextField(null=True, blank=True, verbose_name='Servis açıqlaması')
+
+    class Meta:
+        verbose_name = "Servis ikonu"
+        verbose_name_plural = "Servis ikonları"
 
     def __str__(self):
         return self.title
 
-    def delete(self, *args, **kwargs):
-        # Delete the image file from disk when the model is deleted
-        self.image.delete()
-        super().delete(*args, **kwargs)
-
     def get_image(self):
         return get_image_html(self.image.url if self.image else None, self.title)
-
-    def save(self, *args, **kwargs):
-        if not self.id and not self.image_thumbnail:
-            self.image = optimise_image(self.image)
-        super().save(*args, **kwargs)

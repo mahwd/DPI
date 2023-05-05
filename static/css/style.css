@@ -5673,7 +5673,7 @@ body.custom-background {
 }
 
 .copypress-custom-bg-7 {
-    background-image: url(http://placehold.it/570x522.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
