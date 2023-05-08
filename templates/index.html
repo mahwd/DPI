@@ -303,7 +303,7 @@
             </div>
             <!-- /Services Info -->
             <!-- Info section -->
-            <div class="copypress-custom-bg-9 scheme_dark">
+            <div class="copypress-custom-bg-9 scheme_dark" style="background-image: url({{ info_section.image.url }})">
                 <div class="content_wrap">
                     <div class="trx_addons_columns_wrap">
                         <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
@@ -312,16 +312,10 @@
                         <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
                             <div class=" height_9em"></div>
                             <div class="sc_title sc_title_default">
-                                <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">
-                                    just give us a call</h6>
+                                <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">{{ info_section.pretitle }}</h6>
                                 <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_yellow_sub">
-                                    We Offer a Wide Range of Services</h2>
-                                <div class="sc_item_descr sc_title_descr sc_align_default color_white">Your
-                                    business is too important to rely on beginner design. Whether you're
-                                    looking to promote a product or advertise a service, we can help you
-                                    design a layout that will reach your audience and get your message
-                                    across.
-                                </div>
+                                    {{ info_section.title }}</h2>
+                                <div class="sc_item_descr sc_title_descr sc_align_default color_white">{{ info_section.description }}</div>
                             </div>
                             <div class="empty_space height_2_8em"></div>
                             <div class="trx_addons_columns_wrap">

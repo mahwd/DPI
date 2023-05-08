@@ -232,6 +232,31 @@ class Brand(MyModel):
     image.allow_tags = True
 
 
+class Tag(MyModel):
+    title = models.CharField(max_length=255, verbose_name="Teq")
+    url = models.URLField(verbose_name="URL")
+    sort_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+    section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, verbose_name="Bölmə")
+
+    class Meta:
+        verbose_name = "Teq"
+        verbose_name_plural = "Teqlər"
+        ordering = ['sort_order']
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if self.sort_order is None:
+            try:
+                last_item = type(self).objects.filter(sort_order__isnull=False).order_by('-sort_order').first()
+                if last_item:
+                    self.sort_order = last_item.sort_order + 1
+            except type(self).DoesNotExist:
+                pass
+        super().save(*args, **kwargs)
+
+
 class SectionInfo(MyModel):
     sections = [
         ('welcome', "Welcome section"),
@@ -242,6 +267,10 @@ class SectionInfo(MyModel):
         ('projects', "'OUR PROJECTS' section"),
     ]
 
+    # required fields
+    section = models.CharField(choices=sections, max_length=255, verbose_name="Section seçin")
+
+    # optional fields
     pretitle = models.CharField(null=True, blank=True, max_length=100, verbose_name='Ön başlıq')
     title = models.CharField(null=True, blank=True, max_length=200, verbose_name='Başlıq')
     description = models.TextField(null=True, blank=True, verbose_name='Açıqlama')
@@ -252,7 +281,6 @@ class SectionInfo(MyModel):
     video_source = models.TextField(null=True, blank=True, verbose_name='Video mənbə kodu')
     image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Şəkil')
     image2 = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Əlavə şəkil ')
-    section = models.CharField(choices=sections, max_length=255, verbose_name="Section seçin")
 
     class Meta:
         verbose_name = "Section Information"

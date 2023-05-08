@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import MenuSubItems, MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, ServiceIcon
+from .models import MenuSubItems, MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, \
+    ServiceIcon, Tag
 from adminsortable2.admin import SortableAdminMixin
 
 
@@ -28,6 +29,11 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = ("get_image", "title", "url",)
 
 
+class TagInline(admin.TabularInline):
+    model = Tag
+    fields = ("title", "url")
+
+
 class SectionInfoAdmin(admin.ModelAdmin):
     fields = (
         "pretitle", "title", "description", "button_text", "button_url", "secondary_button_text",
@@ -36,6 +42,7 @@ class SectionInfoAdmin(admin.ModelAdmin):
     list_display = ("get_image", "title", "pretitle",)
     search_fields = ('title', 'pretitle', "description")
     list_filter = ('section',)
+    inlines = [TagInline]
 
 
 class VideoSectionAdmin(admin.ModelAdmin):

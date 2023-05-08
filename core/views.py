@@ -14,6 +14,7 @@ class BaseContext(View):
         context["welcome_section"] = SectionInfo.objects.get(section__regex='welcome')
         context["video_section"] = SectionInfo.objects.get(section__regex='video')
         context["service_section"] = SectionInfo.objects.get(section__regex='service')
+        context["info_section"] = SectionInfo.objects.get(section__regex='info')
         context["services"] = ServiceIcon.objects.filter(type__regex='mini')
         context["info_services"] = ServiceIcon.objects.filter(type__regex='middle')
         return context
