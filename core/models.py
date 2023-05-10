@@ -35,10 +35,11 @@ class MyModel(models.Model):
 
     @classmethod
     def get_fields(cls, fields: tuple):
-        return fields.__add__(('created_at', 'updated_at'))
+        return fields.__add__(('created_at', 'updated_at', 'active'))
 
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="yaradılma tarixi")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="dəyişdirilmə tarixi")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Yaradılma tarixi")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Dəyişdirilmə tarixi")
+    active = models.BooleanField(default=True, verbose_name="Aktivdirmi")
 
     class Meta:
         abstract = True
@@ -236,7 +237,8 @@ class Tag(MyModel):
     title = models.CharField(max_length=255, verbose_name="Teq")
     url = models.URLField(verbose_name="URL")
     sort_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
-    section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, verbose_name="Bölmə")
+
+    # section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, related_name="tags", verbose_name="Bölmə")
 
     class Meta:
         verbose_name = "Teq"
@@ -257,6 +259,50 @@ class Tag(MyModel):
         super().save(*args, **kwargs)
 
 
+class ServiceIcon(MyModel):
+    service_types = [
+        ("mini", "Kiçik"),
+        ("middle", "Orta"),
+    ]
+
+    title = models.CharField(max_length=128, verbose_name="Servis adı")
+    url = models.URLField(max_length=255, verbose_name="Servis URL-i")
+    type = models.CharField(max_length=64, choices=service_types, verbose_name="Servis tipi")
+    # optional fields
+    icon = models.CharField(null=True, blank=True, max_length=128, verbose_name="Servis ikon klası")
+    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Servis şəkli')
+    description = models.TextField(null=True, blank=True, verbose_name='Servis açıqlaması')
+
+    class Meta:
+        verbose_name = "Servis ikonu"
+        verbose_name_plural = "Servis ikonları"
+
+    def __str__(self):
+        return self.title
+
+    def get_image(self):
+        return get_image_html(self.image.url if self.image else None, self.title)
+
+
+class MiniSwipe(MyModel):
+    idiom = models.TextField(verbose_name='Mətn')
+    author = models.CharField(max_length=100, verbose_name='Müəllif')
+    author_profession = models.CharField(max_length=100, verbose_name='Vəzifə')
+    author_image = models.ImageField(null=True, blank=True, upload_to='swiper_auther_images', verbose_name='Şəkil')
+
+    # section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, related_name="swipers", verbose_name="Bölmə")
+
+    class Meta:
+        verbose_name = "Mini Swiper"
+        verbose_name_plural = "Swipers"
+
+    def __str__(self):
+        return "%s - %s" % (self.author, self.idiom[50:])
+
+    def get_image(self):
+        return get_image_html(self.author_image.url if self.author_image else None, self.author)
+
+
 class SectionInfo(MyModel):
     sections = [
         ('welcome', "Welcome section"),
@@ -264,7 +310,7 @@ class SectionInfo(MyModel):
         ('service', "Services section"),
         ('info', "Info section"),
         ('testimonials', "Testimonials section"),
-        ('projects', "'OUR PROJECTS' section"),
+        ('projects', "Projects section"),
     ]
 
     # required fields
@@ -299,26 +345,8 @@ class SectionInfo(MyModel):
         return get_image_html(self.image.url if self.image else None, self.title)
 
 
-class ServiceIcon(MyModel):
-    service_types = [
-        ("mini", "Kiçik"),
-        ("middle", "Orta"),
-    ]
-
-    title = models.CharField(max_length=128, verbose_name="Servis adı")
-    url = models.CharField(max_length=255, verbose_name="Servis URL-i")
-    type = models.CharField(max_length=64, choices=service_types, verbose_name="Servis tipi")
-    # optional fields
-    icon = models.CharField(null=True, blank=True, max_length=128, verbose_name="Servis ikon klası")
-    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Servis şəkli')
-    description = models.TextField(null=True, blank=True, verbose_name='Servis açıqlaması')
-
-    class Meta:
-        verbose_name = "Servis ikonu"
-        verbose_name_plural = "Servis ikonları"
-
-    def __str__(self):
-        return self.title
-
-    def get_image(self):
-        return get_image_html(self.image.url if self.image else None, self.title)
+class Project(MyModel):
+    title = models.CharField(max_length=255, verbose_name='Başlıq')
+    url = models.URLField(verbose_name="URL")
+    image = models.ImageField(null=True, blank=True, upload_to='project_images', verbose_name='Şəkil')
+    content = models.TextField( verbose_name='Mətn')

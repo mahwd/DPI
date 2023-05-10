@@ -17,7 +17,7 @@ def get_brand_image(instance, filename):
 def get_image_html(src, alt):
     if src:
         return mark_safe(
-            "<img src='%s' style='width:75px;height:auto' alt='%s' />" % (src, alt)
+            "<img src='%s' style='width:auto;height:50px;' alt='%s' />" % (src, alt)
         )
     else:
         return mark_safe(
