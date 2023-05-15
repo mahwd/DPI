@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import View, TemplateView
 from .models import MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, ServiceIcon, Tag, \
     MiniSwipe
@@ -13,12 +13,12 @@ class BaseContext(View):
         context["carousels"] = Carousel.objects.all()
         context["brands"] = Brand.objects.all()
         # - Sections
-        context["welcome_section"] = SectionInfo.objects.get(section__regex='welcome')
-        context["video_section"] = SectionInfo.objects.get(section__regex='video')
-        context["service_section"] = SectionInfo.objects.get(section__regex='service')
-        context["info_section"] = SectionInfo.objects.get(section__regex='info')
-        context["testimonials_section"] = SectionInfo.objects.get(section__regex='testimonials')
-        context["projects_section"] = SectionInfo.objects.get(section__regex='projects')
+        context["welcome_section"] = SectionInfo.objects.filter(section__regex='welcome').last()
+        context["video_section"] = SectionInfo.objects.filter(section__regex='video').last()
+        context["service_section"] = SectionInfo.objects.filter(section__regex='service').last()
+        context["info_section"] = SectionInfo.objects.filter(section__regex='info').last()
+        context["testimonials_section"] = SectionInfo.objects.filter(section__regex='testimonials').last()
+        context["projects_section"] = SectionInfo.objects.filter(section__regex='projects').last()
         # = # Sections
         context["services"] = ServiceIcon.objects.filter(type__regex='mini')
         context["info_services"] = ServiceIcon.objects.filter(type__regex='middle')

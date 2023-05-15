@@ -9,9 +9,9 @@
     white-space: nowrap;
     font-size: 26px;
     line-height: 26px;
-    font-weight: 400;
+    font-weight: 100;
     color: rgba(252, 214, 60, 1.00);
-    font-family: "Gilroy", sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 #slide-1-layer-2{
     z-index: 6;

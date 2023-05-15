@@ -222,9 +222,7 @@
                             <div class="copypress-custom-bg-7">
                                 <div class="sc_services sc_services_list custom_services_1 copypress-services-custom-block-1"
                                      data-slides-per-view="2" data-slides-min-width="200">
-                                    <div class="sc_services_columns sc_item_columns sc_item_columns_2 trx_addons_columns_wrap columns_padding_bottom">
-                                        {% for service in services %}
-                                            <div class="trx_addons_column-1_2">
+                                    <div class="sc_services_columns sc_item_columns sc_item_columns_2 trx_addons_columns_wrap columns_padding_bottom">{% for service in services %}<div class="trx_addons_column-1_2">
                                                 <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
                                                     <a href="{{ service.url }}"
                                                        class="sc_services_item_icon {{ service.icon }}"></a>
@@ -236,12 +234,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>{% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                            </div>{% endfor %}</div>
+                                </div></div></div><div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
                             <div class="copypress-services-custom-block-2">
                                 <div class="empty_space height_5_2em"></div>
                                 <div class="sc_action sc_action_simple custom_action_1"
@@ -282,8 +276,7 @@
                 <div class="sc_services sc_services_hover" data-slides-per-view="3"
                      data-slides-min-width="200">
                     <div class="sc_services_columns sc_item_columns sc_item_columns_3 trx_addons_columns_wrap">
-                        {% for info_service in info_services %}
-                            <div class="trx_addons_column-1_3 ">
+                        {% for info_service in info_services %}<div class="trx_addons_column-1_3 ">
                                 <div class="sc_services_item with_content with_image">
                                     <div class="sc_services_item_content"
                                          style="background-image: url({{ info_service.image.url }})">
@@ -312,10 +305,8 @@
                     <div class="trx_addons_columns_wrap">
                         <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
                             <div class="empty_space height_0_2em"></div>
-                        </div>
-                        <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class=" height_9em"></div>
-                            <div class="sc_title sc_title_default">
+                        </div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                            <div class=" height_9em"></div><div class="sc_title sc_title_default">
                                 <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">{{ info_section.pretitle }}</h6>
                                 <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_yellow_sub">
                                     {{ info_section.title }}</h2>
@@ -325,16 +316,7 @@
                             <div class="trx_addons_columns_wrap">
                                 <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
                                     <ul class="trx_addons_list_success_circled">
-                                        {% for tag in info_section.tags.all %}
-                                            <li><a href="#">{{ tag.title }}</a></li>
-                                            {% if forloop.counter == 3 %}
-                                                </ul></div>
-                                                <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                                                <ul class="trx_addons_list_success_circled">
-                                            {% endif %}
-
-                                        {% endfor %}
-                                        </ul>
+                                        {% for tag in info_section.tags.all %}<li><a href="#">{{ tag.title }}</a></li>{% if forloop.counter == 3 %}</ul></div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left"><ul class="trx_addons_list_success_circled">{% endif %}{% endfor %}</ul>
                                         </div>
                             </div>
                             <div class="empty_space height_9_4em"></div>

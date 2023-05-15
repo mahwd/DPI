@@ -349,4 +349,9 @@ class Project(MyModel):
     title = models.CharField(max_length=255, verbose_name='Başlıq')
     url = models.URLField(verbose_name="URL")
     image = models.ImageField(null=True, blank=True, upload_to='project_images', verbose_name='Şəkil')
-    content = models.TextField( verbose_name='Mətn')
+    content = models.TextField(verbose_name='Mətn')
+    category = models.ForeignKey("Category", on_delete=models.CASCADE)
+
+
+class Category(MyModel):
+    title = models.CharField(max_length=255, verbose_name='Kateqorioya adı')
