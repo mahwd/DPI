@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 from django.utils.html import mark_safe
 from .custom.custom_tools import get_carousel_image, get_brand_image, get_image_html
 from io import BytesIO
@@ -8,6 +9,8 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, SmartResize
 import os
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 
 def optimise_image(image):
@@ -347,11 +350,60 @@ class SectionInfo(MyModel):
 
 class Project(MyModel):
     title = models.CharField(max_length=255, verbose_name='Başlıq')
-    url = models.URLField(verbose_name="URL")
-    image = models.ImageField(null=True, blank=True, upload_to='project_images', verbose_name='Şəkil')
+    slug = models.SlugField(unique=True, blank=True, default=uuid.uuid1, max_length=150, verbose_name="Slug")
     content = models.TextField(verbose_name='Mətn')
-    category = models.ForeignKey("Category", on_delete=models.CASCADE)
+    category = models.ForeignKey("Category", on_delete=models.CASCADE, related_name="projects")
+
+    class Meta:
+        verbose_name = "Portfolio"
+        verbose_name_plural = "Portfolio proyektlər"
+
+    def __str__(self):
+        return f"{self.title}"
+
+    def get_absolute_url(self):
+        return reverse("portfolio_detail", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify("%s" % self.title)
+        super(Project, self).save(*args, **kwargs)
+
+    def get_image(self):
+        return get_image_html(self.images.last().image.url if self.images.last() else None, self.title)
 
 
 class Category(MyModel):
     title = models.CharField(max_length=255, verbose_name='Kateqorioya adı')
+    slug = models.SlugField(unique=True, blank=True, default=uuid.uuid1, max_length=150, verbose_name="Slug")
+
+    class Meta:
+        verbose_name = "Kateqoriya"
+        verbose_name_plural = "Kateqoriyalar"
+
+    def __str__(self):
+        return f"{self.title}"
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify("%s" % self.title)
+        super(Category, self).save(*args, **kwargs)
+
+
+class ProjectImage(MyModel):
+    image = models.ImageField(null=True, blank=True, upload_to='project_images', verbose_name='Şəkil')
+    project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="images", verbose_name="Proyekt")
+
+    class Meta:
+        verbose_name = "Portfolio şəkli"
+        verbose_name_plural = "Portfolio şəkilləri"
+
+    def __str__(self):
+        return f"{self.project.title}"
+
+    def delete(self, *args, **kwargs):
+        # Delete the image file from disk when the model is deleted
+        self.image.delete() if self.image else None
+        super().delete(*args, **kwargs)
+
+    def get_image(self):
+        return get_image_html(self.image.url if self.image else None, self.project.title)
+

@@ -1,12 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DPI - {% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static "images/dpi_logo.png" %}">
-    {% include "_partials/links.html" %}
+    {% block links %}
+        {% include "_partials/links.html" %}
+    {% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
 
@@ -17,31 +18,27 @@
     <!-- Page wrap -->
     <div class="page_wrap">
 
-        <!-- Header -->
-        {% include "_partials/header.html" %}
+        <!-- Header -->{% include "_partials/header.html" %}
         <!-- /Header -->
 
-        <!-- Menu mobile -->
-        {% include "_partials/mobile_menu.html" %}
+        <!-- Menu mobile -->{% include "_partials/mobile_menu.html" %}
         <!-- /Menu mobile -->
         <!-- Page content wrap -->
         <div class="page_content_wrap scheme_default">
-            <!-- Content -->
-            <div class="content">
-                {% block content %}{% endblock %}
-            </div>
+            <!-- Content -->{% block content %}{% endblock %}
             <!-- /Content -->
         </div>
         <!-- /Page content wrap -->
     </div>
 </div>
 
-<!-- Footer -->
-{% include "_partials/footer.html" %}
+<!-- Footer -->{% include "_partials/footer.html" %}
 <!-- /Footer -->
 
 <!-- Scripts -->
-{% include "_partials/scripts.html" %}
+{% block scripts %}
+    {% include "_partials/scripts.html" %}
+{% endblock %}
 <!-- Scripts -->
 
 <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>

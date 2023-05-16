@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Projects {% endblock %}
+{% block body_class %}page custom-background scheme_default blog_mode_page body_style_wide sidebar_hide expand_content remove_margins header_style_header-custom-18 header_position_default menu_style_top no_layout{% endblock %}
+{% block content %}
+    <div class="content_wrap">
+        <!-- Content -->
+        <div class="content">
+            <article class="post_item_single page">
+                <div class="post_content">
+                    <div class="empty_space height_6_67em"></div>
+                    <!-- THE ESSENTIAL GRID -->
+                    <article class="myportfolio-container minimal-light" id="esg-grid-4-1-wrap">
+                        <div id="esg-grid-4-1" class="esg-grid">
+                            <article class="esg-filters esg-singlefilters">
+                                <!-- THE FILTER BUTTONS -->
+                                <div class="esg-filter-wrapper esg-fgc-4">
+                                    <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall" data-fid="-1">
+                                        <span>Filter - All</span>
+                                    </div>
+                                    {% for category in categories %}
+                                        <div class="esg-filterbutton" data-fid="{{ category.id }}" data-filter="{{ category.slug }}">
+                                            <span>{{ category.title }}</span>
+                                            <span class="esg-filter-checked">
+                                                <i class="eg-icon-ok-1"></i>
+                                            </span>
+                                        </div>
+                                    {% endfor %}
+
+                                    <div class="eg-clearfix"></div>
+                                </div>
+                            </article>
+                            <div class="esg-clear-no-height"></div>
+                            <ul>
+
+                                {% for project in project_list %}
+                                <!-- Grid Item -->
+                                <li class="filterall {{ project.category.slug }} eg-washington-copypress-wrapper" >
+                                    <div class="esg-media-cover-wrapper">
+                                        <div class="esg-entry-media">
+                                            <img src="{{ project.images.first.image.url }}" alt="{{ project.title }}">
+                                        </div>
+                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container" data-delay="0"></div>
+                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade" data-delay="0.4">
+                                                <a class="eg-washington-copypress-element-1" href="{{ project.get_absolute_url }}" target="_self">
+                                                    <i class="eg-icon-right-open-1"></i>
+                                                </a>
+                                            </div>
+                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
+                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
+                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright" data-delay="0.3">{{ project.title }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- /Grid Item -->
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </article>
+                    <div class="clear"></div>
+                    <div class="empty_space height_6_67em"></div>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+        <script type="text/javascript" src="{% static "js/jquery/jquery.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/jquery/jquery-migrate.min.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "js/_main.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "js/vendor/essential-grid/js/lightbox.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/vendor/essential-grid/js/jquery.themepunch.tools.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/vendor/essential-grid/js/jquery.themepunch.essential.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/eg-gallery-cobbles.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "js/vendor/swiper/swiper.jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/vendor/magnific/jquery.magnific-popup.min.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "js/trx_addons.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/superfish.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+{% endblock %}

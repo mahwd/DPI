@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import MenuSubItems, MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, \
-    ServiceIcon, Tag, MiniSwipe
+    ServiceIcon, Tag, MiniSwipe, Project, ProjectImage, Category
 from adminsortable2.admin import SortableAdminMixin
 
 
@@ -29,18 +29,6 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = ("get_image", "title", "url",)
 
 
-class TagAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("title", "url", "sort_order",)
-    fields = ("title", "url", 'sort_order',)
-    list_filter = ('title', 'sort_order',)
-    # readonly_fields = ('sort_order',)
-
-
-class SwiperAdmin(admin.ModelAdmin):
-    fields = ("idiom", "author", "author_profession", "author_image",)
-    list_display = ("get_image", "idiom", "author", "author_profession",)
-
-
 class SectionInfoAdmin(admin.ModelAdmin):
     fields = (
         "section", "pretitle", "title", "description", "button_text", "button_url", "secondary_button_text",
@@ -63,6 +51,36 @@ class ServiceIconAdmin(admin.ModelAdmin):
     list_filter = ("title", "type",)
 
 
+class TagAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("title", "url", "active", "sort_order",)
+    fields = ("title", "url", "active", 'sort_order',)
+    list_filter = ('title', 'sort_order',)
+    # readonly_fields = ('sort_order',)
+
+
+class SwiperAdmin(admin.ModelAdmin):
+    fields = ("idiom", "author", "author_profession", "author_image", "active",)
+    list_display = ("get_image", "idiom", "author", "author_profession", "active",)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ("get_image", "title", "slug", "content", "category",)
+    fields = ("title", "content", 'category',)
+    list_filter = ('title', 'content', 'category',)
+
+    class ProjectImageAdmin(admin.TabularInline):
+        model = ProjectImage
+        extra = 1
+
+    inlines = [ProjectImageAdmin]
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("title", "slug",)
+    fields = ("title",)
+    list_filter = ('title', 'slug',)
+
+
 admin.site.register(MenuBaseItems)
 admin.site.register(MenuSubItems)
 admin.site.register(ContactInfo)
@@ -73,3 +91,5 @@ admin.site.register(SectionInfo, SectionInfoAdmin)
 admin.site.register(ServiceIcon, ServiceIconAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(MiniSwipe, SwiperAdmin)
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Category, CategoryAdmin)

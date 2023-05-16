@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView, DetailView
 from .models import MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, ServiceIcon, Tag, \
-    MiniSwipe
+    MiniSwipe, Category, Project
 
 
 class BaseContext(View):
@@ -24,6 +24,8 @@ class BaseContext(View):
         context["info_services"] = ServiceIcon.objects.filter(type__regex='middle')
         context["tags"] = Tag.objects.filter(active=True)
         context["swipes"] = MiniSwipe.objects.filter(active=True)
+        context["categories"] = Category.objects.filter(active=True)
+        context["projects"] = Project.objects.filter(active=True)
         return context
 
 
@@ -32,3 +34,19 @@ class HomeView(BaseContext, TemplateView):
 
     def get_context_data(self, **kwargs):
         return super(HomeView, self).get_context_data(**kwargs)
+
+
+class PortfolioView(BaseContext, ListView):
+    template_name = 'portfolio.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        return super(PortfolioView, self).get_context_data(**kwargs)
+
+
+class PortfolioDetailView(BaseContext, DetailView):
+    template_name = 'portfolio_detail.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        return super(PortfolioDetailView, self).get_context_data(**kwargs)

@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %}{% load static %}
 
 {% include "_partials/links.html" %}
 
@@ -10,1156 +9,922 @@
     sidebar_hide expand_content remove_margins header_style_header-custom-18 header_position_default
     menu_style_top no_layout
 {% endblock %}
-
 {% block content %}
-    <article class="post_item_single page">
-        <div class="post_content">
-            <!-- Revolution slider section -->
-            <div class="sc_layouts_column_icons_position_left">
-                <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
-                     data-source="gallery">
-                    <!-- START REVOLUTION SLIDER 5.3.0.2 auto mode -->
-                    <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;"
-                         data-version="5.3.0.2">
-                        <ul>
-                            <!-- SLIDE  -->
-                            {% for carousel in carousels %}
-                                <li data-index="rs-{{ forloop.counter }}" data-transition="curtain-1"
-                                    data-slotamount="default"
-                                    data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default"
-                                    data-easeout="default" data-masterspeed="default"
-                                    data-thumb="{{ carousel.image_thumbnail.url }}" data-rotate="0"
-                                    data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
-                                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
-                                    data-param8="" data-param9="" data-param10="" data-description="">
-                                    <!-- MAIN IMAGE -->
-                                    <img src="{{ carousel.image.url }}" alt="{{ carousel.title }}"
-                                         title="{{ carousel.title }}" width="1920"
-                                         height="700" data-bgposition="center center" data-bgfit="cover"
-                                         data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                    <!-- LAYERS -->
-                                    <!-- LAYER NR. 1 -->
-                                    <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-1"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
-                                         data-voffset="['170','170','170','140']" data-width="none"
-                                         data-height="none" data-whitespace="nowrap" data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[{"delay":600,"speed":700,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="">
-                                        {{ carousel.pretitle }}
-                                    </div>
-                                    <!-- LAYER NR. 2 -->
-                                    <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-2"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
-                                         data-voffset="['235','235','235','200']"
-                                         data-fontsize="['80','80','70','60']"
-                                         data-lineheight="['80','80','80','70']"
-                                         data-width="['none','none','none','450']" data-height="none"
-                                         data-whitespace="['nowrap','nowrap','nowrap','normal']"
-                                         data-type="text" data-responsive_offset="on"
-                                         data-frames='[{"delay":950,"speed":700,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                         data-textAlign="['inherit','inherit','inherit','center']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-                                        {{ carousel.title }}
-                                    </div>
-                                    <!-- LAYER NR. 3 -->
-                                    <div class="tp-caption  tp-resizeme" id="slide-{{ forloop.counter }}-layer-3"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
-                                         data-voffset="['370','370','370','390']"
-                                         data-fontsize="['20','20','20','23']"
-                                         data-lineheight="['27','27','27','36']"
-                                         data-width="['none','none','none','450']" data-height="none"
-                                         data-whitespace="['nowrap','nowrap','nowrap','normal']"
-                                         data-type="text" data-responsive_offset="on"
-                                         data-frames='[{"delay":1300,"speed":700,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-                                        {{ carousel.description | safe }}
-                                    </div>
-                                    <!-- LAYER NR. 4 -->
-                                    <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-5"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['-91','-91','-91','-111']"
-                                         data-y="['top','top','top','top']"
-                                         data-voffset="['477','477','477','586']"
-                                         data-fontsize="['12','12','12','16']" data-width="none"
-                                         data-height="none" data-whitespace="nowrap" data-type="text"
-                                         data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.left_button_url }}","delay":""}]'
-                                         data-responsive_offset="on"
-                                         data-frames='[{"delay":1650,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(71, 214, 232, 1.00);"}]'
-                                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[40,40,40,40]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[40,40,40,40]">
-                                        {{ carousel.left_button_text }}
-                                    </div>
-                                    <!-- LAYER NR. 5 -->
-                                    <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-4"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['73','73','73','93']" data-y="['top','top','top','top']"
-                                         data-voffset="['477','477','477','586']"
-                                         data-fontsize="['12','12','12','16']" data-width="none"
-                                         data-height="none" data-whitespace="nowrap" data-type="text"
-                                         data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.right_button_url }}","delay":""}]'
-                                         data-responsive_offset="on"
-                                         data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(71, 214, 232, 1.00);bw:0 0 0 0;"}]'
-                                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-                                        {{ carousel.right_button_text }}
-                                    </div>
-                                    <!-- LAYER NR. 6 -->
-                                    <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-7"
-                                         data-x="['center','center','center','center']"
-                                         data-hoffset="['140','140','140','175']"
-                                         data-y="['top','top','top','top']"
-                                         data-voffset="['495','495','495','605']" data-width="none"
-                                         data-height="none" data-whitespace="nowrap" data-type="image"
-                                         data-responsive_offset="on"
-                                         data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-                                        <img src="{% static "images/arrow.png" %}"
-                                             data-ww="['17px','17px','17px','17px']"
-                                             data-hh="['17px','17px','17px','17px']" width="17" height="17"
-                                             data-no-retina alt="arrow">
-                                    </div>
-                                </li>
-                            {% endfor %}
-
-                            <!-- SLIDE  -->
-                        </ul>
-                        <div class="tp-bannertimer tp-bottom" style=""></div>
-                    </div>
-                </div>
-                <!-- END REVOLUTION SLIDER -->
-            </div>
-            <!-- /Revolution slider section -->
-            <!-- Brands -->
-            <div class="copypress-custom-bg-6">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_4em"></div>
-                    <div class="brands">
-                        <div class="gallery gallery-columns-{{ brands|length }} gallery-size-full">
-                            {% for brand in brands %}
-                                <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                        <a href="{{ brand.url }}">
-                                            <img src="{{ brand.image.url }}" alt="{{ brand.title }}"/>
-                                        </a>
-                                    </div>
-                                </figure>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="empty_space height_4em"></div>
-                </div>
-            </div>
-            <!-- /Brands -->
-            <!-- Welcome section -->
-            <div class="copypress-custom-bg-3">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_6_3em"></div>
-                    <div class="trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
-                            <div class="empty_space height_3em"></div>
-                            <div class="sc_title sc_title_default"><h6
-                                    class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_default">{{ welcome_section.pretitle }}</h6>
-                                <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_default">{{ welcome_section.title }}</h2>
-                            </div>
-                            <div class="empty_space height_2em"></div>
-                            <p>{{ welcome_section.description }}</p>
-                            <div class="empty_space height_2_9em"></div>
-                            <div class="sc_item_button sc_button_wrap"><a href="{{ welcome_section.button_url }}"
-                                                                          class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left"><span
-                                    class="sc_button_text"><span
-                                    class="sc_button_title">{{ welcome_section.button_text }}</span></span></a></div>
-                        </div>
-                        <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
-                            <div class="empty_space height_4em"></div>
-                            <figure><img src="{{ welcome_section.image.url }}" alt="{{ welcome_section.title }}"/>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="empty_space height_9_4em"></div>
-                </div>
-            </div>
-            <!-- /Welcome section -->
-            <!-- Video section -->
-            <div class="scheme_dark" style="background-image: url({{ video_section.image.url }})">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div id="widget_video_1" class="widget_area sc_widget_video">
-                        <aside id="widget_video_1_widget" class="widget widget_video"><h5
-                                class="widget_title">{{ video_section.title }}</h5>
-                            <div class="trx_addons_video_player with_cover hover_play">
-                                <div class="sc_item_header">
-                                    <div class="sc_item_subtitle sc_video_subtitle sc_align_center sc_item_title_style_default">{{ video_section.pretitle }}</div>
-                                    <h1 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">{{ video_section.title }}</h1>
-                                    <div class="video_hover" data-video='{{ video_section.video_source }}'></div>
-                                </div>
-                                <img src="{{ video_section.image2.url }}" alt="{{ video_section.title }}">
-                                <div class="video_mask"></div>
-                                <div class="video_embed video_frame"></div>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-            <!-- /Video section -->
-            <!-- Services section -->
-            <div style="background-image: url(/static/images/full_services_copy.png)">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_9_2em"></div>
-                    <div class="trx_addons_columns_wrap">
-                        <div class="custom_column_1 trx_addons_column-1_2 z-index_2 sc_layouts_column_icons_position_left">
-                            <div class="copypress-custom-bg-7">
-                                <div class="sc_services sc_services_list custom_services_1 copypress-services-custom-block-1"
-                                     data-slides-per-view="2" data-slides-min-width="200">
-                                    <div class="sc_services_columns sc_item_columns sc_item_columns_2 trx_addons_columns_wrap columns_padding_bottom">{% for service in services %}<div class="trx_addons_column-1_2">
-                                                <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
-                                                    <a href="{{ service.url }}"
-                                                       class="sc_services_item_icon {{ service.icon }}"></a>
-                                                    <div class="sc_services_item_info">
-                                                        <div class="sc_services_item_header">
-                                                            <h6 class="sc_services_item_title">
-                                                                <a href="{{ service.url }}">{{ service.title }}</a>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>{% endfor %}</div>
-                                </div></div></div><div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class="copypress-services-custom-block-2">
-                                <div class="empty_space height_5_2em"></div>
-                                <div class="sc_action sc_action_simple custom_action_1"
-                                     data-slides-min-width="250">
-                                    <div class="sc_action_content sc_item_content">
-                                        <div class="sc_action_item sc_action_item_simple sc_action_item_mc">
-                                            <h6 class="sc_item_subtitle sc_action_item_subtitle sc_align_center sc_item_title_style_default">
-                                                <span>{{ service_section.pretitle }}</span>
-                                            </h6>
-                                            <h2 class="sc_item_title sc_action_item_title sc_align_default sc_item_title_style_default">
-                                                <span>{{ service_section.title }}</span>
-                                            </h2>
-                                            <div class="sc_action_item_description">
-                                                <span>{{ service_section.description }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="empty_space height_2_5em"></div>
-                                <div class="sc_item_button sc_button_wrap sc_align_center">
-                                    <a href="{{ service_section.button_url }}"
-                                       class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
-                                        <span class="sc_button_text">
-                                            <span class="sc_button_title">{{ service_section.button_text }}</span>
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="empty_space height_7_3em"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="empty_space height_9_2em"></div>
-                </div>
-            </div>
-            <!-- /Services section -->
-            <!-- Services Info -->
-            <div class="sc_layouts_column_icons_position_left">
-                <div class="sc_services sc_services_hover" data-slides-per-view="3"
-                     data-slides-min-width="200">
-                    <div class="sc_services_columns sc_item_columns sc_item_columns_3 trx_addons_columns_wrap">
-                        {% for info_service in info_services %}<div class="trx_addons_column-1_3 ">
-                                <div class="sc_services_item with_content with_image">
-                                    <div class="sc_services_item_content"
-                                         style="background-image: url({{ info_service.image.url }})">
-                                        <div class="sc_services_item_content_inner">
-                                            <h3 class="sc_services_item_title">
-                                                <a href="{{ info_service.url }}">{{ info_service.title }}</a>
-                                            </h3>
-                                            <div class="sc_services_item_text">
-                                                <p>{{ info_service.description }}</p>
-                                            </div>
-                                            <div class="sc_services_item_link sc_item_button">
-                                                <a class="sc_button_white sc_button_hover_slide_left"
-                                                   href="{{ info_service.url }}">Daha çox</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>{% endfor %}
-                    </div>
-                </div>
-            </div>
-            <!-- /Services Info -->
-            <!-- Info section -->
-            <div class="copypress-custom-bg-9 scheme_dark" style="background-image: url({{ info_section.image.url }})">
-                <div class="content_wrap">
-                    <div class="trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class="empty_space height_0_2em"></div>
-                        </div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class=" height_9em"></div><div class="sc_title sc_title_default">
-                                <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">{{ info_section.pretitle }}</h6>
-                                <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_yellow_sub">
-                                    {{ info_section.title }}</h2>
-                                <div class="sc_item_descr sc_title_descr sc_align_default color_white">{{ info_section.description }}</div>
-                            </div>
-                            <div class="empty_space height_2_8em"></div>
-                            <div class="trx_addons_columns_wrap">
-                                <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                                    <ul class="trx_addons_list_success_circled">
-                                        {% for tag in info_section.tags.all %}<li><a href="#">{{ tag.title }}</a></li>{% if forloop.counter == 3 %}</ul></div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left"><ul class="trx_addons_list_success_circled">{% endif %}{% endfor %}</ul>
-                                        </div>
-                            </div>
-                            <div class="empty_space height_9_4em"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Info section -->
-            <!-- Testimonials -->
-            <div class="copypress-custom-bg-5" style="background-image: url(/static/images/full_services_copy.png)">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_5_2em"></div>
-                    <div class="trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class="empty_space height_4em"></div>
-                            <div class="sc_testimonials sc_testimonials_default swiper-slider-container slider_swiper slider_noresize slider_nocontrols slider_nopagination"
-                                 data-slides-min-width="150">
-                                <h2 class="sc_item_title sc_testimonials_title sc_align_left sc_item_title_style_default">{{ testimonials_section.title }}</h2>
-                                <div class="sc_testimonials_slider sc_item_slider slides swiper-wrapper">
-                                    {% for swiper in testimonials_section.swipers.all %}
-                                        <div class="swiper-slide">
-                                            <div class="sc_testimonials_item">
-                                                <div class="sc_testimonials_item_content">
-                                                    <p>{{ swiper.idiom }}</p>
-                                                </div>
-                                                <div class="sc_testimonials_item_author">
-                                                    <div class="sc_testimonials_item_author_avatar">
-                                                        <img src="{{ swiper.author_image.url }}"
-                                                             alt="{{ swiper.author }}"/>
-                                                    </div>
-                                                    <div class="sc_testimonials_item_author_data">
-                                                        <h4 class="sc_testimonials_item_author_title">{{ swiper.author }}</h4>
-                                                        <div class="sc_testimonials_item_author_subtitle">{{ swiper.author_profession }}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-                        </div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                            <div class="empty_space height_4em"></div>
-                            <figure>
-                                <img src="{{ testimonials_section.image.url }}" alt="{{ testimonials_section.title }}"/>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="empty_space height_10_5em"></div>
-                </div>
-            </div>
-            <!-- /Testimonials -->
-            <!-- Projects -->
-            <div class="copypress-custom-bg-1" style="background-image: url(/static/images/projects_bg.jpg)">
+    <div class="content">
+        <article class="post_item_single page">
+            <div class="post_content">
+                <!-- Revolution slider section -->
                 <div class="sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_9_4em"></div>
-                    <div class="sc_title sc_title_default">
-                        <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_large">{{ projects_section.pretitle }}</h6>
-                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">{{ projects_section.title }}</h2>
-                    </div>
-                    <div class="empty_space height_3em"></div>
-                    <!-- THE ESSENTIAL GRID 2.1.0.2 -->
-                    <article class="myportfolio-container minimal-light" id="esg-grid-1-1-wrap">
-                        <div id="esg-grid-1-1" class="esg-grid">
-                            <article
-                                    class="esg-filters esg-singlefilters text_align_center margin_bottom_60">
-                                <!-- THE FILTER BUTTONS -->
-                                <div class="esg-filter-wrapper esg-fgc-1">
-                                    <div class="esg-filterbutton selected esg-allfilter"
-                                         data-filter="filterall" data-fid="-1">
-                                        <span>Filter - All</span>
-                                    </div>
-                                    <div class="esg-filterbutton" data-fid="2"
-                                         data-filter="filter-3d-technology">
-                                        <span>3D Technology</span>
-                                        <span class="esg-filter-checked">
-                                                                <i class="eg-icon-ok-1"></i>
-                                                            </span>
-                                    </div>
-                                    <div class="esg-filterbutton" data-fid="3"
-                                         data-filter="filter-copy-everything">
-                                        <span>Copy Everything</span>
-                                        <span class="esg-filter-checked">
-                                                                <i class="eg-icon-ok-1"></i>
-                                                            </span>
-                                    </div>
-                                    <div class="esg-filterbutton" data-fid="5"
-                                         data-filter="filter-photography">
-                                        <span>Photography</span>
-                                        <span class="esg-filter-checked">
-                                                                <i class="eg-icon-ok-1"></i>
-                                                            </span>
-                                    </div>
-                                    <div class="esg-filterbutton" data-fid="6"
-                                         data-filter="filter-story-in-colors">
-                                        <span>Story in Colors</span>
-                                        <span class="esg-filter-checked">
-                                                                <i class="eg-icon-ok-1"></i>
-                                                            </span>
-                                    </div>
-                                    <div class="esg-filterbutton" data-fid="7"
-                                         data-filter="filter-travellers">
-                                        <span>Travellers</span>
-                                        <span class="esg-filter-checked">
-                                                                <i class="eg-icon-ok-1"></i>
-                                                            </span>
-                                    </div>
-                                    <div class="eg-clearfix"></div>
-                                </div>
-                            </article>
-                            <div class="esg-clear-no-height"></div>
+                    <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+                         data-source="gallery">
+                        <!-- START REVOLUTION SLIDER 5.3.0.2 auto mode -->
+                        <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;"
+                             data-version="5.3.0.2">
                             <ul>
-                                <!-- Grid Item -->
-                                <li class="filterall filter-3d-technology filter-business-cards filter-posters eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1600.jpg" alt="">
+                                <!-- SLIDE  -->
+                                {% for carousel in carousels %}
+                                    <li data-index="rs-{{ forloop.counter }}" data-transition="curtain-1"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="default" data-easeout="default" data-masterspeed="default"
+                                        data-thumb="{{ carousel.image_thumbnail.url }}" data-rotate="0"
+                                        data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
+                                        data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="{{ carousel.image.url }}" alt="{{ carousel.title }}"
+                                             title="{{ carousel.title }}" width="1920" height="700"
+                                             data-bgposition="center center" data-bgfit="cover"
+                                             data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 1 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-1"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['170','170','170','140']" data-width="none"
+                                             data-height="none" data-whitespace="nowrap" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":600,"speed":700,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="">
+                                            {{ carousel.pretitle }}
                                         </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Custom View Magazine Design
-                                            </div>
+                                        <!-- LAYER NR. 2 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-2"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['235','235','235','200']"
+                                             data-fontsize="['80','80','70','60']"
+                                             data-lineheight="['80','80','80','70']"
+                                             data-width="['none','none','none','450']" data-height="none"
+                                             data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":950,"speed":700,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','center']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.title }}
                                         </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-copy-everything filter-booklets filter-magazines eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1600.jpg" alt="">
+                                        <!-- LAYER NR. 3 -->
+                                        <div class="tp-caption  tp-resizeme" id="slide-{{ forloop.counter }}-layer-3"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['370','370','370','390']"
+                                             data-fontsize="['20','20','20','23']"
+                                             data-lineheight="['27','27','27','36']"
+                                             data-width="['none','none','none','450']" data-height="none"
+                                             data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1300,"speed":700,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.description | safe }}
                                         </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Business Logo Design
-                                            </div>
+                                        <!-- LAYER NR. 4 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-5"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-91','-91','-91','-111']"
+                                             data-y="['top','top','top','top']" data-voffset="['477','477','477','586']"
+                                             data-fontsize="['12','12','12','16']" data-width="none" data-height="none"
+                                             data-whitespace="nowrap" data-type="text"
+                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.left_button_url }}","delay":""}]'
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1650,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(71, 214, 232, 1.00);"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[40,40,40,40]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[40,40,40,40]">
+                                            {{ carousel.left_button_text }}
                                         </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-photography filter-business-cards filter-posters eg-washington-copypress-wrapper5">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1700.jpg" alt="">
+                                        <!-- LAYER NR. 5 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-4"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['73','73','73','93']" data-y="['top','top','top','top']"
+                                             data-voffset="['477','477','477','586']"
+                                             data-fontsize="['12','12','12','16']" data-width="none" data-height="none"
+                                             data-whitespace="nowrap" data-type="text"
+                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.right_button_url }}","delay":""}]'
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(71, 214, 232, 1.00);bw:0 0 0 0;"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.right_button_text }}
                                         </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Press-Glued Catalog Printing
-                                            </div>
+                                        <!-- LAYER NR. 6 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-7"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['140','140','140','175']" data-y="['top','top','top','top']"
+                                             data-voffset="['495','495','495','605']" data-width="none"
+                                             data-height="none" data-whitespace="nowrap" data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            <img src="{% static "images/arrow.png" %}"
+                                                 data-ww="['17px','17px','17px','17px']"
+                                                 data-hh="['17px','17px','17px','17px']" width="17" height="17"
+                                                 data-no-retina alt="arrow">
                                         </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-story-in-colors filter-booklets filter-magazines eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1800.jpg" alt="">
-                                        </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Book Covers Publishing
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-travellers filter-business-cards filter-posters eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1275.jpg" alt="">
-                                        </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Poster Templates and Presentations
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-3d-technology filter-booklets filter-magazines eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1660.jpg" alt="">
-                                        </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Commercial Billboard Prints
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-copy-everything filter-business-cards filter-posters eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1300.jpg" alt="">
-                                        </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Business Cards Design and Printing
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
-                                <!-- Grid Item -->
-                                <li class="filterall filter-photography filter-booklets filter-magazines eg-washington-copypress-wrapper">
-                                    <div class="esg-media-cover-wrapper">
-                                        <div class="esg-entry-media">
-                                            <img src="http://placehold.it/2400x1435.jpg" alt="">
-                                        </div>
-                                        <div class="esg-entry-cover esg-fade" data-delay="0">
-                                            <div class="esg-overlay esg-slideright eg-washington-copypress-container"
-                                                 data-delay="0"></div>
-                                            <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
-                                                 data-delay="0.4">
-                                                <a class="eg-washington-copypress-element-1"
-                                                   href="post-single.html" target="_self">
-                                                    <i class="eg-icon-right-open-1"></i>
-                                                </a>
-                                            </div>
-                                            <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
-                                            <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
-                                            <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
-                                                 data-delay="0.3">Creative Writing Publishing
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- /Grid Item -->
+                                    </li>
+                                {% endfor %}
+
+                                <!-- SLIDE  -->
                             </ul>
+                            <div class="tp-bannertimer tp-bottom" style=""></div>
                         </div>
-                    </article>
-                    <div class="clear"></div>
-                    <div class="empty_space height_4em"></div>
-                    <div class="sc_item_button sc_button_wrap sc_align_center">
-                        <a href="gallery-cobbles.html"
-                           class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
-                                                <span class="sc_button_text">
-                                                    <span class="sc_button_title">view all projects</span>
-                                                </span>
-                        </a>
                     </div>
-                    <div class="empty_space height_9_4em"></div>
+                    <!-- END REVOLUTION SLIDER -->
                 </div>
-            </div>
-            <!-- /Projects -->
-            <!-- What can we do / Frequently Asked -->
-            <div class="content_wrap sc_layouts_column_icons_position_left">
-                <div class="trx_addons_columns_wrap">
-                    <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                        <div class="empty_space height_9_2em"></div>
-                        <h2>What we can do</h2>
-                        <p>Laboris nisi ut aliquip exa commodo consequatis aute irure dolor in reprehenderit
-                            in voluptate velit esse cillum dolore eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco. Aboris nisi ut aliquip exa commodo consequatis
-                            aute irure dolor.</p>
-                        <div class="empty_space height_3_8em"></div>
-                        <div id="sc_skills_diagram_1"
-                             class="sc_skills sc_skills_bar sc_skills_horizontal margin_top_tiny-"
-                             data-type="bar" data-caption="Skills" data-dir="horizontal">
-                            <div class="sc_skills_info">
-                                <div class="sc_skills_label">Posters & Envelops</div>
-                            </div>
-                            <div class="sc_skills_item sc_skills_style_1 odd first">
-                                <div class="sc_skills_total" data-start="0" data-stop="96" data-step="1"
-                                     data-max="100" data-speed="26" data-duration="1950" data-ed="%">0%
-                                </div>
-                                <div class="sc_skills_count skills_count_custom_style"></div>
-                            </div>
-                            <div class="sc_skills_info">
-                                <div class="sc_skills_label">Booklet & Books</div>
-                            </div>
-                            <div class="sc_skills_item sc_skills_style_1 even">
-                                <div class="sc_skills_total" data-start="0" data-stop="83" data-step="1"
-                                     data-max="100" data-speed="17" data-duration="510" data-ed="%">0%
-                                </div>
-                                <div class="sc_skills_count skills_count_custom_style"></div>
-                            </div>
-                            <div class="sc_skills_info">
-                                <div class="sc_skills_label">Business Cards</div>
-                            </div>
-                            <div class="sc_skills_item sc_skills_style_1 odd">
-                                <div class="sc_skills_total" data-start="0" data-stop="78" data-step="1"
-                                     data-max="100" data-speed="14" data-duration="1400" data-ed="%">0%
-                                </div>
-                                <div class="sc_skills_count skills_count_custom_style"></div>
-                            </div>
-                            <div class="sc_skills_info">
-                                <div class="sc_skills_label">Seminar Workbooks</div>
-                            </div>
-                            <div class="sc_skills_item sc_skills_style_1 even">
-                                <div class="sc_skills_total" data-start="0" data-stop="90" data-step="1"
-                                     data-max="100" data-speed="14" data-duration="1400" data-ed="%">0%
-                                </div>
-                                <div class="sc_skills_count skills_count_custom_style"></div>
+                <!-- /Revolution slider section -->
+                <!-- Brands -->
+                <div class="copypress-custom-bg-6">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_4em"></div>
+                        <div class="brands">
+                            <div class="gallery gallery-columns-{{ brands|length }} gallery-size-full">
+                                {% for brand in brands %}
+                                    <figure class="gallery-item">
+                                        <div class="gallery-icon landscape">
+                                            <a href="{{ brand.url }}"> <img src="{{ brand.image.url }}"
+                                                                            alt="{{ brand.title }}"/> </a>
+                                        </div>
+                                    </figure>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="empty_space height_4em"></div>
-                        <div class="sc_item_button sc_button_wrap">
-                            <a href="about-style-1.html"
-                               class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
-                                                    <span class="sc_button_text">
-                                                        <span class="sc_button_title">more info</span>
-                                                    </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
-                        <div class="empty_space height_9_2em"></div>
-                        <h2>Frequently Asked</h2>
-                        <div class="sc_accordion sc_accordion_style_1" data-active="0">
-                            <div class="sc_accordion_item odd first">
-                                <h5 class="sc_accordion_title">
-                                    <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span>
-                                    <span class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span>
-                                    How accurate is your color registration?
-                                </h5>
-                                <div class="sc_accordion_content">
-                                    <h6>
-                                        <img class="alignleft" alt="" src="http://placehold.it/115x115"/>
-                                        Press-glued catalog printing
-                                    </h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div class="sc_accordion_item even">
-                                <h5 class="sc_accordion_title">
-                                    <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span>
-                                    <span class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span>
-                                    Can you print every page in full color?
-                                </h5>
-                                <div class="sc_accordion_content">
-                                    <h6>
-                                        <img class="alignleft" alt="" src="http://placehold.it/115x115"/>
-                                        Press-glued catalog printing
-                                    </h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div class="sc_accordion_item odd">
-                                <h5 class="sc_accordion_title">
-                                    <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span>
-                                    <span class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span>
-                                    Accordion Title 3
-                                </h5>
-                                <div class="sc_accordion_content">
-                                    <h6>
-                                        <img class="alignleft" alt="" src="http://placehold.it/115x115"/>
-                                        Can I choose which pages have color?
-                                    </h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="empty_space height_2_5em"></div>
-                        <div class="sc_item_button sc_button_wrap">
-                            <a href="contacts.html"
-                               class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
-                                                    <span class="sc_button_text">
-                                                        <span class="sc_button_title">View All</span>
-                                                    </span>
-                            </a>
-                        </div>
                     </div>
                 </div>
-                <div class="empty_space height_9_4em"></div>
-            </div>
-            <!-- /What can we do / Frequently Asked -->
-            <!-- Service plans -->
-            <div class="copypress-custom-bg-13">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_9_4em"></div>
-                    <div class="sc_title sc_title_default">
-                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">
-                            Service Plans</h2>
+                <!-- /Brands -->
+                <!-- Welcome section -->
+                <div class="copypress-custom-bg-3">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_6_3em"></div>
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
+                                <div class="empty_space height_3em"></div>
+                                <div class="sc_title sc_title_default"><h6
+                                        class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_default">{{ welcome_section.pretitle }}</h6>
+                                    <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_default">{{ welcome_section.title }}</h2>
+                                </div>
+                                <div class="empty_space height_2em"></div>
+                                <p>{{ welcome_section.description }}</p>
+                                <div class="empty_space height_2_9em"></div>
+                                <div class="sc_item_button sc_button_wrap"><a href="{{ welcome_section.button_url }}"
+                                                                              class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left"><span
+                                        class="sc_button_text"><span
+                                        class="sc_button_title">{{ welcome_section.button_text }}</span></span></a>
+                                </div>
+                            </div>
+                            <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left sc_float_left">
+                                <div class="empty_space height_4em"></div>
+                                <figure><img src="{{ welcome_section.image.url }}" alt="{{ welcome_section.title }}"/>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="empty_space height_9_4em"></div>
                     </div>
-                    <div class="empty_space height_3em"></div>
-                    <div class="trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
-                            <div class="sc_price sc_price_default">
-                                <div class="sc_price_info">
-                                    <div class="sc_price_header">
-                                        <div class="sc_price_price">
-                                            <span class="sc_price_value">Free</span>
-                                        </div>
-                                        <div class="sc_price_description">essentials</div>
-                                    </div>
-                                    <div class="sc_price_content">
-                                        <div class="sc_price_details">Up to four projects using our basic
-                                            licence
-                                        </div>
-                                        <a href="about-style-1.html" class="sc_price_link sc_button_dark">Order
-                                            Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="empty_space height_2em"></div>
-                        </div>
-                        <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
-                            <div class="sc_price sc_price_default">
-                                <div class="sc_price_info">
-                                    <div class="sc_price_header">
-                                        <div class="sc_price_price">
-                                            <span class="sc_price_currency">$</span><span
-                                                class="sc_price_value">299</span>
-                                        </div>
-                                        <div class="sc_price_description">business</div>
-                                    </div>
-                                    <div class="sc_price_content">
-                                        <div class="sc_price_details">Up to 10 projects using our open
-                                            licence
-                                        </div>
-                                        <a href="about-style-1.html" class="sc_price_link sc_button_dark">Order
-                                            Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="empty_space height_2em"></div>
-                        </div>
-                        <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
-                            <div class="sc_price sc_price_default">
-                                <div class="sc_price_info">
-                                    <div class="sc_price_header">
-                                        <div class="sc_price_price">
-                                            <span class="sc_price_currency">$</span><span
-                                                class="sc_price_value">399</span>
-                                        </div>
-                                        <div class="sc_price_description">premium</div>
-                                    </div>
-                                    <div class="sc_price_content">
-                                        <div class="sc_price_details">Unlimited projects using our
-                                            commercial licence
-                                        </div>
-                                        <a href="about-style-1.html" class="sc_price_link sc_button_dark">Order
-                                            Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="empty_space height_2em"></div>
-                        </div>
-                    </div>
-                    <div class="empty_space height_7_9em"></div>
                 </div>
-            </div>
-            <!-- /Service plans -->
-            <!-- Team -->
-            <div class="copypress-custom-bg-1">
-                <div class="sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_8_6em"></div>
-                    <div class="sc_team sc_team_featured" data-slides-per-view="4"
-                         data-slides-min-width="150">
-                        <h6 class="sc_item_subtitle sc_team_subtitle sc_align_center sc_item_title_style_default">
-                            our agents</h6>
-                        <h2 class="sc_item_title sc_team_title sc_align_center sc_item_title_style_default">
-                            Meet the team</h2>
-                        <div class="sc_team_columns sc_item_columns trx_addons_columns_wrap">
-                            <div class="trx_addons_column-1_4">
-                                <div class="sc_team_item">
-                                    <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
-                                        <a href="team-single.html" aria-hidden="true">
-                                            <img src="http://placehold.it/515x515" alt="Andy Watson"/>
-                                        </a>
-                                        <div class="trx_addons_hover_content">
-                                            <h3 class="sc_team_item_title trx_addons_hover_title">
-                                                <a href="team-single.html">Andy Watson</a>
-                                            </h3>
-                                            <div class="sc_team_item_subtitle trx_addons_hover_title">
-                                                <a href="team-single.html">tech-designer</a></div>
-                                            <a class="trx_addons_hover_link sc_team_item_link icon-right"
-                                               href="team-single.html"></a>
-                                        </div>
-                                        <div class="trx_addons_hover_mask"></div>
+                <!-- /Welcome section -->
+                <!-- Video section -->
+                <div class="scheme_dark" style="background-image: url({{ video_section.image.url }})">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div id="widget_video_1" class="widget_area sc_widget_video">
+                            <aside id="widget_video_1_widget" class="widget widget_video"><h5
+                                    class="widget_title">{{ video_section.title }}</h5>
+                                <div class="trx_addons_video_player with_cover hover_play">
+                                    <div class="sc_item_header">
+                                        <div class="sc_item_subtitle sc_video_subtitle sc_align_center sc_item_title_style_default">{{ video_section.pretitle }}</div>
+                                        <h1 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">{{ video_section.title }}</h1>
+                                        <div class="video_hover" data-video='{{ video_section.video_source }}'></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="trx_addons_column-1_4">
-                                <div class="sc_team_item">
-                                    <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
-                                        <a href="team-single.html" aria-hidden="true">
-                                            <img src="http://placehold.it/515x515" alt="Jenny Parker"/>
-                                        </a>
-                                        <div class="trx_addons_hover_content">
-                                            <h3 class="sc_team_item_title trx_addons_hover_title">
-                                                <a href="team-single.html">Jenny Parker</a>
-                                            </h3>
-                                            <div class="sc_team_item_subtitle trx_addons_hover_title">
-                                                <a href="team-single.html">tech-designer</a>
-                                            </div>
-                                            <a class="trx_addons_hover_link sc_team_item_link icon-right"
-                                               href="team-single.html"></a>
-                                        </div>
-                                        <div class="trx_addons_hover_mask"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="trx_addons_column-1_4">
-                                <div class="sc_team_item">
-                                    <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
-                                        <a href="team-single.html" aria-hidden="true">
-                                            <img src="http://placehold.it/515x515" alt="Noah Sand"/>
-                                        </a>
-                                        <div class="trx_addons_hover_content">
-                                            <h3 class="sc_team_item_title trx_addons_hover_title">
-                                                <a href="team-single.html">Noah Sand</a>
-                                            </h3>
-                                            <div class="sc_team_item_subtitle trx_addons_hover_title">
-                                                <a href="team-single.html">tech-designer</a>
-                                            </div>
-                                            <a class="trx_addons_hover_link sc_team_item_link icon-right"
-                                               href="team-single.html"></a>
-                                        </div>
-                                        <div class="trx_addons_hover_mask"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="trx_addons_column-1_4">
-                                <div class="sc_team_item">
-                                    <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
-                                        <a href="team-single.html" aria-hidden="true">
-                                            <img src="http://placehold.it/515x515" alt="Sean Thompson"/>
-                                        </a>
-                                        <div class="trx_addons_hover_content">
-                                            <h3 class="sc_team_item_title trx_addons_hover_title">
-                                                <a href="team-single.html">Sean Thompson</a>
-                                            </h3>
-                                            <div class="sc_team_item_subtitle trx_addons_hover_title">
-                                                <a href="team-single.html">tech-designer</a>
-                                            </div>
-                                            <a class="trx_addons_hover_link sc_team_item_link icon-right"
-                                               href="team-single.html"></a>
-                                        </div>
-                                        <div class="trx_addons_hover_mask"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="empty_space height_4em"></div>
-                    <div class="sc_item_button sc_button_wrap sc_align_center">
-                        <a href="#"
-                           class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
-                                                <span class="sc_button_text">
-                                                    <span class="sc_button_title">discover more</span>
-                                                </span>
-                        </a>
-                    </div>
-                    <div class="empty_space height_8_9em"></div>
-                </div>
-            </div>
-            <!-- /Team -->
-            <!-- Special Offer -->
-            <div class="copypress-custom-bg-14 scheme_dark">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_7_9em"></div>
-                    <div class="sc_title sc_title_default">
-                        <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_blue_sub">
-                            special offer</h6>
-                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_blue_sub">
-                            1500 full color<br/>
-                            business cards</h2>
-                    </div>
-                    <div class="empty_space height_1_2em"></div>
-                    <h2 class="text_align_center">
-                        <span class="copypress-special-offer-txt">only $50</span>
-                    </h2>
-                    <div class="empty_space height_6em"></div>
-                </div>
-            </div>
-            <!-- /Special Offer -->
-            <!-- Blogger / Twitter Stream -->
-            <div class="copypress-custom-bg-1">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="trx_addons_columns_wrap">
-                        <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
-                            <div class="empty_space height_9_2em"></div>
-                            <div class="sc_blogger sc_blogger_plain" data-slides-min-width="150">
-                                <h2 class="sc_item_title sc_blogger_title sc_align_default sc_item_title_style_default">
-                                    Fresh blog post</h2>
-                                <div class="sc_blogger_content sc_item_content">
-                                    <div class="sc_blogger_item post_format_standard post has-post-thumbnail">
-                                        <div class="sc_blogger_item_content">
-                                            <div class="sc_blogger_item_date">
-                                                <span class="day">05</span>
-                                                <span class="month">Dec</span>
-                                            </div>
-                                            <div class="sc_blogger_item_info">
-                                                <div class="post_meta">
-                                                                        <span class="post_meta_item post_categories">
-                                                                            <a href="#">Lifestyle</a>
-                                                                        </span>
-                                                    <span class="post_meta_item post_date">
-                                                                            <a href="#">05.12.2016</a>
-                                                                        </span>
-                                                </div>
-                                                <h5 class="sc_blogger_item_title">
-                                                    <a href="post-single.html">Catalogs: the Best Way to
-                                                        Present Product Information</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc_blogger_item post_format_standard post">
-                                        <div class="sc_blogger_item_content">
-                                            <div class="sc_blogger_item_date">
-                                                <span class="day">27</span>
-                                                <span class="month">Nov</span>
-                                            </div>
-                                            <div class="sc_blogger_item_info">
-                                                <div class="post_meta">
-                                                                        <span class="post_meta_item post_categories">
-                                                                            <a href="#">Lifestyle</a>
-                                                                        </span>
-                                                    <span class="post_meta_item post_date">
-                                                                            <a href="#">27.11.2016</a>
-                                                                        </span>
-                                                </div>
-                                                <h5 class="sc_blogger_item_title">
-                                                    <a href="post-single.html">10 Ingenious Newspaper
-                                                        Designs</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc_blogger_item post_format_standard post">
-                                        <div class="sc_blogger_item_content">
-                                            <div class="sc_blogger_item_date">
-                                                <span class="day">18</span>
-                                                <span class="month">Nov</span>
-                                            </div>
-                                            <div class="sc_blogger_item_info">
-                                                <div class="post_meta">
-                                                                        <span class="post_meta_item post_categories">
-                                                                            <a href="#">3D Technology</a>
-                                                                        </span>
-                                                    <span class="post_meta_item post_date">
-                                                                            <a href="#">18.11.2016</a>
-                                                                        </span>
-                                                </div>
-                                                <h5 class="sc_blogger_item_title">
-                                                    <a href="post-single.html">5 Great Magazines to Give for
-                                                        Christmas</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
-                            <div class="empty_space height_9_2em"></div>
-                            <aside class="widget widget_weblizar_twitter">
-                                <h5 class="widget_title">Twitter Stream</h5>
-                                <div class="copypress-twitter-block">
-                                    <a class="twitter-timeline" data-dnt="true"
-                                       href="https://twitter.com/TrxDoe" data-theme="light" data-lang=""
-                                       data-link-color=""></a>
+                                    <img src="{{ video_section.image2.url }}" alt="{{ video_section.title }}">
+                                    <div class="video_mask"></div>
+                                    <div class="video_embed video_frame"></div>
                                 </div>
                             </aside>
                         </div>
                     </div>
-                    <div class="empty_space height_9_2em"></div>
                 </div>
-            </div>
-            <!-- /Blogger / Twitter Stream -->
-            <!-- Our Contacts -->
-            <div class="copypress-custom-bg-2">
-                <div class="content_wrap sc_layouts_column_icons_position_left">
-                    <div class="empty_space height_9_4em"></div>
-                    <div id="sc_form_3" class="sc_form sc_form_detailed simple sc_align_default">
+                <!-- /Video section -->
+                <!-- Services section -->
+                <div style="background-image: url(/static/images/full_services_copy.png)">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_2em"></div>
                         <div class="trx_addons_columns_wrap">
-                            <div class="trx_addons_column-1_2">
-                                <div class="sc_form_info">
-                                    <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
-                                        Our Contacts</h2>
-                                    <div class="sc_form_info_item sc_form_info_item_address">
-                                        <span class="sc_form_info_icon"></span>
-                                        <span class="sc_form_info_area">
+                            <div class="custom_column_1 trx_addons_column-1_2 z-index_2 sc_layouts_column_icons_position_left">
+                                <div class="copypress-custom-bg-7">
+                                    <div class="sc_services sc_services_list custom_services_1 copypress-services-custom-block-1"
+                                         data-slides-per-view="2" data-slides-min-width="200">
+                                        <div class="sc_services_columns sc_item_columns sc_item_columns_2 trx_addons_columns_wrap columns_padding_bottom">
+                                            {% for service in services %}
+                                                <div class="trx_addons_column-1_2">
+                                                    <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                        <a href="{{ service.url }}"
+                                                           class="sc_services_item_icon {{ service.icon }}"></a>
+                                                        <div class="sc_services_item_info">
+                                                            <div class="sc_services_item_header">
+                                                                <h6 class="sc_services_item_title">
+                                                                    <a href="{{ service.url }}">{{ service.title }}</a>
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>{% endfor %}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom_column_1 trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class="copypress-services-custom-block-2">
+                                    <div class="empty_space height_5_2em"></div>
+                                    <div class="sc_action sc_action_simple custom_action_1" data-slides-min-width="250">
+                                        <div class="sc_action_content sc_item_content">
+                                            <div class="sc_action_item sc_action_item_simple sc_action_item_mc">
+                                                <h6 class="sc_item_subtitle sc_action_item_subtitle sc_align_center sc_item_title_style_default">
+                                                    <span>{{ service_section.pretitle }}</span>
+                                                </h6>
+                                                <h2 class="sc_item_title sc_action_item_title sc_align_default sc_item_title_style_default">
+                                                    <span>{{ service_section.title }}</span>
+                                                </h2>
+                                                <div class="sc_action_item_description">
+                                                    <span>{{ service_section.description }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="empty_space height_2_5em"></div>
+                                    <div class="sc_item_button sc_button_wrap sc_align_center">
+                                        <a href="{{ service_section.button_url }}"
+                                           class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
+                                        <span class="sc_button_text">
+                                            <span class="sc_button_title">{{ service_section.button_text }}</span>
+                                        </span> </a>
+                                    </div>
+                                    <div class="empty_space height_7_3em"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_9_2em"></div>
+                    </div>
+                </div>
+                <!-- /Services section -->
+                <!-- Services Info -->
+                <div class="sc_layouts_column_icons_position_left">
+                    <div class="sc_services sc_services_hover" data-slides-per-view="3" data-slides-min-width="200">
+                        <div class="sc_services_columns sc_item_columns sc_item_columns_3 trx_addons_columns_wrap">
+                            {% for info_service in info_services %}
+                                <div class="trx_addons_column-1_3 ">
+                                    <div class="sc_services_item with_content with_image">
+                                        <div class="sc_services_item_content"
+                                             style="background-image: url({{ info_service.image.url }})">
+                                            <div class="sc_services_item_content_inner">
+                                                <h3 class="sc_services_item_title">
+                                                    <a href="{{ info_service.url }}">{{ info_service.title }}</a>
+                                                </h3>
+                                                <div class="sc_services_item_text">
+                                                    <p>{{ info_service.description }}</p>
+                                                </div>
+                                                <div class="sc_services_item_link sc_item_button">
+                                                    <a class="sc_button_white sc_button_hover_slide_left"
+                                                       href="{{ info_service.url }}">Daha çox</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- /Services Info -->
+                <!-- Info section -->
+                <div class="copypress-custom-bg-9 scheme_dark"
+                     style="background-image: url({{ info_section.image.url }})">
+                    <div class="content_wrap">
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_0_2em"></div>
+                            </div>
+                            <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class=" height_9em"></div>
+                                <div class="sc_title sc_title_default">
+                                    <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">{{ info_section.pretitle }}</h6>
+                                    <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_yellow_sub">
+                                        {{ info_section.title }}</h2>
+                                    <div class="sc_item_descr sc_title_descr sc_align_default color_white">{{ info_section.description }}</div>
+                                </div>
+                                <div class="empty_space height_2_8em"></div>
+                                <div class="trx_addons_columns_wrap">
+                                    <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                        <ul class="trx_addons_list_success_circled">
+                                            {% for tag in tags %}
+                                                <li><a href="#">{{ tag.title }}</a></li>{% if forloop.counter == 3 %}
+                                                </ul>
+                                                </div>
+                                                <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                                <ul class="trx_addons_list_success_circled">{% endif %}{% endfor %}</ul>
+                                            </div>
+                                </div>
+                                <div class="empty_space height_9_4em"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Info section -->
+                <!-- Testimonials -->
+                <div class="copypress-custom-bg-5" style="background-image: url(/static/images/full_services_copy.png)">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_5_2em"></div>
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_4em"></div>
+                                <div class="sc_testimonials sc_testimonials_default swiper-slider-container slider_swiper slider_noresize slider_nocontrols slider_nopagination"
+                                     data-slides-min-width="150">
+                                    <h2 class="sc_item_title sc_testimonials_title sc_align_left sc_item_title_style_default">{{ testimonials_section.title }}</h2>
+                                    <div class="sc_testimonials_slider sc_item_slider slides swiper-wrapper">
+                                        {% for swiper in swipes %}
+                                            <div class="swiper-slide">
+                                                <div class="sc_testimonials_item">
+                                                    <div class="sc_testimonials_item_content">
+                                                        <p>{{ swiper.idiom }}</p>
+                                                    </div>
+                                                    <div class="sc_testimonials_item_author">
+                                                        <div class="sc_testimonials_item_author_avatar">
+                                                            <img src="{{ swiper.author_image.url }}"
+                                                                 alt="{{ swiper.author }}"/>
+                                                        </div>
+                                                        <div class="sc_testimonials_item_author_data">
+                                                            <h4 class="sc_testimonials_item_author_title">{{ swiper.author }}</h4>
+                                                            <div class="sc_testimonials_item_author_subtitle">{{ swiper.author_profession }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_4em"></div>
+                                <figure>
+                                    <img src="{{ testimonials_section.image.url }}"
+                                         alt="{{ testimonials_section.title }}"/>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="empty_space height_10_5em"></div>
+                    </div>
+                </div>
+                <!-- /Testimonials -->
+                <!-- Projects -->
+                <div class="copypress-custom-bg-1" style="background-image: url(/static/images/projects_bg.jpg)">
+                    <div class="sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_large">{{ projects_section.pretitle }}</h6>
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">{{ projects_section.title }}</h2>
+                        </div>
+                        <div class="empty_space height_3em"></div>
+                        <!-- THE ESSENTIAL GRID 2.1.0.2 -->
+                        <article class="myportfolio-container minimal-light" id="esg-grid-1-1-wrap">
+                            <div id="esg-grid-1-1" class="esg-grid">
+                                <article class="esg-filters esg-singlefilters text_align_center margin_bottom_60">
+                                    <!-- THE FILTER BUTTONS -->
+                                    <div class="esg-filter-wrapper esg-fgc-1">
+                                        <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall"
+                                             data-fid="-1">
+                                            <span>Filter - All</span>
+                                        </div>
+                                        {% for category in categories %}
+                                            <div class="esg-filterbutton" data-fid="{{ forloop.counter }}"
+                                                 data-filter="{{ category.slug }}">
+                                                <span>{{ category.slug }}</span> <span class="esg-filter-checked"><i
+                                                    class="eg-icon-ok-1"></i></span>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="eg-clearfix"></div>
+                                    </div>
+                                </article>
+                                <div class="esg-clear-no-height"></div>
+                                <ul>
+
+                                    {% for project in projects %}
+                                        <!-- Grid Item -->
+                                        <li class="filterall {{ project.category.slug }} filter-business-cards filter-posters eg-washington-copypress-wrapper">
+                                            <div class="esg-media-cover-wrapper">
+                                                <div class="esg-entry-media">
+                                                    <img src="{{ project.images.first.image.url }}"
+                                                         alt="{{ project.title }}">
+                                                </div>
+                                                <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                    <div class="esg-overlay esg-slideright eg-washington-copypress-container"
+                                                         data-delay="0"></div>
+                                                    <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
+                                                         data-delay="0.4">
+                                                        <a class="eg-washington-copypress-element-1"
+                                                           href="{{ project.get_absolute_url }}" target="_self"> <i
+                                                                class="eg-icon-right-open-1"></i> </a>
+                                                    </div>
+                                                    <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
+                                                    <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
+                                                    <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
+                                                         data-delay="0.3">{{ project.title }}</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- /Grid Item -->
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </article>
+                        <div class="clear"></div>
+                        <div class="empty_space height_4em"></div>
+                        <div class="sc_item_button sc_button_wrap sc_align_center">
+                            <a href="{% url "portfolio" %}"
+                               class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
+                                                <span class="sc_button_text">
+                                                    <span class="sc_button_title">view all projects</span>
+                                                </span> </a>
+                        </div>
+                        <div class="empty_space height_9_4em"></div>
+                    </div>
+                </div>
+                <!-- /Projects -->
+                <!-- What can we do / Frequently Asked -->
+                <div class="content_wrap sc_layouts_column_icons_position_left">
+                    <div class="trx_addons_columns_wrap">
+                        <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                            <div class="empty_space height_9_2em"></div>
+                            <h2>What we can do</h2>
+                            <p>Laboris nisi ut aliquip exa commodo consequatis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Aboris nisi ut aliquip exa commodo consequatis aute irure dolor.</p>
+                            <div class="empty_space height_3_8em"></div>
+                            <div id="sc_skills_diagram_1"
+                                 class="sc_skills sc_skills_bar sc_skills_horizontal margin_top_tiny-" data-type="bar"
+                                 data-caption="Skills" data-dir="horizontal">
+                                <div class="sc_skills_info">
+                                    <div class="sc_skills_label">Posters & Envelops</div>
+                                </div>
+                                <div class="sc_skills_item sc_skills_style_1 odd first">
+                                    <div class="sc_skills_total" data-start="0" data-stop="96" data-step="1"
+                                         data-max="100" data-speed="26" data-duration="1950" data-ed="%">0%
+                                    </div>
+                                    <div class="sc_skills_count skills_count_custom_style"></div>
+                                </div>
+                                <div class="sc_skills_info">
+                                    <div class="sc_skills_label">Booklet & Books</div>
+                                </div>
+                                <div class="sc_skills_item sc_skills_style_1 even">
+                                    <div class="sc_skills_total" data-start="0" data-stop="83" data-step="1"
+                                         data-max="100" data-speed="17" data-duration="510" data-ed="%">0%
+                                    </div>
+                                    <div class="sc_skills_count skills_count_custom_style"></div>
+                                </div>
+                                <div class="sc_skills_info">
+                                    <div class="sc_skills_label">Business Cards</div>
+                                </div>
+                                <div class="sc_skills_item sc_skills_style_1 odd">
+                                    <div class="sc_skills_total" data-start="0" data-stop="78" data-step="1"
+                                         data-max="100" data-speed="14" data-duration="1400" data-ed="%">0%
+                                    </div>
+                                    <div class="sc_skills_count skills_count_custom_style"></div>
+                                </div>
+                                <div class="sc_skills_info">
+                                    <div class="sc_skills_label">Seminar Workbooks</div>
+                                </div>
+                                <div class="sc_skills_item sc_skills_style_1 even">
+                                    <div class="sc_skills_total" data-start="0" data-stop="90" data-step="1"
+                                         data-max="100" data-speed="14" data-duration="1400" data-ed="%">0%
+                                    </div>
+                                    <div class="sc_skills_count skills_count_custom_style"></div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_4em"></div>
+                            <div class="sc_item_button sc_button_wrap">
+                                <a href="about-style-1.html"
+                                   class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
+                                                    <span class="sc_button_text">
+                                                        <span class="sc_button_title">more info</span>
+                                                    </span> </a>
+                            </div>
+                        </div>
+                        <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                            <div class="empty_space height_9_2em"></div>
+                            <h2>Frequently Asked</h2>
+                            <div class="sc_accordion sc_accordion_style_1" data-active="0">
+                                <div class="sc_accordion_item odd first">
+                                    <h5 class="sc_accordion_title">
+                                        <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span> <span
+                                            class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span> How accurate is your color registration?
+                                    </h5>
+                                    <div class="sc_accordion_content">
+                                        <h6>
+                                            <img class="alignleft" alt=""
+                                                 src="http://placehold.it/115x115"/> Press-glued catalog printing </h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                                <div class="sc_accordion_item even">
+                                    <h5 class="sc_accordion_title">
+                                        <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span> <span
+                                            class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span> Can you print every page in full color?
+                                    </h5>
+                                    <div class="sc_accordion_content">
+                                        <h6>
+                                            <img class="alignleft" alt=""
+                                                 src="http://placehold.it/115x115"/> Press-glued catalog printing </h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                                <div class="sc_accordion_item odd">
+                                    <h5 class="sc_accordion_title">
+                                        <span class="sc_accordion_icon sc_accordion_icon_closed icon-plus"></span> <span
+                                            class="sc_accordion_icon sc_accordion_icon_opened icon-minus"></span> Accordion Title 3
+                                    </h5>
+                                    <div class="sc_accordion_content">
+                                        <h6>
+                                            <img class="alignleft" alt=""
+                                                 src="http://placehold.it/115x115"/> Can I choose which pages have color?
+                                        </h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_2_5em"></div>
+                            <div class="sc_item_button sc_button_wrap">
+                                <a href="contacts.html"
+                                   class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
+                                                    <span class="sc_button_text">
+                                                        <span class="sc_button_title">View All</span>
+                                                    </span> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="empty_space height_9_4em"></div>
+                </div>
+                <!-- /What can we do / Frequently Asked -->
+                <!-- Service plans -->
+                <div class="copypress-custom-bg-13">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">
+                                Service Plans</h2>
+                        </div>
+                        <div class="empty_space height_3em"></div>
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
+                                <div class="sc_price sc_price_default">
+                                    <div class="sc_price_info">
+                                        <div class="sc_price_header">
+                                            <div class="sc_price_price">
+                                                <span class="sc_price_value">Free</span>
+                                            </div>
+                                            <div class="sc_price_description">essentials</div>
+                                        </div>
+                                        <div class="sc_price_content">
+                                            <div class="sc_price_details">Up to four projects using our basic licence
+                                            </div>
+                                            <a href="about-style-1.html"
+                                               class="sc_price_link sc_button_dark">Order Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="empty_space height_2em"></div>
+                            </div>
+                            <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
+                                <div class="sc_price sc_price_default">
+                                    <div class="sc_price_info">
+                                        <div class="sc_price_header">
+                                            <div class="sc_price_price">
+                                                <span class="sc_price_currency">$</span><span
+                                                    class="sc_price_value">299</span>
+                                            </div>
+                                            <div class="sc_price_description">business</div>
+                                        </div>
+                                        <div class="sc_price_content">
+                                            <div class="sc_price_details">Up to 10 projects using our open licence
+                                            </div>
+                                            <a href="about-style-1.html"
+                                               class="sc_price_link sc_button_dark">Order Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="empty_space height_2em"></div>
+                            </div>
+                            <div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
+                                <div class="sc_price sc_price_default">
+                                    <div class="sc_price_info">
+                                        <div class="sc_price_header">
+                                            <div class="sc_price_price">
+                                                <span class="sc_price_currency">$</span><span
+                                                    class="sc_price_value">399</span>
+                                            </div>
+                                            <div class="sc_price_description">premium</div>
+                                        </div>
+                                        <div class="sc_price_content">
+                                            <div class="sc_price_details">Unlimited projects using our commercial licence
+                                            </div>
+                                            <a href="about-style-1.html"
+                                               class="sc_price_link sc_button_dark">Order Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="empty_space height_2em"></div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_7_9em"></div>
+                    </div>
+                </div>
+                <!-- /Service plans -->
+                <!-- Team -->
+                <div class="copypress-custom-bg-1">
+                    <div class="sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_8_6em"></div>
+                        <div class="sc_team sc_team_featured" data-slides-per-view="4" data-slides-min-width="150">
+                            <h6 class="sc_item_subtitle sc_team_subtitle sc_align_center sc_item_title_style_default">
+                                our agents</h6>
+                            <h2 class="sc_item_title sc_team_title sc_align_center sc_item_title_style_default">
+                                Meet the team</h2>
+                            <div class="sc_team_columns sc_item_columns trx_addons_columns_wrap">
+                                <div class="trx_addons_column-1_4">
+                                    <div class="sc_team_item">
+                                        <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
+                                            <a href="team-single.html" aria-hidden="true"> <img
+                                                    src="http://placehold.it/515x515" alt="Andy Watson"/> </a>
+                                            <div class="trx_addons_hover_content">
+                                                <h3 class="sc_team_item_title trx_addons_hover_title">
+                                                    <a href="team-single.html">Andy Watson</a>
+                                                </h3>
+                                                <div class="sc_team_item_subtitle trx_addons_hover_title">
+                                                    <a href="team-single.html">tech-designer</a></div>
+                                                <a class="trx_addons_hover_link sc_team_item_link icon-right"
+                                                   href="team-single.html"></a>
+                                            </div>
+                                            <div class="trx_addons_hover_mask"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="trx_addons_column-1_4">
+                                    <div class="sc_team_item">
+                                        <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
+                                            <a href="team-single.html" aria-hidden="true"> <img
+                                                    src="http://placehold.it/515x515" alt="Jenny Parker"/> </a>
+                                            <div class="trx_addons_hover_content">
+                                                <h3 class="sc_team_item_title trx_addons_hover_title">
+                                                    <a href="team-single.html">Jenny Parker</a>
+                                                </h3>
+                                                <div class="sc_team_item_subtitle trx_addons_hover_title">
+                                                    <a href="team-single.html">tech-designer</a>
+                                                </div>
+                                                <a class="trx_addons_hover_link sc_team_item_link icon-right"
+                                                   href="team-single.html"></a>
+                                            </div>
+                                            <div class="trx_addons_hover_mask"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="trx_addons_column-1_4">
+                                    <div class="sc_team_item">
+                                        <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
+                                            <a href="team-single.html" aria-hidden="true"> <img
+                                                    src="http://placehold.it/515x515" alt="Noah Sand"/> </a>
+                                            <div class="trx_addons_hover_content">
+                                                <h3 class="sc_team_item_title trx_addons_hover_title">
+                                                    <a href="team-single.html">Noah Sand</a>
+                                                </h3>
+                                                <div class="sc_team_item_subtitle trx_addons_hover_title">
+                                                    <a href="team-single.html">tech-designer</a>
+                                                </div>
+                                                <a class="trx_addons_hover_link sc_team_item_link icon-right"
+                                                   href="team-single.html"></a>
+                                            </div>
+                                            <div class="trx_addons_hover_mask"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="trx_addons_column-1_4">
+                                    <div class="sc_team_item">
+                                        <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
+                                            <a href="team-single.html" aria-hidden="true"> <img
+                                                    src="http://placehold.it/515x515" alt="Sean Thompson"/> </a>
+                                            <div class="trx_addons_hover_content">
+                                                <h3 class="sc_team_item_title trx_addons_hover_title">
+                                                    <a href="team-single.html">Sean Thompson</a>
+                                                </h3>
+                                                <div class="sc_team_item_subtitle trx_addons_hover_title">
+                                                    <a href="team-single.html">tech-designer</a>
+                                                </div>
+                                                <a class="trx_addons_hover_link sc_team_item_link icon-right"
+                                                   href="team-single.html"></a>
+                                            </div>
+                                            <div class="trx_addons_hover_mask"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_4em"></div>
+                        <div class="sc_item_button sc_button_wrap sc_align_center">
+                            <a href="#" class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
+                                                <span class="sc_button_text">
+                                                    <span class="sc_button_title">discover more</span>
+                                                </span> </a>
+                        </div>
+                        <div class="empty_space height_8_9em"></div>
+                    </div>
+                </div>
+                <!-- /Team -->
+                <!-- Special Offer -->
+                <div class="copypress-custom-bg-14 scheme_dark">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_7_9em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_blue_sub">
+                                special offer</h6>
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_blue_sub">
+                                1500 full color<br/> business cards</h2>
+                        </div>
+                        <div class="empty_space height_1_2em"></div>
+                        <h2 class="text_align_center">
+                            <span class="copypress-special-offer-txt">only $50</span>
+                        </h2>
+                        <div class="empty_space height_6em"></div>
+                    </div>
+                </div>
+                <!-- /Special Offer -->
+                <!-- Blogger / Twitter Stream -->
+                <div class="copypress-custom-bg-1">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_9_2em"></div>
+                                <div class="sc_blogger sc_blogger_plain" data-slides-min-width="150">
+                                    <h2 class="sc_item_title sc_blogger_title sc_align_default sc_item_title_style_default">
+                                        Fresh blog post</h2>
+                                    <div class="sc_blogger_content sc_item_content">
+                                        <div class="sc_blogger_item post_format_standard post has-post-thumbnail">
+                                            <div class="sc_blogger_item_content">
+                                                <div class="sc_blogger_item_date">
+                                                    <span class="day">05</span> <span class="month">Dec</span>
+                                                </div>
+                                                <div class="sc_blogger_item_info">
+                                                    <div class="post_meta">
+                                                                        <span class="post_meta_item post_categories">
+                                                                            <a href="#">Lifestyle</a>
+                                                                        </span> <span class="post_meta_item post_date">
+                                                                            <a href="#">05.12.2016</a>
+                                                                        </span>
+                                                    </div>
+                                                    <h5 class="sc_blogger_item_title">
+                                                        <a href="post-single.html">Catalogs: the Best Way to Present Product Information</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sc_blogger_item post_format_standard post">
+                                            <div class="sc_blogger_item_content">
+                                                <div class="sc_blogger_item_date">
+                                                    <span class="day">27</span> <span class="month">Nov</span>
+                                                </div>
+                                                <div class="sc_blogger_item_info">
+                                                    <div class="post_meta">
+                                                                        <span class="post_meta_item post_categories">
+                                                                            <a href="#">Lifestyle</a>
+                                                                        </span> <span class="post_meta_item post_date">
+                                                                            <a href="#">27.11.2016</a>
+                                                                        </span>
+                                                    </div>
+                                                    <h5 class="sc_blogger_item_title">
+                                                        <a href="post-single.html">10 Ingenious Newspaper Designs</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sc_blogger_item post_format_standard post">
+                                            <div class="sc_blogger_item_content">
+                                                <div class="sc_blogger_item_date">
+                                                    <span class="day">18</span> <span class="month">Nov</span>
+                                                </div>
+                                                <div class="sc_blogger_item_info">
+                                                    <div class="post_meta">
+                                                                        <span class="post_meta_item post_categories">
+                                                                            <a href="#">3D Technology</a>
+                                                                        </span> <span class="post_meta_item post_date">
+                                                                            <a href="#">18.11.2016</a>
+                                                                        </span>
+                                                    </div>
+                                                    <h5 class="sc_blogger_item_title">
+                                                        <a href="post-single.html">5 Great Magazines to Give for Christmas</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_9_2em"></div>
+                                <aside class="widget widget_weblizar_twitter">
+                                    <h5 class="widget_title">Twitter Stream</h5>
+                                    <div class="copypress-twitter-block">
+                                        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/TrxDoe"
+                                           data-theme="light" data-lang="" data-link-color=""></a>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="empty_space height_9_2em"></div>
+                    </div>
+                </div>
+                <!-- /Blogger / Twitter Stream -->
+                <!-- Our Contacts -->
+                <div class="copypress-custom-bg-2">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div id="sc_form_3" class="sc_form sc_form_detailed simple sc_align_default">
+                            <div class="trx_addons_columns_wrap">
+                                <div class="trx_addons_column-1_2">
+                                    <div class="sc_form_info">
+                                        <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
+                                            Our Contacts</h2>
+                                        <div class="sc_form_info_item sc_form_info_item_address">
+                                            <span class="sc_form_info_icon"></span> <span class="sc_form_info_area">
                                                                 <span class="sc_form_info_title">Our Office</span>
                                                                 <span class="sc_form_info_data">
                                                                     <span>123, NewLenox,Chicago, IL 60606</span>
                                                                 </span>
                                                             </span>
-                                    </div>
-                                    <div class="sc_form_info_item sc_form_info_item_phone">
-                                        <span class="sc_form_info_icon"></span>
-                                        <span class="sc_form_info_area">
+                                        </div>
+                                        <div class="sc_form_info_item sc_form_info_item_phone">
+                                            <span class="sc_form_info_icon"></span> <span class="sc_form_info_area">
                                                                 <span class="sc_form_info_title">Phone</span>
                                                                 <span class="sc_form_info_data">
                                                                     <span>800-123-4567</span>
                                                                 </span>
                                                             </span>
-                                    </div>
-                                    <div class="sc_form_info_item sc_form_info_item_email">
-                                        <span class="sc_form_info_icon"></span>
-                                        <span class="sc_form_info_area">
+                                        </div>
+                                        <div class="sc_form_info_item sc_form_info_item_email">
+                                            <span class="sc_form_info_icon"></span> <span class="sc_form_info_area">
                                                                 <span class="sc_form_info_title">Email Address</span>
                                                                 <span class="sc_form_info_data">
                                                                     <a href="mailto:example@yoursite.com">example@yoursite.com</a>
                                                                 </span>
                                                             </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="trx_addons_column-1_2">
-                                <form class="sc_form_form " method="post" action="include/sendmail.php">
-                                    <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
-                                        Request Quote</h2>
-                                    <label class="sc_form_field sc_form_field_name required">
+                                <div class="trx_addons_column-1_2">
+                                    <form class="sc_form_form " method="post" action="include/sendmail.php">
+                                        <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
+                                            Request Quote</h2>
+                                        <label class="sc_form_field sc_form_field_name required">
                                                             <span class="sc_form_field_wrap">
                                                                 <input type="text" id="name" value=""
                                                                        aria-required="true" placeholder="Your name">
-                                                            </span>
-                                    </label>
-                                    <label class="sc_form_field sc_form_field_email required">
+                                                            </span> </label> <label
+                                            class="sc_form_field sc_form_field_email required">
                                                             <span class="sc_form_field_wrap">
                                                                 <input type="text" name="email" id="email" value=""
                                                                        aria-required="true" placeholder="Your e-mail">
-                                                            </span>
-                                    </label>
-                                    <label class="sc_form_field sc_form_field_message required">
+                                                            </span> </label> <label
+                                            class="sc_form_field sc_form_field_message required">
                                                             <span class="sc_form_field_wrap">
                                                                 <textarea name="message" id="message"
                                                                           aria-required="true"
                                                                           placeholder="Your message"></textarea>
-                                                            </span>
-                                    </label>
-                                    <div class="sc_form_field sc_form_field_button">
-                                        <button class="sc_button_dark">Send Message</button>
-                                    </div>
-                                    <div class="trx_addons_message_box sc_form_result"></div>
-                                </form>
+                                                            </span> </label>
+                                        <div class="sc_form_field sc_form_field_button">
+                                            <button class="sc_button_dark">Send Message</button>
+                                        </div>
+                                        <div class="trx_addons_message_box sc_form_result"></div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="empty_space height_9_4em"></div>
-                </div>
-            </div>
-            <!-- /Our Contacts -->
-            <!-- Google Map -->
-            <div class="sc_layouts_column_icons_position_left">
-                <div id="sc_googlemap_1_wrap" class="sc_googlemap_wrap">
-                    <div id="sc_googlemap_1"
-                         class="sc_googlemap sc_googlemap_default width_100_per height_515" data-zoom="16"
-                         data-style="default">
-                        <div id="sc_googlemap_1_1" class="sc_googlemap_marker" data-latlng=""
-                             data-address="350 5th Avenue, New York, NY 10001" data-description=""
-                             data-title="" data-icon="http://placehold.it/150x150.jpg"></div>
+                        <div class="empty_space height_9_4em"></div>
                     </div>
                 </div>
+                <!-- /Our Contacts -->
+                <!-- Google Map -->
+                <div class="sc_layouts_column_icons_position_left">
+                    <div id="sc_googlemap_1_wrap" class="sc_googlemap_wrap">
+                        <div id="sc_googlemap_1" class="sc_googlemap sc_googlemap_default width_100_per height_515"
+                             data-zoom="16" data-style="default">
+                            <div id="sc_googlemap_1_1" class="sc_googlemap_marker" data-latlng=""
+                                 data-address="350 5th Avenue, New York, NY 10001" data-description="" data-title=""
+                                 data-icon="http://placehold.it/150x150.jpg"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Google Map -->
             </div>
-            <!-- /Google Map -->
-        </div>
-    </article>
+        </article>
+    </div>
 {% endblock %}
-
 <!-- Footer -->
-{% include "_partials/footer.html" %}
-<!-- /Footer -->
+
+{% include "_partials/footer.html" %}<!-- /Footer -->
+
