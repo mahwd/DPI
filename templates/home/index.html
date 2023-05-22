@@ -1,0 +1,71 @@
+{% extends "base.html" %}{% load static %}
+
+{% include "_partials/links.html" %}
+
+{% block title %}Ana səhifə{% endblock %}
+
+{% block body_class %}
+    home page custom-background body_tag scheme_default body_style_wide blog_style_excerpt
+    sidebar_hide expand_content remove_margins header_style_header-custom-18 header_position_default
+    menu_style_top no_layout
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <article class="post_item_single page">
+            <div class="post_content">
+                <!-- Revolution slider section -->
+                {% include "home/_revolution_slider.html" %}
+                <!-- /Revolution slider section -->
+                <!-- Brands -->
+                {% include "home/_brands.html" %}
+                <!-- /Brands -->
+                <!-- Welcome section -->
+                {% include "home/_welcome.html" %}
+                <!-- /Welcome section -->
+                <!-- Video section -->
+                {% include "home/_video.html" %}
+                <!-- /Video section -->
+                <!-- Services section -->
+                {% include "home/_services.html" %}
+                <!-- /Services section -->
+                <!-- Services Info -->
+                {% include "home/_service_info.html" %}
+                <!-- /Services Info -->
+                <!-- Info section -->
+                {% include "home/_info.html" %}
+                <!-- /Info section -->
+                <!-- Testimonials -->
+                {% include "home/_testimonials.html" with background_image="copypress-custom-bg-3" %}
+                <!-- /Testimonials -->
+                <!-- Projects -->
+                {% include "home/_projects.html" %}
+                <!-- /Projects -->
+                <!-- What can we do / Frequently Asked -->
+                {# deleted#}
+                <!-- /What can we do / Frequently Asked -->
+                <!-- Service plans -->
+                {% include "home/_service_plan.html" %}
+                <!-- /Service plans -->
+                <!-- Team -->
+                {% include "home/_team.html" %}
+                <!-- /Team -->
+                <!-- Special Offer -->
+                {% include "home/_special_offer.html" %}
+                <!-- /Special Offer -->
+                <!-- Blogger / Twitter Stream -->
+                {# deleted#}
+                <!-- /Blogger / Twitter Stream -->
+                <!-- Our Contacts -->
+                {% include "home/_our_contacts.html" %}
+                <!-- /Our Contacts -->
+                <!-- Google Map -->
+                {# deleted #}
+                <!-- /Google Map -->
+            </div>
+        </article>
+    </div>
+{% endblock %}
+<!-- Footer -->
+
+{% include "_partials/footer.html" %}<!-- /Footer -->
+

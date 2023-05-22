@@ -1,0 +1,124 @@
+{% load static %}
+<div class="sc_layouts_column_icons_position_left">
+                    <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+                         data-source="gallery">
+                        <!-- START REVOLUTION SLIDER 5.3.0.2 auto mode -->
+                        <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;"
+                             data-version="5.3.0.2">
+                            <ul>
+                                <!-- SLIDE  -->
+                                {% for carousel in carousels %}
+                                    <li data-index="rs-{{ forloop.counter }}" data-transition="curtain-1"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="default" data-easeout="default" data-masterspeed="default"
+                                        data-thumb="{{ carousel.image_thumbnail.url }}" data-rotate="0"
+                                        data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
+                                        data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="{{ carousel.image.url }}" alt="{{ carousel.title }}"
+                                             title="{{ carousel.title }}" width="1920" height="700"
+                                             data-bgposition="center center" data-bgfit="cover"
+                                             data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 1 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-1"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['170','170','170','140']" data-width="none"
+                                             data-height="none" data-whitespace="nowrap" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":600,"speed":700,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="">
+                                            {{ carousel.pretitle }}
+                                        </div>
+                                        <!-- LAYER NR. 2 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-2"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['235','235','235','200']"
+                                             data-fontsize="['80','80','70','60']"
+                                             data-lineheight="['80','80','80','70']"
+                                             data-width="['none','none','none','450']" data-height="none"
+                                             data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":950,"speed":700,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','center']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.title }}
+                                        </div>
+                                        <!-- LAYER NR. 3 -->
+                                        <div class="tp-caption  tp-resizeme" id="slide-{{ forloop.counter }}-layer-3"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                             data-voffset="['370','370','370','390']"
+                                             data-fontsize="['20','20','20','23']"
+                                             data-lineheight="['27','27','27','36']"
+                                             data-width="['none','none','none','450']" data-height="none"
+                                             data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1300,"speed":700,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.description | safe }}
+                                        </div>
+                                        <!-- LAYER NR. 4 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-5"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-91','-91','-91','-111']"
+                                             data-y="['top','top','top','top']" data-voffset="['477','477','477','586']"
+                                             data-fontsize="['12','12','12','16']" data-width="none" data-height="none"
+                                             data-whitespace="nowrap" data-type="text"
+                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.left_button_url }}","delay":""}]'
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1650,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(71, 214, 232, 1.00);"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[40,40,40,40]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[40,40,40,40]">
+                                            {{ carousel.left_button_text }}
+                                        </div>
+                                        <!-- LAYER NR. 5 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-4"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['73','73','73','93']" data-y="['top','top','top','top']"
+                                             data-voffset="['477','477','477','586']"
+                                             data-fontsize="['12','12','12','16']" data-width="none" data-height="none"
+                                             data-whitespace="nowrap" data-type="text"
+                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"{{ carousel.right_button_url }}","delay":""}]'
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(71, 214, 232, 1.00);bw:0 0 0 0;"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            {{ carousel.right_button_text }}
+                                        </div>
+                                        <!-- LAYER NR. 6 -->
+                                        <div class="tp-caption tp-resizeme" id="slide-{{ forloop.counter }}-layer-7"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['140','140','140','175']" data-y="['top','top','top','top']"
+                                             data-voffset="['495','495','495','605']" data-width="none"
+                                             data-height="none" data-whitespace="nowrap" data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000,"speed":700,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                            <img src="{% static "images/arrow.png" %}"
+                                                 data-ww="['17px','17px','17px','17px']"
+                                                 data-hh="['17px','17px','17px','17px']" width="17" height="17"
+                                                 data-no-retina alt="arrow">
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                                <!-- SLIDE  -->
+                            </ul>
+                            <div class="tp-bannertimer tp-bottom" style=""></div>
+                        </div>
+                    </div>
+                    <!-- END REVOLUTION SLIDER -->
+                </div>

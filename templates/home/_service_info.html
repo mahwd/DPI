@@ -1,0 +1,24 @@
+{% load static %}
+<div class="sc_layouts_column_icons_position_left">
+                    <div class="sc_services sc_services_hover" data-slides-per-view="3" data-slides-min-width="200">
+                        <div class="sc_services_columns sc_item_columns sc_item_columns_3 trx_addons_columns_wrap">{% for info_service in info_services %}<div class="trx_addons_column-1_3 ">
+                                    <div class="sc_services_item with_content with_image">
+                                        <div class="sc_services_item_content"
+                                             style="background-image: url({{ info_service.image.url }})">
+                                            <div class="sc_services_item_content_inner">
+                                                <h3 class="sc_services_item_title">
+                                                    <a href="{{ info_service.url }}">{{ info_service.title }}</a>
+                                                </h3>
+                                                <div class="sc_services_item_text">
+                                                    <p>{{ info_service.description }}</p>
+                                                </div>
+                                                <div class="sc_services_item_link sc_item_button">
+                                                    <a class="sc_button_white sc_button_hover_slide_left"
+                                                       href="{{ info_service.url }}">Daha çox</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>{% endfor %}</div>
+                    </div>
+                </div>

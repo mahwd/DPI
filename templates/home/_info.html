@@ -1,0 +1,32 @@
+{% load static %}
+<div class="copypress-custom-bg-9 scheme_dark"
+                     style="background-image: url({{ info_section.image.url }})">
+                    <div class="content_wrap">
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_0_2em"></div>
+                            </div><div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                <div class=" height_9em"></div>
+                                <div class="sc_title sc_title_default">
+                                    <h6 class="sc_item_subtitle sc_title_subtitle sc_align_default sc_item_title_style_yellow_sub">{{ info_section.pretitle }}</h6>
+                                    <h2 class="sc_item_title sc_title_title sc_align_default sc_item_title_style_yellow_sub">
+                                        {{ info_section.title }}</h2>
+                                    <div class="sc_item_descr sc_title_descr sc_align_default color_white">{{ info_section.description }}</div>
+                                </div>
+                                <div class="empty_space height_2_8em"></div>
+                                <div class="trx_addons_columns_wrap">
+                                    <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                        <ul class="trx_addons_list_success_circled">
+                                            {% for tag in tags %}
+                                                <li><a href="#">{{ tag.title }}</a></li>{% if forloop.counter == 3 %}
+                                                </ul>
+                                                </div>
+                                                <div class="trx_addons_column-1_2 sc_layouts_column_icons_position_left">
+                                                <ul class="trx_addons_list_success_circled">{% endif %}{% endfor %}</ul>
+                                            </div>
+                                </div>
+                                <div class="empty_space height_9_4em"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

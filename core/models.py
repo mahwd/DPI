@@ -1,37 +1,14 @@
 from django.db import models
+import os
 import uuid
 from django.utils.html import mark_safe
-from .custom.custom_tools import get_carousel_image, get_brand_image, get_image_html
-from io import BytesIO
-from PIL import Image, ImageEnhance
-from django.core.files import File
-from imagekit.models import ImageSpecField
+from .custom import fields
+from .custom.custom_tools import get_image_html
 from imagekit.processors import ResizeToFill, SmartResize
-import os
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.template.defaultfilters import slugify
+from .custom.custom_tools import slugify
 from django.urls import reverse
-
-
-def optimise_image(image):
-    # Open the image using PIL
-    pil_image = Image.open(image)
-
-    # Convert the image to RGB mode if it's not already
-    if pil_image.mode != 'RGB':
-        pil_image = pil_image.convert('RGB')
-
-    # Resize the image to a maximum size of 1920x1080
-    pil_image.thumbnail((1920, 1080))
-
-    # Optimize the image and save it to a BytesIO buffer
-    buffer = BytesIO()
-    pil_image.save(buffer, format='JPEG', optimize=True, quality=90)
-    buffer.seek(0)
-
-    # Create a new InMemoryUploadedFile from the buffer and return it
-    image_name = os.path.basename(image.name)
-    return InMemoryUploadedFile(buffer, None, image_name, 'image/jpeg', buffer.getbuffer().nbytes, None)
+from imagekit.models import ImageSpecField
 
 
 class MyModel(models.Model):
@@ -70,7 +47,7 @@ class MenuBaseItems(MyModel):
         child_count = self.menusubitems_set.all().count()
         return True if child_count > 0 else False
 
-    def get_childs(self):
+    def get_children(self):
         return self.menusubitems_set.all()
 
 
@@ -125,7 +102,7 @@ class MenuSubItems(MyModel):
     def has_own_parent(self):
         return True if self.parent_sub_item else False
 
-    def get_childs(self):
+    def get_children(self):
         return MenuSubItems.objects.filter(parent_sub_item=self)
 
     def get_absolute_url(self):
@@ -135,6 +112,7 @@ class MenuSubItems(MyModel):
 class ContactInfo(MyModel):
     email = models.EmailField(max_length=128, verbose_name="Email")
     phone = models.CharField(max_length=255, verbose_name="Phone")
+    address = models.TextField(max_length=300, verbose_name="Ünvan")
 
     class Meta:
         verbose_name = "Əlaqə vasitələri"
@@ -174,9 +152,9 @@ class Carousel(MyModel):
                                      format='JPEG',
                                      options={'quality': 90})
     left_button_text = models.CharField(max_length=50, verbose_name="Soldakı düymə mətni")
-    left_button_url = models.URLField(max_length=128, verbose_name="Soldakı düymə url-i")
+    left_button_url = models.CharField(max_length=128, verbose_name="Soldakı düymə url-i")
     right_button_text = models.CharField(max_length=50, verbose_name="Sağdakı düymə mətni")
-    right_button_url = models.URLField(max_length=128, verbose_name="Sağdakı düymə url-i")
+    right_button_url = models.CharField(max_length=128, verbose_name="Sağdakı düymə url-i")
     sort_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
     class Meta:
@@ -236,16 +214,24 @@ class Brand(MyModel):
     image.allow_tags = True
 
 
-class Tag(MyModel):
+class InfoTag(MyModel):
+    # type_options = [
+    #     ("info", "Info tag"),
+    #     ("skill_diagram", "Skill tag"),
+    #     ("project_tag", "Project tag"),
+    # ]
+    # type = models.CharField(max_length=128, choices=type_options, verbose_name="Teq tipi")
     title = models.CharField(max_length=255, verbose_name="Teq")
-    url = models.URLField(verbose_name="URL")
+    # Info section tag fields
+    url = models.CharField(max_length=255, verbose_name="URL")  # null=True, blank=True,
     sort_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
-    # section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, related_name="tags", verbose_name="Bölmə")
+    # Skill diagram tag fields
+    # percentage = fields.IntegerRangeField(min_value=1, max_value=100, verbose_name="Faiz")
 
     class Meta:
-        verbose_name = "Teq"
-        verbose_name_plural = "Teqlər"
+        verbose_name = "İnfo Teq"
+        verbose_name_plural = "İnfo Teqlər"
         ordering = ['sort_order']
 
     def __str__(self):
@@ -262,6 +248,17 @@ class Tag(MyModel):
         super().save(*args, **kwargs)
 
 
+class Tag(MyModel):
+    title = models.CharField(max_length=255, verbose_name="Teq adı")
+
+    class Meta:
+        verbose_name = "Teq"
+        verbose_name_plural = "Teqlər"
+
+    def __str__(self):
+        return self.title
+
+
 class ServiceIcon(MyModel):
     service_types = [
         ("mini", "Kiçik"),
@@ -269,7 +266,7 @@ class ServiceIcon(MyModel):
     ]
 
     title = models.CharField(max_length=128, verbose_name="Servis adı")
-    url = models.URLField(max_length=255, verbose_name="Servis URL-i")
+    url = models.CharField(max_length=255, verbose_name="Servis URL-i")
     type = models.CharField(max_length=64, choices=service_types, verbose_name="Servis tipi")
     # optional fields
     icon = models.CharField(null=True, blank=True, max_length=128, verbose_name="Servis ikon klası")
@@ -314,6 +311,10 @@ class SectionInfo(MyModel):
         ('info', "Info section"),
         ('testimonials', "Testimonials section"),
         ('projects', "Projects section"),
+        ('team', "Our team section"),
+        ('special_offer', " Offer section"),
+        # ('what-we-can-do', "What we can do section"),
+        # ('faq', "FREQUENTLY ASKED"),
     ]
 
     # required fields
@@ -324,9 +325,9 @@ class SectionInfo(MyModel):
     title = models.CharField(null=True, blank=True, max_length=200, verbose_name='Başlıq')
     description = models.TextField(null=True, blank=True, verbose_name='Açıqlama')
     button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='Düymə mətni')
-    button_url = models.URLField(null=True, blank=True, verbose_name='Düymə url-i')
+    button_url = models.CharField(max_length=255, null=True, blank=True, verbose_name='Düymə url-i')
     secondary_button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='Əlavə düymə mətni')
-    secondary_button_url = models.URLField(null=True, blank=True, verbose_name='Əlavə düymə url-i')
+    secondary_button_url = models.CharField(max_length=255, null=True, blank=True, verbose_name='Əlavə düymə url-i')
     video_source = models.TextField(null=True, blank=True, verbose_name='Video mənbə kodu')
     image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Şəkil')
     image2 = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Əlavə şəkil ')
@@ -353,6 +354,7 @@ class Project(MyModel):
     slug = models.SlugField(unique=True, blank=True, default=uuid.uuid1, max_length=150, verbose_name="Slug")
     content = models.TextField(verbose_name='Mətn')
     category = models.ForeignKey("Category", on_delete=models.CASCADE, related_name="projects")
+    tags = models.ManyToManyField("Tag", related_name="tags", verbose_name="Teqlər")
 
     class Meta:
         verbose_name = "Portfolio"
@@ -365,7 +367,7 @@ class Project(MyModel):
         return reverse("portfolio_detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
-        self.slug = slugify("%s" % self.title)
+        self.slug = slugify(self.title)
         super(Project, self).save(*args, **kwargs)
 
     def get_image(self):
@@ -384,7 +386,7 @@ class Category(MyModel):
         return f"{self.title}"
 
     def save(self, *args, **kwargs):
-        self.slug = slugify("%s" % self.title)
+        self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
 
 
@@ -407,3 +409,69 @@ class ProjectImage(MyModel):
     def get_image(self):
         return get_image_html(self.image.url if self.image else None, self.project.title)
 
+
+# class FAQ(MyModel):
+#     question = models.TextField(max_length=500, verbose_name='Sual')
+#     answer = models.TextField(max_length=500, verbose_name='Cavab')
+#     image = models.ImageField(null=True, blank=True, upload_to="faq_images", verbose_name="Şəkil")
+#     sort_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+#
+#     class Meta:
+#         verbose_name = "FAQ"
+#         verbose_name_plural = "FAQs"
+#         ordering = ['sort_order']
+#
+#     def __str__(self):
+#         return f"{self.title}"
+#
+#     def save(self, *args, **kwargs):
+#         if self.sort_order is None:
+#             try:
+#                 last_item = type(self).objects.filter(sort_order__isnull=False).order_by('-sort_order').first()
+#                 if last_item:
+#                     self.sort_order = last_item.sort_order + 1
+#             except type(self).DoesNotExist:
+#                 pass
+#         super().save(*args, **kwargs)
+#
+#     def get_image(self):
+#         return get_image_html(self.image.url if self.image else None, self.question)
+
+class ServicePlan(MyModel):
+    title = models.CharField(max_length=255, verbose_name='Planın adı')
+    description = models.CharField(max_length=255, verbose_name='Planın açıqlaması')
+    price = models.CharField(max_length=255, verbose_name='Planın qiyməti')
+    currency = models.CharField(max_length=255, verbose_name='Plan qiymətinin valyutası')
+
+    class Meta:
+        verbose_name = "Servis paketi"
+        verbose_name_plural = "Servis paketləri"
+
+    def __str__(self):
+        return self.title
+
+
+class TeamMember(MyModel):
+    fullname = models.CharField(max_length=255, verbose_name='Əməkdaşın ad, soyadı')
+    profession = models.CharField(max_length=255, verbose_name='Əməkdaşın vəzifəsi')
+    image = models.ImageField(upload_to="member_images", verbose_name="Əməkdaşın şəkli")
+    info = models.TextField(max_length=500, verbose_name='Əməkdaşın bio-su')
+    email = models.EmailField(max_length=100, verbose_name='Əməkdaşın elektron poçt ünvanı')
+    slug = models.SlugField(unique=True, default=uuid.uuid4, max_length=150, verbose_name="Slug")
+
+    class Meta:
+        verbose_name = "Əməkdaş"
+        verbose_name_plural = "Əməkdaşlar"
+
+    def __str__(self):
+        return self.fullname
+
+    def get_image(self):
+        return get_image_html(self.image.url if self.image else None, self.fullname)
+
+    def get_absolute_url(self):
+        return reverse("team_detail", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.fullname)
+        super(TeamMember, self).save(*args, **kwargs)

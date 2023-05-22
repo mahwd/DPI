@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='yaradılma tarixi')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='dəyişdirilmə tarixi')),
                 ('title', models.CharField(max_length=128, verbose_name='Ad')),
-                ('image', models.ImageField(upload_to=core.custom.custom_tools.get_brand_image, verbose_name='Brend şəkli')),
+                ('image', models.ImageField(upload_to="/brand_images/", verbose_name='Brend şəkli')),
             ],
             options={
                 'verbose_name': 'Brend',

@@ -1,0 +1,8 @@
+<ul class="sub-menu">
+    {% for child in menu.get_children %}
+        <li class="menu-item">
+            <a href="{{ child.url }}"> <span>{{ child.title }}</span> </a>
+            {% if menu.has_own_child %}{% include "_partials/sub_menu.html" with menu=child %}{% endif %}
+        </li>
+    {% endfor %}
+</ul>

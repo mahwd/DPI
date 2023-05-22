@@ -18,8 +18,10 @@
     <!-- Page wrap -->
     <div class="page_wrap">
 
-        <!-- Header -->{% include "_partials/header.html" %}
-        <!-- /Header -->
+        {% block header %}
+            <!-- Header -->{% include "_partials/header.html" %}
+            <!-- /Header -->
+        {% endblock %}
 
         <!-- Menu mobile -->{% include "_partials/mobile_menu.html" %}
         <!-- /Menu mobile -->
@@ -32,14 +34,17 @@
     </div>
 </div>
 
-<!-- Footer -->{% include "_partials/footer.html" %}
-<!-- /Footer -->
-
-<!-- Scripts -->
-{% block scripts %}
-    {% include "_partials/scripts.html" %}
+{% block footer %}
+    <!-- Footer -->
+    {% include "_partials/footer.html" %}
+    <!-- /Footer -->
 {% endblock %}
-<!-- Scripts -->
+
+{% block scripts %}
+    <!-- Scripts -->
+    {% include "_partials/scripts.html" %}
+    <!-- Scripts -->
+{% endblock %}
 
 <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
 

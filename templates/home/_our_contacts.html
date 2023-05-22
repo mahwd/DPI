@@ -1,0 +1,67 @@
+{% load static %}
+<div class="copypress-custom-bg-2">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div id="sc_form_3" class="sc_form sc_form_detailed simple sc_align_default">
+                            <div class="trx_addons_columns_wrap">
+                                <div class="trx_addons_column-1_2">
+                                    <div class="sc_form_info">
+                                        <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
+                                            Our Contacts</h2>
+                                        <div class="sc_form_info_item sc_form_info_item_address">
+                                            <span class="sc_form_info_icon"></span> <span class="sc_form_info_area">
+                                                <span class="sc_form_info_title">Ünvan</span>
+                                                <span class="sc_form_info_data">
+                                                    <span>{{ contact_info.address }}</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="sc_form_info_item sc_form_info_item_phone">
+                                            <span class="sc_form_info_icon"></span> <span class="sc_form_info_area">
+                                                <span class="sc_form_info_title">Telefon</span>
+                                                <span class="sc_form_info_data">
+                                                    <span>{{ contact_info.phone }}</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="sc_form_info_item sc_form_info_item_email">
+                                            <span class="sc_form_info_icon"></span>
+                                            <span class="sc_form_info_area">
+                                                <span class="sc_form_info_title">Elektron poçt ünvanı</span>
+                                                <span class="sc_form_info_data">
+                                                    <a href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><div class="trx_addons_column-1_2">
+                                    <form class="sc_form_form " method="post" action="include/sendmail.php">
+                                        <h2 class="sc_item_title sc_form_title sc_align_default sc_item_title_style_default">
+                                            Təklif tələb edin</h2>
+                                        <label class="sc_form_field sc_form_field_name required">
+                                                            <span class="sc_form_field_wrap">
+                                                                <input type="text" id="name" value=""
+                                                                       aria-required="true" placeholder="Adınız">
+                                                            </span> </label> <label
+                                            class="sc_form_field sc_form_field_email required">
+                                                            <span class="sc_form_field_wrap">
+                                                                <input type="text" name="email" id="email" value=""
+                                                                       aria-required="true" placeholder="Elektron poçt ünavnınız">
+                                                            </span> </label> <label
+                                            class="sc_form_field sc_form_field_message required">
+                                                            <span class="sc_form_field_wrap">
+                                                                <textarea name="message" id="message"
+                                                                          aria-required="true"
+                                                                          placeholder="Müraciətinizi daxil edin"></textarea>
+                                                            </span> </label>
+                                        <div class="sc_form_field sc_form_field_button">
+                                            <button class="sc_button_dark">Göndər</button>
+                                        </div>
+                                        <div class="trx_addons_message_box sc_form_result"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_9_4em"></div>
+                    </div>
+                </div>

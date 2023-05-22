@@ -1,0 +1,19 @@
+{% load static %}
+<div class="copypress-custom-bg-6">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_4em"></div>
+                        <div class="brands">
+                            <div class="gallery gallery-columns-{{ brands|length }} gallery-size-full">
+                                {% for brand in brands %}
+                                    <figure class="gallery-item">
+                                        <div class="gallery-icon landscape">
+                                            <a href="{{ brand.url }}"> <img src="{{ brand.image.url }}"
+                                                                            alt="{{ brand.title }}"/> </a>
+                                        </div>
+                                    </figure>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="empty_space height_4em"></div>
+                    </div>
+                </div>

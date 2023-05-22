@@ -868,6 +868,10 @@ figure.alignright {
 .gallery {
     margin: 0 -5px;
     font-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .bypostauthor {
@@ -1414,7 +1418,7 @@ figure.alignright {
 
 /* Content and Sidebar */
 body:not(.expand_content):not(.body_style_fullwide):not(.body_style_fullscreen) .content {
-    width: 740px;
+    width: 100%;
 }
 
 .sidebar {
@@ -5250,16 +5254,19 @@ iframe[name="google_conversion_frame"] {
 }
 
 .brands a img {
-    opacity: 0.3;
+    opacity: 1;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    filter: grayscale(100%);
 }
 
 .brands a:hover img {
-    opacity: 1;
+    filter: grayscale(0%);
 }
 
 .body_style_boxed .sc_team_item_title,
@@ -5505,9 +5512,7 @@ body.custom-background {
 }
 
 .breadcrumbs_container {
-    background: #f7f7f7 url(http://placehold.it/1920x345.jpg) !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background: #f7f7f7 url(/static/images/bg_cta.jpg) no-repeat center !important;
     background-size: cover !important;
 }
 
@@ -5639,31 +5644,31 @@ body.custom-background {
 }
 
 .copypress-custom-bg-1 {
-    background-image: url(http://placehold.it/1920x1192.jpg);
+    background-image: url(/static/images/projects_bg.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-2 {
-    background-image: url(http://placehold.it/1920x877.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-3 {
-    background-image: url(/static/images/full_services_copy.png);
+    background-image: url(/static/images/full_services.png);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-4 {
-    background-image: url(http://placehold.it/1920x580.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-5 {
-    background-image: url(http://placehold.it/1920x604.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
@@ -5679,43 +5684,43 @@ body.custom-background {
 }
 
 .copypress-custom-bg-8 {
-    background-image: url(http://placehold.it/1920x748);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-9 {
-    background-image: url(http://placehold.it/1920x727.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-10 {
-    background-image: url(http://placehold.it/1920x806.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-11 {
-    background-image: url(http://placehold.it/1920x929.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-12 {
-    background-image: url(http://placehold.it/1920x620.jpg);
+    background-image: url(/static/images/bg_services.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-13 {
-    background-image: url(http://placehold.it/1920x818.jpg);
+    background-image: url(/static/images/bg_pricing.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .copypress-custom-bg-14 {
-    background-image: url(http://placehold.it/1920x580.jpg);
+    background-image: url(/static/images/bg_updates.jpg);
     background-position: center center;
     background-size: cover;
 }

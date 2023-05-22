@@ -1,0 +1,73 @@
+{% load static %}
+<div class="copypress-custom-bg-1" style="background-image: url(/static/images/projects_bg.jpg)">
+                    <div class="sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_large">{{ projects_section.pretitle }}</h6>
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">{{ projects_section.title }}</h2>
+                        </div>
+                        <div class="empty_space height_3em"></div>
+                        <!-- THE ESSENTIAL GRID 2.1.0.2 -->
+                        <article class="myportfolio-container minimal-light" id="esg-grid-1-1-wrap">
+                            <div id="esg-grid-1-1" class="esg-grid">
+                                <article class="esg-filters esg-singlefilters text_align_center margin_bottom_60">
+                                    <!-- THE FILTER BUTTONS -->
+                                    <div class="esg-filter-wrapper esg-fgc-1">
+                                        <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall"
+                                             data-fid="-1">
+                                            <span>Filter - All</span>
+                                        </div>
+                                        {% for category in categories %}
+                                            <div class="esg-filterbutton" data-fid="{{ forloop.counter }}"
+                                                 data-filter="{{ category.slug }}">
+                                                <span>{{ category.slug }}</span> <span class="esg-filter-checked"><i
+                                                    class="eg-icon-ok-1"></i></span>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="eg-clearfix"></div>
+                                    </div>
+                                </article>
+                                <div class="esg-clear-no-height"></div>
+                                <ul>
+
+                                    {% for project in projects %}
+                                        <!-- Grid Item -->
+                                        <li class="filterall {{ project.category.slug }} filter-business-cards filter-posters eg-washington-copypress-wrapper">
+                                            <div class="esg-media-cover-wrapper">
+                                                <div class="esg-entry-media">
+                                                    <img src="{{ project.images.first.image.url }}"
+                                                         alt="{{ project.title }}">
+                                                </div>
+                                                <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                    <div class="esg-overlay esg-slideright eg-washington-copypress-container"
+                                                         data-delay="0"></div>
+                                                    <div class="esg-absolute eg-washington-copypress-element-1-a esg-fade"
+                                                         data-delay="0.4">
+                                                        <a class="eg-washington-copypress-element-1"
+                                                           href="{{ project.get_absolute_url }}" target="_self"> <i
+                                                                class="eg-icon-right-open-1"></i> </a>
+                                                    </div>
+                                                    <div class="esg-center eg-washington-copypress-element-8 esg-none esg-clear"></div>
+                                                    <div class="esg-center eg-washington-copypress-element-9 esg-none esg-clear"></div>
+                                                    <div class="esg-bottom eg-washington-copypress-element-3 esg-slideright"
+                                                         data-delay="0.3">{{ project.title }}</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- /Grid Item -->
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </article>
+                        <div class="clear"></div>
+                        <div class="empty_space height_4em"></div>
+                        <div class="sc_item_button sc_button_wrap sc_align_center">
+                            <a href="{% url "portfolio" %}"
+                               class="sc_button sc_button_pink sc_button_size_normal sc_button_icon_left">
+                                                <span class="sc_button_text">
+                                                    <span class="sc_button_title">view all projects</span>
+                                                </span> </a>
+                        </div>
+                        <div class="empty_space height_9_4em"></div>
+                    </div>
+                </div>

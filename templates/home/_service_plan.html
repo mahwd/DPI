@@ -1,0 +1,31 @@
+{% load static %}
+<div class="copypress-custom-bg-13">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_large">
+                                Xidmət paketləri</h2>
+                        </div>
+                        <div class="empty_space height_3em"></div>
+                        <div class="trx_addons_columns_wrap">{% for plan in service_plans %}<div class="trx_addons_column-1_3 sc_layouts_column_icons_position_left">
+                                <div class="sc_price sc_price_default">
+                                    <div class="sc_price_info">
+                                        <div class="sc_price_header">
+                                            <div class="sc_price_price">
+                                                <span class="sc_price_currency">{{ plan.currency }}</span><span
+                                                    class="sc_price_value">{{ plan.price }}</span>
+                                            </div>
+                                            <div class="sc_price_description">{{ plan.title }}</div>
+                                        </div>
+                                        <div class="sc_price_content">
+                                            <div class="sc_price_details">{{ plan.description }}
+                                            </div>
+                                            <a href="#" class="sc_price_link sc_button_dark">Indi al</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="empty_space height_2em"></div>
+                            </div>{% endfor %}</div>
+                        <div class="empty_space height_7_9em"></div>
+                    </div>
+                </div>

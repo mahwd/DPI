@@ -1,0 +1,18 @@
+{% load static %}
+<div class="copypress-custom-bg-14 scheme_dark"
+                     style="background-image: url({{ special_offer_section.image.url }})">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_7_9em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_blue_sub">
+                                {{ special_offer_section.pretitle | safe }}</h6>
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_blue_sub">
+                                {{ special_offer_section.title | safe }}</h2>
+                        </div>
+                        <div class="empty_space height_1_2em"></div>
+                        <h2 class="text_align_center">
+                            <span class="copypress-special-offer-txt">{{ special_offer_section.description | safe }}</span>
+                        </h2>
+                        <div class="empty_space height_6em"></div>
+                    </div>
+                </div>

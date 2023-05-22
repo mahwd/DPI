@@ -1,0 +1,72 @@
+{% extends "base.html" %}{% load static %}
+{% block title %} Projects {% endblock %}
+{% block body_class %}scheme_default blog_mode_blog body_style_wide sidebar_hide expand_content header_style_header-custom-18 header_position_default menu_style_top no_layout{% endblock %}
+{% block header %}
+    {% include "_partials/header.html" with breadcrumps=breadcrumps title="Komandamız" %}
+{% endblock %}
+
+{% block content %}
+     <div class="content">
+        <article class="post_item_single">
+            <div class="post_content">
+                <!-- Team -->
+                <div class="copypress-custom-bg-1">
+                    <div class="sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_8_6em"></div>
+                        <div class="sc_team sc_team_featured" data-slides-per-view="4" data-slides-min-width="150">
+                            <h6 class="sc_item_subtitle sc_team_subtitle sc_align_center sc_item_title_style_default">{{ ourteam_section.pretitle }}</h6>
+                            <h2 class="sc_item_title sc_team_title sc_align_center sc_item_title_style_default">{{ ourteam_section.title }}</h2>
+                            <div class="sc_team_columns sc_item_columns trx_addons_columns_wrap">
+                                {% for teammember in teammember_list %}<div class="trx_addons_column-1_4">
+                                    <div class="sc_team_item">
+                                        <div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_info">
+                                            <a href="{{ teammember.get_absolute_url }}" aria-hidden="true">
+                                                <img src="{{ teammember.image.url }}" alt="{{ teammember.fullname }}" />
+                                            </a>
+                                            <div class="trx_addons_hover_content">
+                                                <h3 class="sc_team_item_title trx_addons_hover_title">
+                                                    <a href="{{ teammember.get_absolute_url }}">{{ teammember.fullname }}</a>
+                                                </h3>
+                                                <div class="sc_team_item_subtitle trx_addons_hover_title">
+                                                    <a href="{{ teammember.get_absolute_url }}">{{ teammember.profession }}</a></div>
+                                                <a class="trx_addons_hover_link sc_team_item_link icon-right" href="{{ teammember.get_absolute_url }}"></a>
+                                            </div>
+                                            <div class="trx_addons_hover_mask"></div>
+                                        </div>
+                                    </div>
+                                </div>{% endfor %}
+                            </div>
+                        </div>
+                        <div class="empty_space height_8_9em"></div>
+                    </div>
+                </div>
+                <!-- /Team -->
+                <!-- Brands -->
+                {% include "home/_brands.html" %}
+                <!-- /Brands -->
+            </div>
+        </article>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "js/jquery/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery/jquery-migrate.min.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/_main.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/vendor/essential-grid/js/lightbox.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "js/vendor/essential-grid/js/jquery.themepunch.tools.min.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "js/vendor/essential-grid/js/jquery.themepunch.essential.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/eg-gallery-cobbles.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/vendor/swiper/swiper.jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/vendor/magnific/jquery.magnific-popup.min.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/trx_addons.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/superfish.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+{% endblock %}

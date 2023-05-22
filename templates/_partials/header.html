@@ -1,5 +1,4 @@
-{% load static %}
-<!-- Header -->
+{% load static %}<!-- Header -->
 <header class="top_panel top_panel_custom top_panel_custom_18 without_bg_image scheme_default light-color">
     <!-- Top panel -->
     <div class="top_panel_container sc_layouts_row sc_layouts_row_type_compact sc_layouts_row_delimiter sc_layouts_row_fixed">
@@ -8,9 +7,9 @@
             <div class="sc_content sc_content_default sc_float_left sc_align_left">
                 <div class="sc_content_container">
                     <div class="sc_layouts_item">
-                        <a href="/" class="sc_layouts_logo sc_layouts_logo_default">
-                            <img class="logo_image" src="{% static "images/dpi_logo.png" %}" alt="logo">
-                        </a>
+                        <a href="/" class="sc_layouts_logo sc_layouts_logo_default"> <img class="logo_image"
+                                                                                          src="{% static "images/dpi_logo.png" %}"
+                                                                                          alt="logo"> </a>
                     </div>
                 </div>
             </div>
@@ -23,19 +22,16 @@
                         {% for menu in header_menu %}
                             <!-- Menu item : {{ menu.title }} -->
                             <li class="menu-item current-menu-ancestor current-menu-parent {% if menu.contain_dropdown %}menu-item-has-children{% endif %}">
-                                <a href="{{ menu.url }}">
-                                    <span>{{ menu.title }}</span>
-                                </a>
+                                <a href="{{ menu.url }}"> <span>{{ menu.title }}</span> </a>
                                 {% if menu.contain_dropdown %}
-                                    <ul class="sub-menu">
-                                        {% for child in menu.get_childs %}
-                                            <li class="menu-item {# current-menu-item #}">
-                                                <a href="{{ child.url }}">
-                                                    <span>{{ child.title }}</span>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
+                                    {% include "_partials/sub_menu.html" with menu=menu %}
+                                    {#                                    <ul class="sub-menu">#}
+                                    {#                                        {% for child in menu.get_childs %}#}
+                                    {#                                            <li class="menu-item { current-menu-item }">#}
+                                    {#                                                <a href="{{ child.url }}"> <span>{{ child.title }}</span> </a>#}
+                                    {#                                            </li>#}
+                                    {#                                        {% endfor %}#}
+                                    {#                                    </ul>#}
                                 {% endif %}
                             </li>
                             <!-- /Menu item : {{ menu.title }} -->
@@ -43,8 +39,8 @@
                     </ul>
                 </nav>
                 <div class="sc_layouts_iconed_text sc_layouts_menu_mobile_button">
-                    <a class="sc_layouts_item_link sc_layouts_iconed_text_link" href="#">
-                        <span class="sc_layouts_item_icon sc_layouts_iconed_text_icon trx_addons_icon-menu">Menu</span>
+                    <a class="sc_layouts_item_link sc_layouts_iconed_text_link" href="#"> <span
+                            class="sc_layouts_item_icon sc_layouts_iconed_text_icon trx_addons_icon-menu">Menu</span>
                     </a>
                 </div>
             </div>
@@ -53,19 +49,18 @@
             <div class="sc_layouts_item contacts">
                 <div class="sc_layouts_iconed_text">
                     <a href="mailto:{{ contact_info.email }}" class="sc_layouts_item_link sc_layouts_iconed_text_link">
-                        <span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-mail-empty"></span>
-                        <span class="sc_layouts_item_details sc_layouts_iconed_text_details">
+                        <span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-mail-empty"></span> <span
+                            class="sc_layouts_item_details sc_layouts_iconed_text_details">
                             <span class="sc_layouts_item_details_line2 sc_layouts_iconed_text_line2">{{ contact_info.email }}</span>
-                        </span>
-                    </a>
+                        </span> </a>
                 </div>
             </div>
             <!-- /E-mail -->
             <!-- Contact phone -->
             <div class="sc_layouts_item contacts">
                 <div class="sc_layouts_iconed_text">
-                    <span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-phone-2"></span>
-                    <span class="sc_layouts_item_details sc_layouts_iconed_text_details">
+                    <span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-phone-2"></span> <span
+                        class="sc_layouts_item_details sc_layouts_iconed_text_details">
                         <span class="sc_layouts_item_details_line2 sc_layouts_iconed_text_line2">{{ contact_info.phone }}</span>
                     </span>
                 </div>
@@ -89,5 +84,38 @@
         </div>
     </div>
     <!-- /Top panel -->
-</header>
-<!-- /Header -->
+
+    {% block breadcrumps %}
+        <!-- Breadcrumbs -->
+        {% if breadcrumps %}
+            <div class="breadcrumbs_container sc_layouts_row sc_layouts_row_type_normal sc_layouts_hide_on_frontpage scheme_dark">
+                <div class="sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left">
+                    <div class="sc_content sc_content_default">
+                        <div class="sc_content_container">
+                            <div class="sc_layouts_item">
+                                <div class="sc_layouts_title">
+                                    <div class="sc_layouts_title_title">
+                                        <h2 class="sc_layouts_title_caption">{{ title }}</h2>
+                                    </div>
+                                    <div class="sc_layouts_title_breadcrumbs">
+                                        <div class="breadcrumbs">
+                                            {% for breadcrump in breadcrumps %}
+                                                <a class="breadcrumbs_item home"
+                                                   href="{{ breadcrump.url }}">{{ breadcrump.text }}</a>
+                                                {% if not forloop.last %}
+                                                    <span class="breadcrumbs_delimiter"></span>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <!-- /Breadcrumbs -->
+    {% endblock %}
+</header><!-- /Header -->

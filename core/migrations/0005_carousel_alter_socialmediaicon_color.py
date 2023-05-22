@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('pretitle', models.CharField(max_length=128, verbose_name='Ön başlıq')),
                 ('title', models.CharField(max_length=128, verbose_name='Başlıq')),
                 ('description', models.CharField(max_length=128, verbose_name='Açıqlama')),
-                ('image', models.ImageField(upload_to=core.custom.custom_tools.get_carousel_image, verbose_name='Karusel şəkli')),
+                ('image', models.ImageField(upload_to="carousel_images/", verbose_name='Karusel şəkli')),
                 ('left_button_text', models.CharField(max_length=128, verbose_name='Soldakı düymə mətni')),
                 ('right_button_text', models.CharField(max_length=128, verbose_name='Sağdakı düymə mətni')),
             ],

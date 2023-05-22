@@ -1,14 +1,21 @@
 from django.contrib import admin
 from .models import MenuSubItems, MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, \
-    ServiceIcon, Tag, MiniSwipe, Project, ProjectImage, Category
+    ServiceIcon, InfoTag, Tag, MiniSwipe, Project, ProjectImage, Category, TeamMember, ServicePlan
 from adminsortable2.admin import SortableAdminMixin
 
+admin.site.register(MenuBaseItems)
+admin.site.register(MenuSubItems)
+admin.site.register(ContactInfo)
+admin.site.register(Tag)
 
+
+@admin.register(SocialMediaIcon)
 class SocialMediaIconAdmin(admin.ModelAdmin):
     fields = ("url", "icon", "color",)
     list_display = ("icon", "url", "color")
 
 
+@admin.register(Carousel)
 class CarouselAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('get_image', 'title', 'sort_order')
     list_editable = ('title',)
@@ -24,11 +31,13 @@ class CarouselAdmin(SortableAdminMixin, admin.ModelAdmin):
     readonly_fields = ('sort_order',)
 
 
+@admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
     fields = ("title", "image", "url",)
     list_display = ("get_image", "title", "url",)
 
 
+@admin.register(SectionInfo)
 class SectionInfoAdmin(admin.ModelAdmin):
     fields = (
         "section", "pretitle", "title", "description", "button_text", "button_url", "secondary_button_text",
@@ -38,58 +47,65 @@ class SectionInfoAdmin(admin.ModelAdmin):
     list_filter = ('section',)
 
 
-class VideoSectionAdmin(admin.ModelAdmin):
-    fields = ("pretitle", "title", "video_source", "image",)
-    list_display = ("get_image", "title", "pretitle",)
-    search_fields = ('title', 'pretitle',)
-    list_editable = ('pretitle', 'title',)
-
-
+@admin.register(ServiceIcon)
 class ServiceIconAdmin(admin.ModelAdmin):
     fields = ("title", "url", "type", "icon", "image", "description")
     list_display = ("get_image", "title", "type",)
     list_filter = ("title", "type",)
 
 
-class TagAdmin(SortableAdminMixin, admin.ModelAdmin):
+@admin.register(InfoTag)
+class InfoTagAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ("title", "url", "active", "sort_order",)
     fields = ("title", "url", "active", 'sort_order',)
     list_filter = ('title', 'sort_order',)
     # readonly_fields = ('sort_order',)
 
 
+@admin.register(MiniSwipe)
 class SwiperAdmin(admin.ModelAdmin):
     fields = ("idiom", "author", "author_profession", "author_image", "active",)
     list_display = ("get_image", "idiom", "author", "author_profession", "active",)
 
 
+@admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("get_image", "title", "slug", "content", "category",)
-    fields = ("title", "content", 'category',)
-    list_filter = ('title', 'content', 'category',)
+    list_display_links = ("get_image", "title", "slug", "category",)
+    list_display = ("get_image", "title", "slug", "category",)
+    fields = ("title", "content", 'category', 'tags')
+    list_filter = ('category', 'tags')
 
-    class ProjectImageAdmin(admin.TabularInline):
+    class ProjectImageInline(admin.TabularInline):
         model = ProjectImage
         extra = 1
 
-    inlines = [ProjectImageAdmin]
+    inlines = [ProjectImageInline]
 
 
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ("get_image", "fullname", "profession", "info", "email",)
+    fields = ("fullname", "profession", "image", "info", "email",)
+    list_filter = ('profession',)
+
+
+@admin.register(ServicePlan)
+class ServicePlanAdmin(admin.ModelAdmin):
+    list_display = ("title", "description", "price", "currency", "active")
+    fields = ("title", "description", "price", "currency", "active")
+    list_filter = ('title',)
+
+
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("title", "slug",)
     fields = ("title",)
     list_filter = ('title', 'slug',)
 
 
-admin.site.register(MenuBaseItems)
-admin.site.register(MenuSubItems)
-admin.site.register(ContactInfo)
-admin.site.register(SocialMediaIcon, SocialMediaIconAdmin)
-admin.site.register(Carousel, CarouselAdmin)
-admin.site.register(Brand, BrandAdmin)
-admin.site.register(SectionInfo, SectionInfoAdmin)
-admin.site.register(ServiceIcon, ServiceIconAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(MiniSwipe, SwiperAdmin)
-admin.site.register(Project, ProjectAdmin)
-admin.site.register(Category, CategoryAdmin)
+# class FaqAdmin(admin.ModelAdmin):
+#     list_display = ("get_image", "question", "sort_order",)
+#     fields = ("question", "answer", "image",)
+#     list_filter = ('sort_order',)
+
+# admin.site.register(FAQ, FaqAdmin)

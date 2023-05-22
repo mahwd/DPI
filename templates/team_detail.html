@@ -1,0 +1,117 @@
+{% extends "base.html" %}{% load static %}
+
+{% block title %}{{ project.title }}{% endblock %}
+{% block body_class %}single single-format-standard scheme_default blog_mode_post body_style_wide sidebar_show sidebar_right header_style_header-custom-18 header_position_default menu_style_top no_layout{% endblock %}
+
+{% block header %}
+    {% include "_partials/header.html" with breadcrumps=breadcrumps title=teammember.fullname %}
+{% endblock %}
+
+{% block content %}
+    <div class="page_content_wrap scheme_default">
+        <!-- Content -->
+        <div class="content">
+            <article class="team_member_page">
+            <section class="team_member_header">
+                <div class="content_wrap">
+                    <div class="team_member_featured">
+                        <div class="team_member_avatar">
+                            <img src="{{ teammember.image.url }}" alt="{{ teammember.fullname }}" />
+                        </div>
+                    </div>
+                    <div class="team_member_description">
+                        <h2 class="team_member_title">{{ teammember.fullname }}</h2>
+                        <h6 class="team_member_position">{{ teammember.profession }}</h6>
+                        <div class="team_member_details">
+                            <div class="team_member_details_email">
+                                <span class="team_member_details_label">E-mail: </span>
+                                <span class="team_member_details_value">{{ teammember.email }}</span>
+                            </div>
+                        </div>
+                        <div class="team_member_brief_info">
+                            <h5 class="team_member_brief_info_title">Brief info</h5>
+                            <div class="team_member_brief_info_text">
+                                <p>{{ teammember.info }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="team_member_content">
+                <div class="empty_space height_7_4rem"></div>
+                <!-- Testimonials -->
+                {% include "home/_testimonials.html" with background_image="copypress-custom-bg-1" %}
+                <!-- /Testimonials -->
+                <!-- Contact Form -->
+                <div class="content_wrap">
+                    <div class="sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_7_4rem"></div>
+                        <div class="sc_content sc_content_default sc_content_width_3_4">
+                            <div class="sc_content_container">
+                                <div id="sc_form_4" class="sc_form sc_form_default sc_align_center">
+                                    <h2 class="sc_item_title sc_form_title sc_align_center sc_item_title_style_default">{{ teammember.fullname }} ilə Əlaqə</h2>
+                                    <form class="sc_form_form " method="post" action="_partials/sendmail.php">
+                                        <div class="sc_form_details trx_addons_columns_wrap">
+                                            <div class="trx_addons_column-1_2">
+                                                <label class="sc_form_field sc_form_field_name required">
+                                                    <span class="sc_form_field_wrap">
+                                                        <input type="text" name="name" id="name" value="" aria-required="true" placeholder="Adınız">
+                                                    </span>
+                                                </label>
+                                            </div><div class="trx_addons_column-1_2">
+                                                <label class="sc_form_field sc_form_field_email required">
+                                                    <span class="sc_form_field_wrap">
+                                                        <input type="text" name="email" id="email" value="" aria-required="true" placeholder="Elektron Poçt Ünvanınız">
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <label class="sc_form_field sc_form_field_message required">
+                                            <span class="sc_form_field_wrap">
+                                                <textarea name="message" id="message" aria-required="true" placeholder="Mesajınız"></textarea>
+                                            </span>
+                                        </label>
+                                        <div class="sc_form_field sc_form_field_button">
+                                            <button>Göndər</button>
+                                        </div>
+                                        <div class="trx_addons_message_box sc_form_result"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Contact Form -->
+            </section>
+        </article>
+        </div>
+        <!-- /Content -->
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "_partials/footer.html" %}
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "js/jquery/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery/jquery-migrate.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery/ui/core.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery/ui/widget.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery/ui/accordion.min.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/_main.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/vendor/swiper/swiper.jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/vendor/magnific/jquery.magnific-popup.min.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/trx_addons.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/superfish.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/vendor/mediaelement/mediaelement-and-player.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/chart.min.js" %}"></script>
+
+{% endblock %}
