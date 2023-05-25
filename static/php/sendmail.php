@@ -1,18 +1,20 @@
 <?php 
 global $_REQUEST;
 $response = array('error'=>'');
-$contact_email = 'your_mail@mail.com';
+$contact_email = 'hasan.tagiyeff@gmail.com';
+echo $user_name
 
 // type
-$type = $_REQUEST['type'];	
+$type = $_REQUEST['type'];
 // parse
-parse_str($_POST['data'], $post_data);	
-		
+parse_str($_POST['data'], $post_data);
+
 
 		$user_name = stripslashes(strip_tags(trim($post_data['username'])));
 		$user_email = stripslashes(strip_tags(trim($post_data['email'])));
 		$user_msg =stripslashes(strip_tags(trim( $post_data['message'])));
-			
+
+
 		if (trim($contact_email)!='') {
 			$subj = 'Message from CopyPress';
 			$msg = $subj." \r\nName: $user_name \r\nE-mail: $user_email \r\nMessage: $user_msg";

@@ -5767,3 +5767,33 @@ body.custom-background {
     max-height: 370px;
 
 }
+
+.toast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 100px;
+    padding: 10px 20px;
+    background-color: #11b311;
+    width: 250px;
+    z-index: 1111;
+    box-shadow: 5px 8px 23px -8px;
+    border-radius: 4px;
+}
+
+.toast p {
+    margin: 0;
+    color: #fff;
+}
+.toast span {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.toast span:hover {
+    transform: scale(1.1);
+}

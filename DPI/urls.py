@@ -23,6 +23,7 @@ from DPI import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("core.urls")),
+    path('', include("mail.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

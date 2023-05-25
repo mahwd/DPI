@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View, TemplateView, ListView, DetailView
+from mail.forms import MailForm
 from .models import MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, ServiceIcon, InfoTag, \
     MiniSwipe, Category, Project, ServicePlan, TeamMember
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.http import JsonResponse
+from django.core import serializers
 
 
 class BaseContext(View):
@@ -101,12 +105,29 @@ class TeamDetailView(BaseContext, DetailView):
     template_name = 'team_detail.html'
     model = TeamMember
 
+    @csrf_exempt
     def get_context_data(self, **kwargs):
         context = super(TeamDetailView, self).get_context_data(**kwargs)
-        member = kwargs.get('object')
+        context['form'] = MailForm()
+        member = self.get_object()
         context["breadcrumps"] = [
             {"text": "Ana səhifə", "url": "/"},
             {"text": "Bütün komanda üzvləri", "url": "/team/"},
             {"text": member.fullname, "url": ""}
         ]
         return context
+
+    @csrf_exempt
+    def post(self, request, *args, **kwargs):
+        form = MailForm(request.POST)
+        self.object = self.get_object()
+        context = self.get_context_data(**kwargs)
+        if form.is_valid():
+            instance = form.save()
+            mail_json = serializers.serialize('json', [instance, ])
+            context["mailJson"] = mail_json
+            print(mail_json)
+            return self.render_to_response(context=context, status=200)
+        else:
+            # some form errors occured.
+            return self.render_to_response(context=context, status=400)

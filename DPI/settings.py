@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'adminsortable2',
     'core',
     'menu_part',
+    'mail'
 ]
 
 MIDDLEWARE = [
