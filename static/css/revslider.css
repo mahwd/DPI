@@ -20,7 +20,7 @@
     line-height: 80px;
     font-weight: 600;
     color: rgba(255, 255, 255, 1.00);
-    font-family:"Gilroy";
+    font-family: 'Nunito', sans-serif;
 }
 #slide-1-layer-3{
     z-index: 7;

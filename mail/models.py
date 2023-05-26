@@ -24,8 +24,8 @@ class Mail(MyModel):
                 if is_sent == 1:
                     self.email_sent = True
                 super(Mail, self).save(*args, **kwargs)
-            except Exception:
-                print(Exception)
+            except Exception as e:
+                print(e)
         else:
             super(Mail, self).save(*args, **kwargs)
 

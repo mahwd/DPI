@@ -60,7 +60,7 @@
                                     <div id="sc_form_4" class="sc_form sc_form_default sc_align_center">
                                         <h2 class="sc_item_title sc_form_title sc_align_center sc_item_title_style_default margin_bottom_60">{{ teammember.fullname }} ilə Əlaqə</h2>
                                         <form method="POST">
-                                            {% csrf_token %} <input type="hidden" name="email_to" value="{{ teammember.email }}" />
+                                            {% csrf_token %}
                                             {{ form.as_p }} <input type="submit" value="Göndər">
                                         </form>
                                     </div>
@@ -93,18 +93,20 @@
 
 
         const form = document.getElementById('mailform');
-        form.onsubmit = async (e) => {
-            e.preventDefault()
-            const formData = new FormData(e.target)
-            console.log(formData.name)
-            let response = await fetch('/sendmail/', {
-                method: 'POST',
-                body: formData
-            });
+        const email_to = document.getElementById('email_to');
+        email_to.setAttribute("value", "{{ teammember.email }}")
 
-            let result = await response.json();
-
-            alert(result.message);
-        }
+        {#form.onsubmit = async (e) => {#}
+        {#    e.preventDefault()#}
+        {#    const formData = new FormData(e.target)#}
+        {#    console.log(formData.name)#}
+        {#    let response = await fetch('/sendmail/', {#}
+        {#        method: 'POST',#}
+        {#        body: formData#}
+        {#    });#}
+        {##}
+        {#    let result = await response.json();#}
+        {##}
+        {#    alert(result.message); } #}
     </script>
 {% endblock %}

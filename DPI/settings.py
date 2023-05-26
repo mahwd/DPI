@@ -27,6 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Email settings -------------------------------------------------------------------------
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "lazure.net@gmail.com"
+EMAIL_HOST_PASSWORD = "okonoitfaxjvjtsk"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_RECIPIENT = "hasan.tagiyeff@gmail.com"
+SERVER_EMAIL = EMAIL_HOST_USER
+ADMINS = [("hasan", "lazure.net@gmail.com")]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +52,8 @@ INSTALLED_APPS = [
     'adminsortable2',
     'core',
     'menu_part',
-    'mail'
+    'mail',
+    'home'
 ]
 
 MIDDLEWARE = [

@@ -156,7 +156,7 @@
     background-color: rgba(255, 255, 255, 0);
     position: relative;
     z-index: 2 !important;
-    font-family: "Gilroy";
+    font-family: 'Nunito', sans-serif;
 }
 .eg-washington-copypress-container {
     background-color: rgba(0, 0, 0, 0.65)
@@ -211,7 +211,7 @@
     background-color: rgba(255, 255, 255, 1.00) !important;
     z-index: 2;
     display: block;
-    font-family: "Gilroy";
+    font-family: 'Nunito', sans-serif;
     text-transform: capitalize;
 }
 .eg-hayes-copypress-element-1 {
@@ -252,7 +252,7 @@
     font-weight: 600;
     border-radius: 0;
     background-color: rgba(255, 255, 255, 1.00) !important;
-    font-family: "Gilroy";
+    font-family: 'Nunito', sans-serif;
     text-transform: capitalize;
 }
 .eg-hayes-copypress-element-0-a {

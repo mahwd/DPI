@@ -2460,9 +2460,9 @@ body.frontpage .sc_layouts_hide_on_frontpage, body.error404 .sc_layouts_hide_on_
     transition: color 0.3s ease !important, border-color 0.3s ease !important, background-position 0.3s ease !important, background-color 0 linear 0.3s !important;
 }
 .sc_item_subtitle {
-    font-size: 1.533em;
+    font-size: 2.5em;
     font-style: normal;
-    font-family: PermanentMarker;
+    font-family: 'Caveat', cursive;
     font-weight: 400;
     text-transform: capitalize;
     letter-spacing: 0;
@@ -3373,7 +3373,7 @@ label.required .sc_form_field_title:after {
 }
 .trx_addons_dropcap_style_1 {
     background-color: transparent;
-    font-family: PermanentMarker;
+    font-family: 'Caveat', cursive;
 }
 .trx_addons_dropcap_style_2 {
     font-weight: 600;

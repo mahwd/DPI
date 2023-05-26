@@ -6918,7 +6918,7 @@ blockquote.sc_promo_text {
     text-transform: uppercase;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "Gilroy";
+    font-family: 'Nunito', sans-serif;
 }
 .sc_skills_bar .sc_skills_item .sc_skills_count {
     text-align:right;

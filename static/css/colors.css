@@ -1,11 +1,11 @@
 .trx_addons_dropcap_style_2, .top_panel .slider_engine_revo .slide_title, .post_item .more-link, .gallery_preview_show .post_readmore {
-    font-family: "Gilroy", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 blockquote, mark, ins, .logo_text, .post_price.price, .theme_scroll_down, .sc_table table tr:first-child th, .sc_table table tr:first-child td, .post_item_single .post_content .post_meta_label, .author_bio .author_link, .comments_list_wrap .comment_reply {
-    font-family: "Gilroy", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 .post_meta {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 13px;
     font-weight: 400;
     font-style: normal;
@@ -16,13 +16,13 @@ blockquote, mark, ins, .logo_text, .post_price.price, .theme_scroll_down, .sc_ta
     margin-top: 0.4em;
 }
 em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .comments_list_wrap .comment_date, .comments_list_wrap .comment_time, .comments_list_wrap .comment_counters, .top_panel .slider_engine_revo .slide_subtitle, .logo_slogan, fieldset legend, figure figcaption, .wp-caption .tpl-caption-text, .wp-caption .wp-caption-dd, .wp-caption-overlay .wp-caption .tpl-caption-text, .wp-caption-overlay .wp-caption .wp-caption-dd, .format-audio .post_featured .post_audio_author, .post_item_single .post_content .post_meta, .comments_list_wrap .comment_posted {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .search_wrap .search_results .post_meta_item, .search_wrap .search_results .post_counters_item, .minimal-light .esg-grid .esg-filterbutton, .minimal-light .esg-grid .esg-navigationbutton, .minimal-light .esg-grid .esg-sortbutton, .minimal-light .esg-grid .esg-cartbutton a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .logo_text {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.8em;
     font-weight: 400;
     font-style: normal;
@@ -32,14 +32,14 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 1px;
 }
 .logo_footer_text {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .menu_main_nav_area {
     font-size: 1.0666em;
     line-height: 2.06em;
 }
 .menu_main_nav>li, .menu_main_nav>li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     font-style: normal;
     text-decoration: none;
@@ -47,7 +47,7 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 0.02em;
 }
 .menu_main_nav>li ul, .menu_main_nav>li ul>li, .menu_main_nav>li ul>li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.0666rem;
     font-weight: 300;
     font-style: normal;
@@ -57,20 +57,20 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 0.02em;
 }
 .menu_mobile .menu_mobile_nav_area>ul>li, .menu_mobile .menu_mobile_nav_area>ul>li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .menu_mobile .menu_mobile_nav_area>ul>li li, .menu_mobile .menu_mobile_nav_area>ul>li li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .sc_layouts_row, .sc_layouts_row input[type="text"] {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.0666em;
     font-weight: 300;
     font-style: normal;
     line-height: 2.06em;
 }
 .sc_layouts_row .sc_button_wrap .sc_button {
-    font-family: "Gilroy", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 12px;
     font-weight: 600;
     font-style: normal;
@@ -80,7 +80,7 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 0.2em;
 }
 .sc_layouts_menu_nav>li, .sc_layouts_menu_nav>li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     font-style: normal;
     text-decoration: none;
@@ -88,7 +88,7 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 0.02em;
 }
 .sc_layouts_menu_nav>li ul, .sc_layouts_menu_nav>li ul>li, .sc_layouts_menu_nav>li ul>li>a {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.0666rem;
     font-weight: 300;
     font-style: normal;
@@ -98,13 +98,13 @@ em, i, .post-date, .rss-date .post_date, .post_meta_item, .post_counters_item, .
     letter-spacing: 0.02em;
 }
 .sc_services_iconed .sc_services_item_title {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .toc_menu_item .toc_menu_description, .sc_item_subtitle.sc_item_title_style_shadow, .sc_item_button a, .sc_form button, .sc_button_simple, .sc_action_item_link, .sc_icons_title, .sc_price_title, .sc_price_price, .sc_price_link, .sc_promo_modern .sc_promo_link2 span+span, .sc_skills_counter .sc_skills_total, .slider_swiper .slide_info.slide_info_large .slide_title, .slider_style_modern .slider_controls_label span + span, .slider_pagination_wrap, .sc_slider_controller_info, .sc_skills_pie.sc_skills_compact_off .sc_skills_item_title, .sc_blogger_plain .sc_blogger_item_date, .sc_form_detailed .sc_form_info_area>span.sc_form_info_title {
-    font-family: "Gilroy", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 .trx_addons_audio_player .audio_author, .sc_item_subtitle, .sc_item_button .sc_button_simple, .sc_action_item_description, .sc_price_description, .sc_price_details, .sc_promo_modern .sc_promo_link2 span, .sc_skills_counter .sc_skills_item_title, .slider_style_modern .slider_controls_label span, .slider_titles_outside_wrap .slide_cats, .slider_titles_outside_wrap .slide_subtitle, .sc_team .sc_team_item_subtitle, .sc_services .sc_services_item_subtitle, .team_member_page .team_member_brief_info_text, .sc_testimonials_item_author_title, .sc_testimonials_item_content:before {
-    font-family: "Sofia Pro Light", sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 /* SCHEME DEFAULT

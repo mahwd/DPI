@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View, TemplateView, ListView, DetailView
 from mail.forms import MailForm
-from .models import MenuBaseItems, ContactInfo, SocialMediaIcon, Carousel, Brand, SectionInfo, ServiceIcon, InfoTag, \
-    MiniSwipe, Category, Project, ServicePlan, TeamMember
+from .models import ContactInfo, SocialMediaIcon, Brand, Category, Project, TeamMember
+from home.models import MenuItems, Carousel, InfoTag, \
+    ServiceIcon, MiniSwipe, SectionInfo, ServicePlan
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.http import JsonResponse
 from django.core import serializers
@@ -11,7 +12,7 @@ from django.core import serializers
 class BaseContext(View):
     def get_context_data(self, **kwargs):
         context = super(BaseContext, self).get_context_data(**kwargs)
-        context["header_menu"] = MenuBaseItems.objects.all()
+        context["header_menu"] = MenuItems.objects.filter(parent__isnull=True)
         context["contact_info"] = ContactInfo.objects.last()
         context["socials"] = SocialMediaIcon.objects.all()
         context["carousels"] = Carousel.objects.all()
@@ -46,7 +47,7 @@ class HomeView(BaseContext, TemplateView):
 
 
 class PortfolioView(BaseContext, ListView):
-    template_name = 'portfolio.html'
+    template_name = 'portfolio/portfolio.html'
     model = Project
 
     def get_context_data(self, **kwargs):
@@ -70,7 +71,7 @@ class PortfolioView(BaseContext, ListView):
 
 
 class PortfolioDetailView(BaseContext, DetailView):
-    template_name = 'portfolio_detail.html'
+    template_name = 'portfolio/portfolio_detail.html'
     model = Project
 
     def get_context_data(self, **kwargs):
@@ -89,7 +90,7 @@ class PortfolioDetailView(BaseContext, DetailView):
 
 
 class TeamView(BaseContext, ListView):
-    template_name = 'team.html'
+    template_name = 'team/team.html'
     model = TeamMember
 
     def get_context_data(self, **kwargs):
@@ -102,7 +103,7 @@ class TeamView(BaseContext, ListView):
 
 
 class TeamDetailView(BaseContext, DetailView):
-    template_name = 'team_detail.html'
+    template_name = 'team/team_detail.html'
     model = TeamMember
 
     @csrf_exempt

@@ -25,13 +25,6 @@
                                 <a href="{{ menu.url }}"> <span>{{ menu.title }}</span> </a>
                                 {% if menu.contain_dropdown %}
                                     {% include "_partials/sub_menu.html" with menu=menu %}
-                                    {#                                    <ul class="sub-menu">#}
-                                    {#                                        {% for child in menu.get_childs %}#}
-                                    {#                                            <li class="menu-item { current-menu-item }">#}
-                                    {#                                                <a href="{{ child.url }}"> <span>{{ child.title }}</span> </a>#}
-                                    {#                                            </li>#}
-                                    {#                                        {% endfor %}#}
-                                    {#                                    </ul>#}
                                 {% endif %}
                             </li>
                             <!-- /Menu item : {{ menu.title }} -->

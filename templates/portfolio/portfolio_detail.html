@@ -39,7 +39,7 @@
                     <div class="post_header">
                         <div class="post_meta">
                             <span class="post_meta_item post_categories">
-                                <a href="{{ project.get_absolute_url }}">{{ project.category.title }}</a>
+                                <a href="{% url "portfolio" %}?category={{ project.category.slug }}">{{ project.category.title }}</a>
                             </span> <span class="post_meta_item post_date">
                                 <a>{{ project.created_at }}</a>
                             </span>
@@ -55,7 +55,7 @@
                             <div class="socials_wrap socials_share socials_size_tiny socials_type_block socials_dir_horizontal">
                                 <span class="social_items">
                                     {% for social in socials %}<span class="social_item social_item_popup">
-                                        <a href="{{ social.url }}" class="social_icons {{ social.color }}">
+                                        <a href="{{ social.url }}" class="social_icons {{ social.color }}" target="_blank">
                                             <span class="trx_addons_icon-{{ social.icon }}"></span>
                                         </a>
                                     </span>{% endfor %}
