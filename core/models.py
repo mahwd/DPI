@@ -56,25 +56,6 @@ class SocialMediaIcon(MyModel):
         verbose_name_plural = "Sosiallar"
 
 
-class Brand(MyModel):
-    title = models.CharField(max_length=128, verbose_name="Ad")
-    url = models.CharField(max_length=255, verbose_name="URL")
-    image = models.ImageField(upload_to="brand_image/", verbose_name="Brend şəkli")
-
-    class Meta:
-        verbose_name = "Brend"
-        verbose_name_plural = "Brendlər"
-
-    def __str__(self):
-        return self.title
-
-    def get_image(self):
-        return get_image_html(self.image.url, self.title)
-
-    image.short_description = "Brand image"
-    image.allow_tags = True
-
-
 class Tag(MyModel):
     title = models.CharField(max_length=255, verbose_name="Teq adı")
 
@@ -128,7 +109,7 @@ class Category(MyModel):
 
 
 class ProjectImage(MyModel):
-    image = models.ImageField(null=True, blank=True, upload_to='project_images', verbose_name='Şəkil')
+    image = models.ImageField(null=True, blank=True, upload_to='core/ProjectImage/image', verbose_name='Şəkil')
     project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="images", verbose_name="Proyekt")
 
     class Meta:
@@ -178,7 +159,7 @@ class ProjectImage(MyModel):
 class TeamMember(MyModel):
     fullname = models.CharField(max_length=255, verbose_name='Əməkdaşın ad, soyadı')
     profession = models.CharField(max_length=255, verbose_name='Əməkdaşın vəzifəsi')
-    image = models.ImageField(upload_to="member_images", verbose_name="Əməkdaşın şəkli")
+    image = models.ImageField(upload_to="core/TeamMember/image", verbose_name="Əməkdaşın şəkli")
     info = models.TextField(max_length=500, verbose_name='Əməkdaşın bio-su')
     email = models.EmailField(max_length=100, verbose_name='Əməkdaşın elektron poçt ünvanı')
     slug = models.SlugField(unique=True, default=uuid.uuid4, max_length=150, verbose_name="Slug")
@@ -199,3 +180,49 @@ class TeamMember(MyModel):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.fullname)
         super(TeamMember, self).save(*args, **kwargs)
+
+
+class AccordionItem(MyModel):
+    title = models.CharField(max_length=200, verbose_name='Başlıq')
+    description = models.TextField(null=True, blank=True, max_length=300, verbose_name='Təfsilatı')
+    page = models.ForeignKey("ContactUsPageData", on_delete=models.CASCADE, related_name='accordion_items')
+
+    class Meta:
+        verbose_name = "Akkordion"
+        verbose_name_plural = "Akkordionlar"
+
+    def __str__(self):
+        return self.title
+
+
+class AboutUsSwiper(MyModel):
+    image = models.ImageField(upload_to="core/AboutUsSwiper/image", verbose_name="Swiper şəkli")
+    page = models.ForeignKey("ContactUsPageData", on_delete=models.CASCADE, related_name='swipers')
+
+    class Meta:
+        verbose_name = "Swiper"
+        verbose_name_plural = "Swiperlər"
+
+    def __str__(self):
+        return "Swiper şəkli"
+
+
+class ContactUsPageData(MyModel):
+    pretitle = models.CharField(null=True, blank=True, max_length=100, verbose_name='1-ci hissə ön başlıq')
+    title = models.CharField(null=True, blank=True, max_length=200, verbose_name='1-ci hissə başlıq')
+    description = models.TextField(null=True, blank=True, verbose_name='1-ci hissə açıqlama')
+    button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='1-ci hissə düymə mətni')
+    button_url = models.CharField(max_length=255, null=True, blank=True, verbose_name='1-ci hissə düymə url-i')
+    image = models.ImageField(null=True, blank=True, upload_to='core/ContactUsPageData/image', verbose_name='1-ci hissə şəkli')
+    pretitle_2 = models.CharField(null=True, blank=True, max_length=100, verbose_name='2-ci hissə ön başlıq')
+    title_2 = models.CharField(null=True, blank=True, max_length=200, verbose_name='2-ci hissə başlıq')
+
+    class Meta:
+        verbose_name = "Haqqımızda səhifəsi"
+        verbose_name_plural = "Haqqımızda səhifəsi"
+
+    def __str__(self):
+        return "Haqqımızda səhifəsinin məlumatları"
+
+    def get_image(self):
+        return get_image_html(self.image.url if self.image else None, self.title)

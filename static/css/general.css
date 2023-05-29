@@ -3264,12 +3264,14 @@ label.required .sc_form_field_title:after {
 .sc_testimonials_item_author {
     background-color: transparent;
     text-align: left;
-    margin-top: 0.6em;
     max-width: none;
     padding: 0;
     margin: 2em 0 0;
+    /*margin-top: 0.6em;*/
 }
 .sc_testimonials_item_author_avatar {
+    background-size: cover;
+    background-position: center;
     width: 4em;
     height: 4em;
     margin: 0 1.66em 0 0;

@@ -49,7 +49,7 @@ class Carousel(MyModel):
     pretitle = models.CharField(max_length=128, verbose_name="Ön başlıq")
     title = models.CharField(max_length=128, verbose_name="Başlıq")
     description = models.TextField(max_length=512, verbose_name="Açıqlama")
-    image = models.ImageField(upload_to='carousel_images/', verbose_name="Karusel şəkli")
+    image = models.ImageField(upload_to='home/Carousel/image', verbose_name="Karusel şəkli")
     image_thumbnail = ImageSpecField(source='image',
                                      processors=[SmartResize(400, 400)],
                                      format='JPEG',
@@ -98,6 +98,42 @@ class Carousel(MyModel):
         super().delete(*args, **kwargs)
 
 
+class Brand(MyModel):
+    title = models.CharField(max_length=128, verbose_name="Ad")
+    url = models.CharField(max_length=255, verbose_name="URL")
+    image = models.ImageField(upload_to="home/Brand/image", verbose_name="Brend şəkli")
+    sort_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
+    class Meta:
+        verbose_name = "Brend"
+        verbose_name_plural = "Brendlər"
+        ordering = ['-sort_order']
+
+    def __str__(self):
+        return self.title
+
+    def get_image(self):
+        return get_image_html(self.image.url, self.title)
+
+    def save(self, *args, **kwargs):
+        if self.sort_order is None:
+            try:
+                last_item = type(self).objects.filter(sort_order__isnull=False).order_by('-sort_order').first()
+                if last_item:
+                    self.sort_order = last_item.sort_order + 1
+            except type(self).DoesNotExist:
+                pass
+
+        super().save(*args, **kwargs)
+
+    image.short_description = "Brand image"
+    image.allow_tags = True
+
+
 class InfoTag(MyModel):
     # type_options = [
     #     ("info", "Info tag"),
@@ -143,7 +179,7 @@ class ServiceIcon(MyModel):
     type = models.CharField(max_length=64, choices=service_types, verbose_name="Servis tipi")
     # optional fields
     icon = models.CharField(null=True, blank=True, max_length=128, verbose_name="Servis ikon klası")
-    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Servis şəkli')
+    image = models.ImageField(null=True, blank=True, upload_to='home/ServiceIcon/image', verbose_name='Servis şəkli')
     description = models.TextField(null=True, blank=True, verbose_name='Servis açıqlaması')
 
     class Meta:
@@ -161,7 +197,7 @@ class MiniSwipe(MyModel):
     idiom = models.TextField(verbose_name='Mətn')
     author = models.CharField(max_length=100, verbose_name='Müəllif')
     author_profession = models.CharField(max_length=100, verbose_name='Vəzifə')
-    author_image = models.ImageField(null=True, blank=True, upload_to='swiper_auther_images', verbose_name='Şəkil')
+    author_image = models.ImageField(null=True, blank=True, upload_to='home/MiniSwipe/author_image', verbose_name='Şəkil')
 
     # section_info = models.ForeignKey('SectionInfo', on_delete=models.CASCADE, related_name="swipers", verbose_name="Bölmə")
 
@@ -202,8 +238,8 @@ class SectionInfo(MyModel):
     secondary_button_text = models.CharField(null=True, blank=True, max_length=100, verbose_name='Əlavə düymə mətni')
     secondary_button_url = models.CharField(max_length=255, null=True, blank=True, verbose_name='Əlavə düymə url-i')
     video_source = models.TextField(null=True, blank=True, verbose_name='Video mənbə kodu')
-    image = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Şəkil')
-    image2 = models.ImageField(null=True, blank=True, upload_to='section_images', verbose_name='Əlavə şəkil ')
+    image = models.ImageField(null=True, blank=True, upload_to='home/SectionInfo/image', verbose_name='Şəkil')
+    image2 = models.ImageField(null=True, blank=True, upload_to='home/SectionInfo/image_2', verbose_name='Əlavə şəkil ')
 
     class Meta:
         verbose_name = "Section Information"

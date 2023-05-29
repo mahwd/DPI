@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'core',
     'menu_part',
     'mail',
-    'home'
+    'home',
 ]
 
 MIDDLEWARE = [

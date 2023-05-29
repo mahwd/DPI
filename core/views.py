@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic.edit import FormView
 from mail.forms import MailForm
-from .models import ContactInfo, SocialMediaIcon, Brand, Category, Project, TeamMember
+from .forms import ContactForm
+from .models import ContactInfo, SocialMediaIcon, Category, Project, TeamMember, ContactUsPageData
 from home.models import MenuItems, Carousel, InfoTag, \
-    ServiceIcon, MiniSwipe, SectionInfo, ServicePlan
+    ServiceIcon, MiniSwipe, SectionInfo, ServicePlan, Brand
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.http import JsonResponse
 from django.core import serializers
@@ -15,35 +17,13 @@ class BaseContext(View):
         context["header_menu"] = MenuItems.objects.filter(parent__isnull=True)
         context["contact_info"] = ContactInfo.objects.last()
         context["socials"] = SocialMediaIcon.objects.all()
-        context["carousels"] = Carousel.objects.all()
-        context["brands"] = Brand.objects.all()
-        # - Sections
-        context["welcome_section"] = SectionInfo.objects.filter(section__regex='welcome').last()
-        context["video_section"] = SectionInfo.objects.filter(section__regex='video').last()
-        context["service_section"] = SectionInfo.objects.filter(section__regex='service').last()
-        context["info_section"] = SectionInfo.objects.filter(section__regex='info').last()
-        context["testimonials_section"] = SectionInfo.objects.filter(section__regex='testimonials').last()
-        context["projects_section"] = SectionInfo.objects.filter(section__regex='projects').last()
-        context["ourteam_section"] = SectionInfo.objects.filter(section__regex='team').last()
-        context["special_offer_section"] = SectionInfo.objects.filter(section__regex='special_offer').last()
-        # = # Sections
-        context["services"] = ServiceIcon.objects.filter(type__regex='mini')
-        context["info_services"] = ServiceIcon.objects.filter(type__regex='middle')
-        context["tags"] = InfoTag.objects.filter(active=True)
-        context["swipes"] = MiniSwipe.objects.filter(active=True)
+
         context["categories"] = Category.objects.filter(active=True)
         context["projects"] = Project.objects.filter(active=True)
         context["service_plans"] = ServicePlan.objects.filter(active=True)
         context["team"] = TeamMember.objects.filter(active=True)
 
         return context
-
-
-class HomeView(BaseContext, TemplateView):
-    template_name = 'home/index.html'
-
-    def get_context_data(self, **kwargs):
-        return super(HomeView, self).get_context_data(**kwargs)
 
 
 class PortfolioView(BaseContext, ListView):
@@ -118,7 +98,6 @@ class TeamDetailView(BaseContext, DetailView):
         ]
         return context
 
-    @csrf_exempt
     def post(self, request, *args, **kwargs):
         form = MailForm(request.POST)
         self.object = self.get_object()
@@ -132,3 +111,36 @@ class TeamDetailView(BaseContext, DetailView):
         else:
             # some form errors occured.
             return self.render_to_response(context=context, status=400)
+
+
+class AboutUsView(BaseContext, TemplateView):
+    template_name = 'pages/aboutus.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutUsView, self).get_context_data(**kwargs)
+        page = ContactUsPageData.objects.filter(active=True).last()
+        context["page"] = page or None
+        context["accordion_items"] = page.accordion_items.all() if page else []
+        context["swipers"] = page.swipers.all() if page else []
+        context["brands"] = Brand.objects.filter(active=True).order_by("-sort_order")
+        context["breadcrumps"] = [
+            {"text": "Ana səhifə", "url": "/"},
+            {"text": "Haqqımızda", "url": "#"},
+        ]
+        return context
+
+
+class ContactUsView(BaseContext, TemplateView):
+    template_name = 'pages/contact.html'
+
+
+class ContactFormView(BaseContext, FormView):
+    template_name = "pages/contact.html"
+    form_class = ContactForm
+    success_url = "/thanks/"
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.send_email()
+        return super().form_valid(form)

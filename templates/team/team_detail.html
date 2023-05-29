@@ -11,7 +11,7 @@
 {% block page_wrap %}
 {% if mailJson %}
     <div class="toast">
-        <p>Mail gonderildi  {{ mailJson.message }}</p>
+        <p>Müraciətiniz gonderildi {{ mailJson.message }}</p>
         <span onclick="this.parentElement.remove()">X</span>
     </div>
 {% endif %}
@@ -90,23 +90,8 @@
     <script type="text/javascript" src="{% static "js/superfish.js" %}"></script>
     <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
     <script>
-
-
         const form = document.getElementById('mailform');
         const email_to = document.getElementById('email_to');
         email_to.setAttribute("value", "{{ teammember.email }}")
-
-        {#form.onsubmit = async (e) => {#}
-        {#    e.preventDefault()#}
-        {#    const formData = new FormData(e.target)#}
-        {#    console.log(formData.name)#}
-        {#    let response = await fetch('/sendmail/', {#}
-        {#        method: 'POST',#}
-        {#        body: formData#}
-        {#    });#}
-        {##}
-        {#    let result = await response.json();#}
-        {##}
-        {#    alert(result.message); } #}
     </script>
 {% endblock %}

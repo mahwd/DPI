@@ -15,7 +15,7 @@ class Mail(MyModel):
         if not self.email_sent:
             try:
                 is_sent = send_mail(
-                    f"{self.name} sizinlə əlaqə saxlamaq istəyir.",
+                    f"Sizə yeni müraciət var - {self.name}",
                     self.message,
                     "lazure.net@gmail.com",
                     [self.email_to],

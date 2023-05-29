@@ -2,3 +2,119 @@
 {% load static %}
 {% block title %}Haqqımızda{% endblock %}
 
+{% block body_class %}page scheme_default blog_mode_page body_style_wide sidebar_hide expand_content
+    remove_margins header_style_header-custom-18 header_position_default menu_style_top no_layout{% endblock %}
+
+{% block header %}
+    {% include "_partials/header.html" with breadcrumps=breadcrumps title="Haqqımızda" %}
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <article class="post_item_single">
+            <div class="post_content">
+                <!-- Our story -->
+                <div style="background-image: url(/static/images/full_services.png);">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_9_4em"></div>
+                        <div class="trx_addons_columns_wrap">
+                            <div class="z-index_2 trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <figure>
+                                    <img src="{{ page.image.url }}" alt="{{ page.pretitle }}"/>
+                                </figure>
+                            </div><div class="custom_column_1 trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <div class="copypress-services-custom-block-2">
+                                    <div class="empty_space height_5_3em"></div>
+                                    <div class="sc_action sc_action_simple custom_action_1" data-slides-min-width="250">
+                                        <div class="sc_action_content sc_item_content">
+                                            <div class="sc_action_item sc_action_item_simple sc_action_item_mc">
+                                                <h6 class="sc_item_subtitle sc_action_item_subtitle sc_align_center sc_item_title_style_default">
+                                                    <span>{{ page.pretitle }}</span>
+                                                </h6>
+                                                <h2 class="sc_item_title sc_action_item_title sc_align_default sc_item_title_style_default">
+                                                    <span>{{ page.title }}</span>
+                                                </h2>
+                                                <div class="sc_action_item_description">
+                                                    <span>{{ page.description }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="empty_space height_2_5em"></div>
+                                    <div class="sc_item_button sc_button_wrap sc_align_center">
+                                        <a href="{{ page.button_url }}"
+                                           class="sc_button sc_button_dark sc_button_size_normal sc_button_icon_left">
+                                        <span class="sc_button_text">
+                                            <span class="sc_button_title">{{ page.button_text }}</span>
+                                        </span>
+                                        </a>
+                                    </div>
+                                    <div class="empty_space height_7_3em"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_11em"></div>
+                    </div>
+                </div>
+                <!-- /Story section-->
+                <!-- About section -->
+                <div class="copypress-custom-bg-10 scheme_dark">
+                    <div class="content_wrap sc_layouts_column_icons_position_left">
+                        <div class="empty_space height_8_3em"></div>
+                        <div class="sc_title sc_title_default">
+                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_yellow_sub">
+                                {{ page.pretitle_2 }}</h6>
+                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_yellow_sub">{{ page.title_2 }}</h2>
+                        </div>
+                        <div class="trx_addons_columns_wrap">
+                            <div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_2_5em"></div>
+                                <div class="sc_accordion sc_accordion_style_2" data-active="0">
+                                    {% for item in accordion_items %}<div class="sc_accordion_item {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %} {% if forloop.counter == 1 %}first{% endif %}">
+                                            <h5 class="sc_accordion_title">{{ item.title }}</h5>
+                                            <div class="sc_accordion_content">
+                                                <p>{{ item.description }}</p>
+                                            </div>
+                                        </div>{% endfor %}
+                                </div>
+                            </div><div class="trx_addons_column-1_2 trx_addons_column_specific sc_layouts_column_icons_position_left">
+                                <div class="empty_space height_2_5em"></div>
+                                <div id="widget_slider_4" class="widget_area sc_widget_slider">
+                                    <aside id="widget_slider_4_widget" class="widget widget_slider">
+                                        <div class="slider_wrap slider_engine_swiper">
+                                            <div id="widget_slider_4_outer"
+                                                 class="slider_swiper_outer slider_style_default slider_outer_controls slider_outer_controls_side slider_outer_nopagination slider_outer_titles_center slider_outer_one">
+                                                <div id="widget_slider_1139913895_swiper"
+                                                     class="slider_swiper swiper-slider-container slider_controls slider_controls_side slider_nopagination slider_titles_center slider_one slider_resize slider_height_auto slider_type_bg"
+                                                     data-ratio="3:2" data-interval="7000" data-effect="slide"
+                                                     data-pagination="bullets" data-slides-per-view="1"
+                                                     data-slides-space="0">
+                                                    <div class="swiper-wrapper">
+                                                        {% for swiper in swipers %}<div class="swiper-slide copypress-slider-1-slide-1"
+                                                                 style="background-image: url({{ swiper.image.url }});"></div>{% endfor %}
+                                                    </div>
+                                                    <div class="slider_controls_wrap">
+                                                        <a class="slider_prev swiper-button-prev" href="#"></a>
+                                                        <a class="slider_next swiper-button-next" href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_8_5em"></div>
+                    </div>
+                </div>
+                <!-- /About section -->
+                <!-- What We Can Do-->
+                <!-- deleted -->
+                <!-- /What We Can Do-->
+                <!-- Brands -->
+                {% include "home/_brands.html" %}
+                <!-- /Brands -->
+            </div>
+        </article>
+    </div>
+{% endblock %}

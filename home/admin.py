@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  MenuItems, Carousel, InfoTag, \
+from .models import MenuItems, Carousel, InfoTag, Brand, \
     ServiceIcon, MiniSwipe, SectionInfo, ServicePlan
 from adminsortable2.admin import SortableAdminMixin
 
@@ -7,9 +7,9 @@ from adminsortable2.admin import SortableAdminMixin
 @admin.register(MenuItems)
 class MenuItemsAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'url', 'sort_order')
-    list_display_links = ('title', 'url', )
-    search_fields = ('title', 'url', )
-    list_filter = ('title', 'sort_order',)
+    list_display_links = ('title', 'url',)
+    search_fields = ('title', 'url',)
+    list_filter = ('parent',)
     readonly_fields = ('sort_order',)
 
 
@@ -27,6 +27,15 @@ class CarouselAdmin(SortableAdminMixin, admin.ModelAdmin):
         ('Right Button', {'fields': ('right_button_text', 'right_button_url')}),
     )
     readonly_fields = ('sort_order',)
+
+
+@admin.register(Brand)
+class BrandAdmin(SortableAdminMixin, admin.ModelAdmin):
+    fields = ("title", "image", "url",)
+    list_filter = ('title', )
+    # list_editable = ('title',)
+    list_display = ("get_image", "title", "url", "sort_order")
+    # readonly_fields = ('sort_order',)
 
 
 @admin.register(InfoTag)
