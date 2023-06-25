@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-klna*-w4v74^s$3)2nn5gdaq4*++h+7pjy@r08u^@n98a1!d1*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hasantagiyev.pythonanywhere.com']
+ALLOWED_HOSTS = ['dpi.az', 'www.dpi.az', 'localhost', '127.0.0.1']
 
 # Email settings -------------------------------------------------------------------------
 
